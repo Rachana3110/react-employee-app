@@ -1,0 +1,23 @@
+[
+    {
+        "Employee_ID_Number": "101",
+        "Password": "Rachu3110",
+        "Employee_Details": {
+            "First_Name": "Rachana",
+            "Middle_Name": "N",
+            "Last_Name": "S",
+            "Date_of_Birth": "31-10-1997",
+            "Phone_Number": "9164396678",
+            "Address": "Jayanagar",
+            "Postal_Code": "560011",
+            "Qualification": "BE",
+            "total_Experience": "3",
+            "Start_Date_Date": "",
+            "End_Date_Date": "",
+            "Type_of_Employee": "Permanent",
+            "Position": "Developer",
+            "Gender": "Femail",
+            "Marital_Status": "Unmarried"
+        }
+    }
+]

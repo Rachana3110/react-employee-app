@@ -1,0 +1,33 @@
+.login-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  background-color: antiquewhite;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  width: 30%;
+  margin: 10%;
+}
+
+label {
+  background-color: bisque;
+  margin-top: 5%;
+}
+
+input {
+  margin-bottom: 5%;
+}
+
+input[type=button] {
+  margin-bottom: 5%;
+}
+
