@@ -6,9 +6,9 @@ import "../pages/css/Registration.css";
 const Registration = () => {
   const navigate = useNavigate();
   const [data, setData] = useState();
-  const [emp_id, setEmp_id] = useState(null);
-  const [password, setPassword] = useState("");
-  const [retype_password, setRetype_password] = useState("");
+  const [emp_id, setEmp_id] = useState();
+  const [password, setPassword] = useState();
+  const [retype_password, setRetype_password] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,36 +33,68 @@ const Registration = () => {
             setData(response.data);
           });
       };
-      if (
-        password === retype_password &&
-        !data.map((emp) => emp.Employee_ID_Number).includes(emp_id)
-      ) {
+      if (password !== retype_password) {
+        alert("Password doen't match");
+      } else if (data.map((emp) => emp.Employee_ID_Number).includes(emp_id)) {
+        alert("Id already exist");
+      } else {
         postData();
         navigate("/");
-      } else console.log("registration unsuccessfull");
+      }
     }
   };
 
   return (
     <div className="register-container">
       <form onSubmit={handleRegister}>
-        <h2>Register</h2>
-        <label htmlFor="number">Employee ID</label>
-
+        <h2>Registration</h2>
+        <label htmlFor="emp_id">Employee ID*</label>
         <input
           type="number"
           id="emp_id"
           name="emp_id"
+          placeholder="Enter Employee Id"
           onChange={(e) => {
             return setEmp_id(e.target.value);
           }}
           required
         />
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="first_name">First Name*</label>
+        <input
+          type="text"
+          id="first_name"
+          name="first_name"
+          placeholder="Enter your First Name"
+          // onChange={}
+          required
+        />
+
+        <label htmlFor="last_name">Last Name</label>
+        <input
+          type="text"
+          id="last_name"
+          name="last_name"
+          placeholder="Enter your Last Name"
+          // onChange={}
+        />
+
+        <label htmlFor="designation">Designation*</label>
+        <input
+          type="text"
+          id="designation"
+          name="designation"
+          placeholder="Enter Designation"
+          // onChange={(e) => {
+          // }}
+          required
+        />
+
+        <label htmlFor="password">Password*</label>
         <input
           type="password"
           id="password"
+          placeholder="Enter Password"
           name="password"
           onChange={(e) => {
             return setPassword(e.target.value);
@@ -70,11 +102,12 @@ const Registration = () => {
           required
         />
 
-        <label htmlFor="password">Retype-Password</label>
+        <label htmlFor="password">Retype-Password*</label>
 
         <input
           type="password"
           id="retype_password"
+          placeholder="Re-type Password"
           name="password"
           onChange={(e) => {
             return setRetype_password(e.target.value);
@@ -82,7 +115,7 @@ const Registration = () => {
           required
         />
 
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" onClick={handleRegister} />
       </form>
     </div>
   );

@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import "./css/Login.css";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ setToken }) {
   const [emp_id, setEmp_id] = useState();
   const [password, setPassword] = useState();
   const [loginData, setLoginData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/login").then((response) => {
@@ -18,21 +19,27 @@ function Login({ setToken }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (loginData) {
+
       const employeeId = loginData.token.map((emp) => emp.Employee_ID_Number);
       const employeePassword = loginData.token.map((emp) => emp.Password);
+
       if (employeeId.includes(emp_id) && employeePassword.includes(password)) {
         setToken(loginData);
-        console.log("Login successfull");
+        const currentData = loginData.token.filter((emp)=>emp.Employee_ID_Number === emp_id)
+        console.log(currentData)
+        if(currentData){
+        navigate('/', {state: currentData})
+      }
       } else {
-        console.log("login unsucessfull");
+        alert("Enter correct Employee Id & Password")
       }
     }
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Log-In</h2>
+      <form onSubmit={handleSubmit} >
+        <h1>Log-In</h1>
         <label htmlFor="emp_id">Employee ID</label>
         <input
           type="number"
@@ -54,10 +61,11 @@ function Login({ setToken }) {
         />
 
         <input type="submit" value="Submit" />
-        <button><Link to="/registration">Register</Link></button>
+        <p>*Dont have credentials register before login</p>
+        <Link className="Register-button" to="/registration">
+          <input type="button" value="Register" />
+        </Link>
       </form>
-      <nav>
-      </nav>
     </div>
   );
 }

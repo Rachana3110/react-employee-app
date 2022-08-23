@@ -1,33 +1,74 @@
-.login-container{
+.login-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
   height: 100vh;
   background-color: antiquewhite;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: white;
-  width: 30%;
-  margin: 10%;
-}
-
 label {
   background-color: bisque;
+  width: 35%;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+input[type=number], select {
+  width: 60%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=text], select {
+  width: 60%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 60%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="button"] {
+  background-color: #1c2789; /* Voilet */
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+input[type="submit"] {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
   margin-top: 5%;
 }
 
-input {
-  margin-bottom: 5%;
+.Register-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-input[type=button] {
-  margin-bottom: 5%;
+p {
+  font-size: 15px;
 }
-
