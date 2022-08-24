@@ -26,15 +26,17 @@ function HomePage({ setToken }) {
   };
   return (
     <div>
-      <form>
-        <h2>Welcome to Home Page</h2>
-        Employee_ID_Number : {currEmployeeData[0].Employee_ID_Number}
-        <br />
-        First_Name : {currEmployeeData[0].Employee_Details.First_Name}
-        <br />
-        Designation : {currEmployeeData[0].Employee_Details.Designation}
-        <button onClick={handleLogout}>Logout</button>
-      </form>
+      {empData && (
+        <form>
+          <h2>Welcome to Home Page</h2>
+          Employee_ID_Number : {currEmployeeData[0].Employee_ID_Number}
+          <br />
+          First_Name : {currEmployeeData[0].Employee_Details.First_Name}
+          <br />
+          Designation : {currEmployeeData[0].Employee_Details.Designation}
+          <button onClick={handleLogout}>Logout</button>
+        </form>
+      )}
     </div>
   );
 }
