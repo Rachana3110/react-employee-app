@@ -24,7 +24,7 @@ function Login({ setToken }) {
       alert("Enter valid Password");
     } else {
       setToken("Login Successfull");
-      navigate("/home");
+      navigate("/home", {state: emp_id});
     }
   };
 
