@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./css/Login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login({setToken}) {
+function Login({ setToken }) {
   const [emp_id, setEmp_id] = useState();
   const [password, setPassword] = useState();
   const [registerData, setRegisterData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/register").then((response) => {
@@ -15,16 +16,15 @@ function Login({setToken}) {
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (registerData) {
-      const employeeId = registerData.map((emp) => emp.Employee_ID_Number);
-      const employeePassword = registerData.map((emp) => emp.Password);
-
-      if (employeeId.includes(emp_id) && employeePassword.includes(password)) {
-        setToken("Logged Successfully");
-      } else {
-        alert("Enter correct Employee Id & Password");
-      }
+    const employeeId = registerData.map((emp) => emp.Employee_ID_Number);
+    const employeePassword = registerData.map((emp) => emp.Password);
+    if (registerData && !employeeId.includes(emp_id)) {
+      alert("Enter valid Employee ID");
+    } else if (!employeePassword.includes(password)) {
+      alert("Enter valid Password");
+    } else {
+      setToken("Login Successfull");
+      navigate("/home");
     }
   };
 

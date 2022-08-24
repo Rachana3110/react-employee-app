@@ -14,11 +14,11 @@ function App() {
         <Routes>
           {!token ? (
             <>
-              <Route index element={<Login setToken={setToken} />} />
+              <Route path="/" index element={<Login setToken={setToken} />} />
               <Route path="/registration" element={<Registration />} />
             </>
           ) : (
-            <Route path="/" element={<Home setToken={setToken}/>} />
+            <Route path="/home" element={<Home setToken={setToken}/>} />
           )}
         </Routes>
       </div>
