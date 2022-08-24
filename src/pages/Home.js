@@ -1,22 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HomePage({ setToken }) {
+  const [loginData, setLoginData] = useState();
   const [empData, setEmpData] = useState();
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/register").then((response) => {
       setEmpData(response.data);
     });
+    axios.get("http://localhost:3001/api/login").then((response) => {
+      setLoginData(response.data);
+    });
   }, []);
 
   let currEmployeeData;
-  if (location && empData) {
+  if (loginData && empData) {
     currEmployeeData = empData.filter((emp) => {
-      return emp.Employee_ID_Number === location.state;
+      return emp.Employee_ID_Number === loginData[0].Employee_ID_Number;
     });
   }
 
@@ -24,9 +27,10 @@ function HomePage({ setToken }) {
     setToken("");
     navigate("/");
   };
+
   return (
     <div>
-      {empData && (
+      {loginData && empData && (
         <form>
           <h2>Welcome to Home Page</h2>
           Employee_ID_Number : {currEmployeeData[0].Employee_ID_Number}

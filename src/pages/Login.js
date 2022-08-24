@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login({ setToken }) {
+  const [loginData, setLoginData] = useState();
   const [emp_id, setEmp_id] = useState();
   const [password, setPassword] = useState();
   const [registerData, setRegisterData] = useState();
@@ -13,9 +14,21 @@ function Login({ setToken }) {
     axios.get("http://localhost:3001/api/register").then((response) => {
       setRegisterData(response.data);
     });
-  }, []);
 
-  const handleSubmit = (e) => {
+    if(emp_id && password){
+      axios
+      .put("http://localhost:3001/api/login", {
+        Employee_ID_Number: emp_id,
+        Password: password,
+      })
+      .then((response) => {
+        setLoginData(response.data);
+      });
+    }
+  });
+
+  const handleLogin = (e) => {
+    e.preventDefault();
     const employeeId = registerData.map((emp) => emp.Employee_ID_Number);
     const employeePassword = registerData.map((emp) => emp.Password);
     if (registerData && !employeeId.includes(emp_id)) {
@@ -23,14 +36,17 @@ function Login({ setToken }) {
     } else if (!employeePassword.includes(password)) {
       alert("Enter valid Password");
     } else {
-      setToken("Login Successfull");
-      navigate("/home", {state: emp_id});
+      if (loginData) {
+        setToken("Login Successfull");
+        navigate("/home");
+      }
+      else alert("login Unsuccessfull")
     }
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <h1>Log-In</h1>
         <label htmlFor="emp_id">Employee ID</label>
         <input
