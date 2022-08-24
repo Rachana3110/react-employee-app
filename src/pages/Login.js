@@ -1,44 +1,36 @@
 import { useEffect, useState } from "react";
 import "./css/Login.css";
-import PropTypes from "prop-types";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Login({ setToken }) {
+function Login({setToken}) {
   const [emp_id, setEmp_id] = useState();
   const [password, setPassword] = useState();
-  const [loginData, setLoginData] = useState();
-  const navigate = useNavigate();
+  const [registerData, setRegisterData] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/login").then((response) => {
-      setLoginData(response.data);
+    axios.get("http://localhost:3001/api/register").then((response) => {
+      setRegisterData(response.data);
     });
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (loginData) {
-
-      const employeeId = loginData.token.map((emp) => emp.Employee_ID_Number);
-      const employeePassword = loginData.token.map((emp) => emp.Password);
+    if (registerData) {
+      const employeeId = registerData.map((emp) => emp.Employee_ID_Number);
+      const employeePassword = registerData.map((emp) => emp.Password);
 
       if (employeeId.includes(emp_id) && employeePassword.includes(password)) {
-        setToken(loginData);
-        const currentData = loginData.token.filter((emp)=>emp.Employee_ID_Number === emp_id)
-        console.log(currentData)
-        if(currentData){
-        navigate('/', {state: currentData})
-      }
+        setToken("Logged Successfully");
       } else {
-        alert("Enter correct Employee Id & Password")
+        alert("Enter correct Employee Id & Password");
       }
     }
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <h1>Log-In</h1>
         <label htmlFor="emp_id">Employee ID</label>
         <input
@@ -47,7 +39,7 @@ function Login({ setToken }) {
           name="emp_id"
           placeholder="Enter Employee Id"
           onChange={(e) => setEmp_id(e.target.value)}
-          // required
+          required
         />
 
         <label htmlFor="password">Password</label>
@@ -57,7 +49,7 @@ function Login({ setToken }) {
           name="password"
           placeholder="Enter Password"
           onChange={(e) => setPassword(e.target.value)}
-          // required
+          required
         />
 
         <input type="submit" value="Submit" />
@@ -70,7 +62,3 @@ function Login({ setToken }) {
   );
 }
 export default Login;
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};

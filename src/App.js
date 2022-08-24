@@ -1,21 +1,26 @@
-import { BrowserRouter } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import useToken from "./helpers/useToken";
-import RouterComponent from "./router/RouterComponent";
-import RegistrationRouter from "./router/LoginRouter";
+import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Registration from "./pages/Registration";
 
 function App() {
   const { token, setToken } = useToken();
 
-  if (!token) {
-    return <RegistrationRouter setToken={setToken} />;
-  }
-
   return (
     <BrowserRouter>
       <div className="App">
-        <h2>Employee App</h2>
-        <RouterComponent />
+        <Routes>
+          {!token ? (
+            <>
+              <Route index element={<Login setToken={setToken} />} />
+              <Route path="/registration" element={<Registration />} />
+            </>
+          ) : (
+            <Route path="/" element={<Home setToken={setToken}/>} />
+          )}
+        </Routes>
       </div>
     </BrowserRouter>
   );

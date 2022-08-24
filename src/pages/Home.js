@@ -1,21 +1,13 @@
-import { useLocation } from "react-router-dom";
+import React from "react";
 
-function HomePage() {
-  const location = useLocation();
-  const empData = location.state[0];
+function HomePage({ setToken }) {
+  const handleLogout = () => {
+    setToken("");
+  };
   return (
     <div>
-          <text>Employee Id: </text>
-          <text>{empData.Employee_ID_Number}</text>
-          <br />
-          <text>Name: </text>
-          <text>
-            {empData.Employee_Details.First_Name}{" "}
-            {empData.Employee_Details.Last_Name}
-          </text>
-          <br />
-          <text>Designation: </text>
-          <text>{empData.Employee_Details.Designation}</text>
+      Welcome to Home Page
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }
