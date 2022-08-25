@@ -9,21 +9,20 @@ function Login({ setToken }) {
   const [password, setPassword] = useState();
   const [registerData, setRegisterData] = useState();
   const navigate = useNavigate();
-
   useEffect(() => {
     axios.get("http://localhost:3001/api/register").then((response) => {
       setRegisterData(response.data);
     });
 
-    if(emp_id && password){
+    if (emp_id && password) {
       axios
-      .put("http://localhost:3001/api/login", {
-        Employee_ID_Number: emp_id,
-        Password: password,
-      })
-      .then((response) => {
-        setLoginData(response.data);
-      });
+        .put("http://localhost:3001/api/login", {
+          Employee_ID_Number: emp_id,
+          Password: password,
+        })
+        .then((response) => {
+          setLoginData(response.data);
+        });
     }
   });
 
@@ -39,8 +38,7 @@ function Login({ setToken }) {
       if (loginData) {
         setToken("Login Successfull");
         navigate("/home");
-      }
-      else alert("login Unsuccessfull")
+      } else alert("login Unsuccessfull");
     }
   };
 
@@ -48,7 +46,7 @@ function Login({ setToken }) {
     <div className="login-container">
       <form onSubmit={handleLogin}>
         <h1>Log-In</h1>
-        <label htmlFor="emp_id">Employee ID</label>
+        <p htmlFor="emp_id">Employee ID</p>
         <input
           type="number"
           id="emp_id"
@@ -58,7 +56,7 @@ function Login({ setToken }) {
           required
         />
 
-        <label htmlFor="password">Password</label>
+        <p htmlFor="password">Password</p>
         <input
           type="password"
           id="password"
@@ -67,10 +65,11 @@ function Login({ setToken }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
-        <input type="submit" value="Submit" />
+        <div>
+          <input type="submit" value="Submit" />
+        </div>
         <p>*Dont have credentials register before login</p>
-        <Link className="Register-button" to="/registration">
+        <Link className="Register-button" to="/test_registration">
           <input type="button" value="Register" />
         </Link>
       </form>

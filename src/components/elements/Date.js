@@ -1,16 +1,14 @@
-import React from "react";
-// import { FormContext } from "../../FormContext";
+import React, { useContext } from "react";
+import { FormContext } from "../../helpers/formContext";
 
-const Date = ({ questionid, question }) => {
-  // const { handleChange } = useContext(FormContext);
+const Date = ({ questionid }) => {
+  const { handleChange } = useContext(FormContext);
   return (
     <div>
-      <p>{question}</p>
       <input
         type="date"
         id={questionid}
-        name={question}
-        // onChange={(event) => handleChange(questionid, event)}
+        onChange={(event) => handleChange(questionid, event)}
       />
     </div>
   );

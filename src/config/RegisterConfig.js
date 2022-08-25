@@ -1,79 +1,95 @@
 export const RegisterConfig = {
+  id: 1,
   Registration_Questions: [
     {
       questionid: 1,
       question: "Employee Id",
       questiontype: "Number",
+      changeddata: "",
     },
     {
       questionid: 2,
       question: "Password",
       questiontype: "Password",
+      changeddata: "",
     },
     {
       questionid: 3,
       question: "Re-Type Password",
       questiontype: "Password",
+      changeddata: "",
     },
     {
       questionid: 4,
       question: "First Name",
       questiontype: "Text",
+      changeddata: "",
     },
     {
       questionid: 5,
       question: "Middle Name",
       questiontype: "Text",
+      changeddata: "",
     },
     {
       questionid: 6,
       question: "Last Name",
       questiontype: "Text",
+      changeddata: "",
     },
     {
       questionid: 7,
       question: "Date of Birth",
-      questiontype: "date",
+      questiontype: "Date",
+      changeddata: "",
     },
     {
       questionid: 8,
       question: "Phone Number",
       questiontype: "Number",
+      changeddata: "",
     },
     {
       questionid: 9,
       question: "Address",
       questiontype: "Textarea",
+      changeddata: "",
     },
     {
       questionid: 10,
       question: "Postal Code",
       questiontype: "Number",
+      changeddata: "",
     },
     {
       questionid: 11,
       question: "Qualification",
       questiontype: "Text",
+      changeddata: "",
     },
     {
       questionid: 12,
       question: "Total Experience",
       questiontype: "Number",
+      changeddata: "",
     },
     {
       questionid: 13,
       question: "Start Date",
       questiontype: "Date",
+      changeddata: "",
     },
     {
       questionid: 14,
       question: "End Date",
       questiontype: "Date",
+      changeddata: "",
     },
     {
       questionid: 15,
       question: "Type of employee",
       questiontype: "Dropdown",
+      changeddata: "",
       questionoption: [
         { optionid: 1, optionvalue: "Permanent" },
         { optionid: 2, optionvalue: "Part-Time" },
@@ -83,6 +99,7 @@ export const RegisterConfig = {
       questionid: 16,
       question: "Designation",
       questiontype: "Dropdown",
+      changeddata: "",
       questionoption: [
         { optionid: 1, optionvalue: "Developer" },
         { optionid: 2, optionvalue: "Tester" },
@@ -94,6 +111,7 @@ export const RegisterConfig = {
       questionid: 17,
       question: "Gender",
       questiontype: "Dropdown",
+      changeddata: "",
       questionoption: [
         { optionid: 1, optionvalue: "Male" },
         { optionid: 2, optionvalue: "Female" },
@@ -104,6 +122,7 @@ export const RegisterConfig = {
       questionid: 18,
       question: "Marital Status",
       questiontype: "Dropdown",
+      changeddata: "",
       questionoption: [
         { optionid: 1, optionvalue: "Married" },
         { optionid: 2, optionvalue: "Unmarried" },

@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { FormContext } from "../../helpers/formContext";
 
-const Password = ({ questionid, question }) => {
+const Password = ({ questionid }) => {
+  const { handleChange } = useContext(FormContext);
   return (
     <div>
-      <p>{question}</p>
-      <input type="password" id={questionid} />
+      <input
+        type="password"
+        id={questionid}
+        onChange={(event) => handleChange(questionid, event)}
+      />
     </div>
   );
 };
 
-export default Password
+export default Password;

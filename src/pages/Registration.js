@@ -68,7 +68,7 @@ const Registration = () => {
     <div className="register-container">
       <form onSubmit={handleRegister}>
         <h2>Registration</h2>
-        <label htmlFor="emp_id">Employee ID*</label>
+        <p htmlFor="emp_id">Employee ID*</p>
         <input
           type="number"
           id="emp_id"
@@ -80,7 +80,7 @@ const Registration = () => {
           required
         />
 
-        <label htmlFor="first_name">First Name*</label>
+        <p htmlFor="first_name">First Name*</p>
         <input
           type="text"
           id="first_name"
@@ -92,7 +92,7 @@ const Registration = () => {
           required
         />
 
-        <label htmlFor="last_name">Last Name</label>
+        <p htmlFor="last_name">Last Name</p>
         <input
           type="text"
           id="last_name"
@@ -103,7 +103,7 @@ const Registration = () => {
           }}
         />
 
-        <label htmlFor="designation">Designation*</label>
+        <p htmlFor="designation">Designation*</p>
         <input
           type="text"
           id="designation"
@@ -115,7 +115,7 @@ const Registration = () => {
           required
         />
 
-        <label htmlFor="password">Password*</label>
+        <p htmlFor="password">Password*</p>
         <input
           type="password"
           id="password"
@@ -127,7 +127,7 @@ const Registration = () => {
           required
         />
 
-        <label htmlFor="password">Retype-Password*</label>
+        <p htmlFor="password">Retype-Password*</p>
 
         <input
           type="password"
@@ -139,8 +139,9 @@ const Registration = () => {
           }}
           required
         />
-
+        <div>
         <input type="submit" value="Register" onClick={handleRegister} />
+        </div>
       </form>
     </div>
   );

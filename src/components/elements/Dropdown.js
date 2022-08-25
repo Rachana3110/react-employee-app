@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FormContext } from "../../helpers/formContext";
 
-const Dropdown = ({ questionid, question, questionoption }) => {
+const Dropdown = ({ questionid, questionoption }) => {
+  const { handleChange } = useContext(FormContext);
+
   return (
     <div>
-      <p>{question}</p>
-      <select id={questionid}>
+      <select
+        id={questionid}
+        onChange={(event) => handleChange(questionid, event)}
+      >
         {questionoption &&
           questionoption.map((questionoption, i) => {
             return (
-              <option id={questionid} value={question}>
+              <option id={questionid} value={questionoption.optionvalue}>
                 {questionoption.optionvalue}
               </option>
             );

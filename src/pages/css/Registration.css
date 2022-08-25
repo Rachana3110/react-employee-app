@@ -1,32 +1,15 @@
-.register-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    height: 150vh;
-    background-color: antiquewhite;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-  
-  form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: white;
-    width: 30%;
-    margin: 5%;
-  }
-  
-  label {
-    background-color: bisque;
-    margin-top: 5%;
-  }
-  
-  input[type=button] {
-    margin-bottom: 5%;
-  }
-  
-  input[type=submit] {
-    margin-bottom: 5%;
-  }
+form {
+  margin: 5%;
+}
+
+p {
+  margin-top: 5%;
+}
+
+input[type="button"] {
+  margin-bottom: 5%;
+}
+
+input[type="submit"] {
+  margin-bottom: 5%;
+}

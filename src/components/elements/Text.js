@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FormContext } from "../../helpers/formContext";
 
-const Text = ({ questionid, question }) => {
+const Text = ({ questionid }) => {
+  const { handleChange } = useContext(FormContext);
+
   return (
     <div>
-      <p>{question}</p>
-      <input type="text" id={questionid} />
+      <input
+        type="text"
+        id={questionid}
+        onChange={(event) => handleChange(questionid, event)}
+      />
     </div>
   );
 };
