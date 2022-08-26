@@ -50,20 +50,20 @@ const Registration = ({ setToken }) => {
   };
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <form onSubmit={handleLogin}>
-        <h2>Login Page</h2>
+      <h2 className="login-header">Login Page</h2>
+      <form className="login-form-container" onSubmit={handleLogin}>
         {LoginConfig.map((questions) => {
           return (
             <div>
-              <p>{questions.question}</p>
+              <label className="login-question-label">{questions.question}</label>
               <FormElement questions={questions} />
             </div>
           );
         })}
-        <input type="submit" value="Submit" />
+        <input className="submit-button" type="submit" value="Submit" />
         <p>*Dont have credentials register before login</p>
-        <Link className="Register-button" to="/registration">
-          <input type="button" value="Register" />
+        <Link to="/registration">
+          <input className="register-button" type="button" value="Register" />
         </Link>
       </form>
     </FormContext.Provider>

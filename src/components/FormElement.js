@@ -7,19 +7,41 @@ import Dropdown from "./elements/Dropdown";
 import Number from "./elements/Number";
 
 const Element = ({
-  questions: { questionid, questiontype, questionoption, required },
+  questions: { questionid, question, questiontype, questionoption, required },
 }) => {
   switch (questiontype) {
     case "Number":
-      return <Number questionid={questionid} required={required} />;
+      return (
+        <Number
+          questionid={questionid}
+          question={question}
+          required={required}
+        />
+      );
     case "Text":
-      return <Text questionid={questionid} required={required} />;
+      return (
+        <Text questionid={questionid} question={question} required={required} />
+      );
     case "Password":
-      return <Password questionid={questionid} required={required} />;
+      return (
+        <Password
+          questionid={questionid}
+          question={question}
+          required={required}
+        />
+      );
     case "Textarea":
-      return <Textarea questionid={questionid} required={required} />;
+      return (
+        <Textarea
+          questionid={questionid}
+          question={question}
+          required={required}
+        />
+      );
     case "Date":
-      return <Date questionid={questionid} required={required} />;
+      return (
+        <Date questionid={questionid} question={question} required={required} />
+      );
     case "Dropdown":
       return (
         <Dropdown

@@ -1,82 +1,46 @@
-.login-container {
+.login-form-container {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  height: 100vh;
-  background-color: antiquewhite;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  justify-content: center;
+  align-items: center;
 }
 
-input[type="number"],
-select {
-  width: 60%;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.login-header {
+  overflow: hidden;
+  background-color: #000000;
+  margin-top: 0%;
+  color: white;
+  padding: 1%;
+  text-align: center;
 }
-input[type="text"],
-select {
-  width: 60%;
+
+.login-question-label {
+  display: block;
+  font-weight: bold;
   padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  text-align: center;
+  background-color: #ffe4c4;
 }
-input[type="password"],
-select {
-  width: 60%;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type="dropdown"] {
-  width: 60%;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type="date"] {
-  width: 60%;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type="submit"] {
-  background-color: #4caf50; /* Green */
+
+.submit-button {
+  background-color: #4caf50;
   border: none;
   color: white;
-  padding: 5px 15px;
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-top: 5%;
-}
-input[type="button"] {
-  background-color: #1c2789; /* Voilet */
-  border: none;
-  color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
+  margin: 20px;
+  cursor: pointer;
 }
 
-textarea {
-  width: 60%;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.register-button {
+  background-color: #1d1a47;
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import FormElement from "../components/FormElement";
 import { FormContext } from "../helpers/formContext";
 import { RegisterConfig } from "../config/RegisterConfig";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./css/Registration.css";
 
 const Registration = () => {
@@ -76,17 +76,18 @@ const Registration = () => {
   };
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <form onSubmit={handleRegister}>
-        <h2>Registration Page</h2>
+      <h2 className="registration-header">Registration Page</h2>
+      <form className="registration-form-container" onSubmit={handleRegister}>
         {RegisterConfig.map((questions) => {
           return (
             <div>
-              <p>{questions.question}</p>
+              <label className="question-label">{questions.question}</label>
               <FormElement questions={questions} />
             </div>
           );
         })}
-        <input type="submit" value="Register" />
+        <input className="register-button" type="submit" value="Register" />
+        <Link className="back-button" to="/">Back to Login</Link>
       </form>
     </FormContext.Provider>
   );
