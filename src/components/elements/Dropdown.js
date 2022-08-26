@@ -3,7 +3,6 @@ import { FormContext } from "../../helpers/formContext";
 
 const Dropdown = ({ questionid, questionoption, required }) => {
   const { handleChange } = useContext(FormContext);
-
   return (
     <div>
       <select
@@ -11,12 +10,13 @@ const Dropdown = ({ questionid, questionoption, required }) => {
         required={required}
         onChange={(event) => handleChange(questionid, event)}
       >
+        <option value="">Select a value</option>
         {questionoption &&
           questionoption.map((questionoption, i) => {
             return (
-              <option id={questionid} value={questionoption.optionvalue}>
-                {questionoption.optionvalue}
-              </option>
+                <option id={questionid} value={questionoption.optionvalue}>
+                  {questionoption.optionvalue}
+                </option>
             );
           })}
       </select>

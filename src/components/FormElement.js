@@ -22,7 +22,11 @@ const Element = ({
       return <Date questionid={questionid} required={required} />;
     case "Dropdown":
       return (
-        <Dropdown questionid={questionid} questionoption={questionoption} />
+        <Dropdown
+          questionid={questionid}
+          questionoption={questionoption}
+          required={required}
+        />
       );
     default:
       return null;
