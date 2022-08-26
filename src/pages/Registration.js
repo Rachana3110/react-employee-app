@@ -76,7 +76,14 @@ const Registration = () => {
   };
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <h2 className="registration-header">Registration Page</h2>
+      <h2 className="registration-header">
+        <button className="back-button">
+          <Link className="link" to="/">
+            Back to Login{" "}
+          </Link>
+        </button>
+        Registration Page
+      </h2>
       <form className="registration-form-container" onSubmit={handleRegister}>
         {RegisterConfig.map((questions) => {
           return (
@@ -87,7 +94,6 @@ const Registration = () => {
           );
         })}
         <input className="register-button" type="submit" value="Register" />
-        <Link className="back-button" to="/">Back to Login</Link>
       </form>
     </FormContext.Provider>
   );

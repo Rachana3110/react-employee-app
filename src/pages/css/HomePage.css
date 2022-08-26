@@ -1,0 +1,16 @@
+.home-header {
+  overflow: hidden;
+  background-color: #000000;
+  margin-top: 0%;
+  color: white;
+  padding: 1%;
+  text-align: center;
+}
+
+.logout-button {
+  float: right;
+  margin-right: 20px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}

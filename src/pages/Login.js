@@ -60,7 +60,7 @@ const Registration = ({ setToken }) => {
             </div>
           );
         })}
-        <input className="submit-button" type="submit" value="Submit" />
+        <input className="submit-button" type="submit" value="Log-In" />
         <p>*Dont have credentials register before login</p>
         <Link to="/registration">
           <input className="register-button" type="button" value="Register" />

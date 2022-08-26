@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 // import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./css/HomePage.css";
 
 function HomePage({ setToken }) {
   // const [loginData, setLoginData] = useState();
@@ -31,8 +32,16 @@ function HomePage({ setToken }) {
 
   return (
     <div>
-      <h1>Welcome to home page</h1>
-      <button onClick={handleLogout}>Logout</button>
+      <h2 className="home-header">
+        Employee Application
+        <button
+          className="logout-button"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
+      </h2>
+
       {/* {loginData && empData && (
         <form>
           <h2>Welcome to Home Page</h2>

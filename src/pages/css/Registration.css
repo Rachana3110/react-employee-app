@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5%;
 }
 
 .registration-header {
@@ -14,6 +13,11 @@
   text-align: center;
 }
 
+.back-button {
+  float: left;
+  padding: 3px;
+}
+
 .question-label {
   display: block;
   font-weight: bold;
@@ -22,13 +26,9 @@
   background-color: #ffe4c4;
 }
 
-.register-button {
-  background-color: #000000;
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 2%;
+.link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 13px;
+  font-weight: bold;
 }
