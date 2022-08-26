@@ -4,6 +4,7 @@ import { FormContext } from "../helpers/formContext";
 import { RegisterConfig } from "../config/RegisterConfig";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./css/Registration.css";
 
 const Registration = () => {
   const [apiData, setApiData] = useState();
@@ -75,8 +76,8 @@ const Registration = () => {
   };
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <h2>Registration Page</h2>
       <form onSubmit={handleRegister}>
+        <h2>Registration Page</h2>
         {RegisterConfig.map((questions) => {
           return (
             <div>
