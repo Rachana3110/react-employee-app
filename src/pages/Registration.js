@@ -1,149 +1,93 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import FormElement from "../components/FormElement";
+import { FormContext } from "../helpers/formContext";
+import { RegisterConfig } from "../config/RegisterConfig";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../pages/css/Registration.css";
 
 const Registration = () => {
+  const [apiData, setApiData] = useState();
+  const [configData, setConfigData] = useState();
   const navigate = useNavigate();
-  const [data, setData] = useState();
-  const [emp_id, setEmp_id] = useState();
-  const [password, setPassword] = useState();
-  const [first_name, setFirst_name] = useState();
-  const [last_name, setLast_name] = useState("");
-  const [designation, setDesignation] = useState();
-  const [retype_password, setRetype_password] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       await axios.get("http://localhost:3001/api/register").then((response) => {
-        setData(response.data);
+        setApiData(response.data);
       });
     };
     fetchData();
+    setConfigData(RegisterConfig);
   }, []);
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    if (emp_id && password && first_name && designation) {
-      const postData = async () => {
-        await axios
-          .post("http://localhost:3001/api/register", {
-            Employee_ID_Number: emp_id,
-            Password: password,
-            Employee_Details: {
-              First_Name: first_name,
-              Middle_Name: "",
-              Last_Name: last_name,
-              Date_of_Birth: "",
-              Phone_Number: "",
-              Address: "",
-              Postal_Code: "",
-              Qualification: "",
-              total_Experience: "",
-              Start_Date_Date: "",
-              End_Date_Date: "",
-              Type_of_Employee: "",
-              Designation: designation,
-              Gender: "",
-              Marital_Status: "",
-          }
-          })
-          .then((response) => {
-            console.log(response.data);
-            setData(response.data);
-          });
-      };
-      if (password !== retype_password) {
-        alert("Password doen't match");
-      } else if (data.map((emp) => emp.Employee_ID_Number).includes(emp_id)) {
-        alert("Id already exist");
-      } else {
-        postData();
-        navigate("/");
-      }
-    } else alert("fill mandatory fields");
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const postData = async () => {
+      await axios
+        .post("http://localhost:3001/api/register", {
+          Employee_ID_Number: configData[0].Employee_ID_Number,
+          Password: configData[1].Password,
+          First_Name: configData[3].First_Name,
+          Middle_Name: configData[4].Middle_Name,
+          Last_Name: configData[5].Last_Name,
+          Date_of_Birth: configData[6].Date_of_Birth,
+          Phone_Number: configData[7].Phone_Number,
+          Address: configData[8].Address,
+          Postal_Code: configData[9].Postal_Code,
+          Qualification: configData[10].Qualification,
+          Total_Experience: configData[11].Total_Experience,
+          Start_Date_Date: configData[12].Start_Date_Date,
+          End_Date_Date: configData[13].End_Date_Date,
+          Type_of_Employee: configData[14].Type_of_Employee,
+          Designation: configData[15].Designation,
+          Gender: configData[16].Gender,
+          Marital_Status: configData[17].Marital_Status,
+        })
+        .then((response) => {
+          setApiData(response.data);
+        });
+    };
+
+    if (configData[1].Password !== configData[2].Re_Type_Password) {
+      alert("Password doesn't match");
+    } else if (
+      apiData
+        .map((p) => p.Employee_ID_Number)
+        .includes(configData[0].Employee_ID_Number)
+    ) {
+      alert("Id already exist");
+    } else {
+      postData();
+      navigate("/");
+    }
   };
 
+  const handleChange = (id, event) => {
+    event.preventDefault();
+    const newData = [...configData];
+    newData.forEach((question) => {
+      const { questionid } = question;
+      if (id === questionid) {
+        question[question.questionname] = event.target.value;
+        setConfigData(newData);
+      }
+    });
+  };
   return (
-    <div className="register-container">
+    <FormContext.Provider value={{ handleChange }}>
+      <h2>Registration Page</h2>
       <form onSubmit={handleRegister}>
-        <h2>Registration</h2>
-        <p htmlFor="emp_id">Employee ID*</p>
-        <input
-          type="number"
-          id="emp_id"
-          name="emp_id"
-          placeholder="Enter Employee Id"
-          onChange={(e) => {
-            return setEmp_id(e.target.value);
-          }}
-          required
-        />
-
-        <p htmlFor="first_name">First Name*</p>
-        <input
-          type="text"
-          id="first_name"
-          name="first_name"
-          placeholder="Enter your First Name"
-          onChange={(e) => {
-            return setFirst_name(e.target.value);
-          }}
-          required
-        />
-
-        <p htmlFor="last_name">Last Name</p>
-        <input
-          type="text"
-          id="last_name"
-          name="last_name"
-          placeholder="Enter your Last Name"
-          onChange={(e) => {
-            return setLast_name(e.target.value);
-          }}
-        />
-
-        <p htmlFor="designation">Designation*</p>
-        <input
-          type="text"
-          id="designation"
-          name="designation"
-          placeholder="Enter Designation"
-          onChange={(e) => {
-            return setDesignation(e.target.value);
-          }}
-          required
-        />
-
-        <p htmlFor="password">Password*</p>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter Password"
-          name="password"
-          onChange={(e) => {
-            return setPassword(e.target.value);
-          }}
-          required
-        />
-
-        <p htmlFor="password">Retype-Password*</p>
-
-        <input
-          type="password"
-          id="retype_password"
-          placeholder="Re-type Password"
-          name="password"
-          onChange={(e) => {
-            return setRetype_password(e.target.value);
-          }}
-          required
-        />
-        <div>
-        <input type="submit" value="Register" onClick={handleRegister} />
-        </div>
+        {RegisterConfig.map((questions) => {
+          return (
+            <div>
+              <p>{questions.question}</p>
+              <FormElement questions={questions} />
+            </div>
+          );
+        })}
+        <input type="submit" value="Register" />
       </form>
-    </div>
+    </FormContext.Provider>
   );
 };
 
