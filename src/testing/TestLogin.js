@@ -1,48 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import FormElement from "../components/FormElement";
+import { FormContext } from "../helpers/formContext";
+import { Link, useNavigate } from "react-router-dom";
+import { LoginConfig } from "../config/LoginConfig";
 import axios from "axios";
-import { setAuthToken } from "./setAuthToken";
+import "../pages/css/Login.css";
 
-function TestLogin() {
+const TestLogin = ({ setToken }) => {
+  const navigate = useNavigate();
+  const [configData, setConfigData] = useState();
+  const [apiData, setApiData] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
 
-  const handleSubmit = (email, password) => {
-    //reqres registered sample user
-    const loginPayload = {
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka'
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/employeedata").then((response) => {
+      setApiData(response.data);
+    });
+    setConfigData(LoginConfig);
+  }, []);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    const formId = configData[0].questionvalue;
+    const configId = apiData
+      .map((p) => p.Employee_Data[0])
+      .map((p) => p.questionvalue);
+
+    const formPwd = configData[1].questionvalue;
+    const configPwd = apiData
+      .map((p) => p.Employee_Data[1])
+      .map((p) => p.questionvalue);
+
+    if (!configId.includes(formId)) {
+      setError(true);
+      setErrorMsg("Enter valid Employee ID");
+    } else if (!configPwd.includes(formPwd)) {
+      setError(true);
+      setErrorMsg("Enter valid Password");
+    } else {
+      setToken("Login Successfull");
+      navigate("/home");
     }
+  };
 
-    axios.post("https://reqres.in/api/login", loginPayload)
-      .then(response => {
-        //get token from response
-        const token = response.data.token;
-
-        //set JWT token to local
-        localStorage.setItem("token", token);
-
-        //set token to axios common header
-        setAuthToken(token);
-
-        //redirect user to home page
-        window.location.href = '/'
-
-      })
-      .catch(err => console.log(err));
+  const handleChange = (id, event) => {
+    event.preventDefault();
+    const newData = [...configData];
+    newData.forEach((question) => {
+      const { questionid } = question;
+      if (id === questionid) {
+        question["questionvalue"] = event.target.value;
+        setConfigData(newData);
+      }
+    });
   };
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault()
-        const [email, password] = event.target.children;
-        handleSubmit(email, password);
-      }}
-    >
-      <label for="email">Email</label><br />
-      <input type="email" id="email" name="email"/><br />
-      <label for="password">Password</label><br />
-      <input type="password" id="password" name="password"/><br></br>
-      <input type="submit" value="Submit" />
-    </form>
+    <FormContext.Provider value={{ handleChange }}>
+      <h2 className="login-header">Login Page</h2>
+      <form className="login-form-container" onSubmit={handleLogin}>
+        {LoginConfig.map((questions, i) => {
+          return (
+            <div key={i}>
+              <label className="login-question-label">
+                {questions.question}
+              </label>
+              <FormElement questions={questions} />
+            </div>
+          );
+        })}
+        {error && <div className="error-msg">*{errorMsg}</div>}
+        <input className="submit-button" type="submit" value="Log-In" />
+        <p>*Dont have credentials register before login</p>
+        <Link to="/registration">
+          <input className="register-button" type="button" value="Register" />
+        </Link>
+      </form>
+    </FormContext.Provider>
   );
-}
-export default TestLogin
+};
+
+export default TestLogin;

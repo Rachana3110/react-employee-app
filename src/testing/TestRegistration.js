@@ -4,19 +4,24 @@ import FormElement from "../components/FormElement";
 import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { FormContext } from "../helpers/formContext";
-import "./css/Registration.css";
 
-const Registration = () => {
-  const [configData, setConfigData] = useState(RegisterConfig);
+const TestRegistration = () => {
+  const [configData, setConfigData] = useState();
   const [apiData, setApiData] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/employeedata").then((response) => {
-      setApiData(response.data);
-    });
+    const fetchData = async () => {
+      await axios
+        .get("http://localhost:3001/api/employeedata")
+        .then((response) => {
+          setApiData(response.data);
+        });
+    };
+    fetchData();
+    setConfigData(RegisterConfig);
   }, []);
 
   const handleRegister = (event) => {
@@ -31,15 +36,7 @@ const Registration = () => {
           setApiData(response.data);
         });
     };
-    const formId = configData[0].questionvalue;
-    console.log(apiData);
-    const configId = apiData
-      .map((p) => p.Employee_Data[0])
-      .map((p) => p.questionvalue);
-    if (configId.includes(formId)) {
-      setError(true);
-      setErrorMsg("Employee Id already exist");
-    } else if (configData[1].questionvalue !== configData[2].questionvalue) {
+    if (configData[1].questionvalue !== configData[2].questionvalue) {
       setError(true);
       setErrorMsg("Password doesn't match");
     } else {
@@ -47,6 +44,10 @@ const Registration = () => {
       navigate("/");
     }
   };
+
+  if (apiData) {
+    // console.log(apiData);
+  }
 
   const handleChange = (id, event) => {
     event.preventDefault();
@@ -59,6 +60,7 @@ const Registration = () => {
       }
     });
   };
+
   return (
     <FormContext.Provider value={{ handleChange }}>
       <h2 className="registration-header">
@@ -70,14 +72,15 @@ const Registration = () => {
         Registration Page
       </h2>
       <form className="registration-form-container" onSubmit={handleRegister}>
-        {configData.map((questions, i) => {
-          return (
-            <div key={i}>
-              <label className="question-label">{questions.question}</label>
-              <FormElement questions={questions} />
-            </div>
-          );
-        })}
+        {configData &&
+          configData.map((questions, i) => {
+            return (
+              <div key={i}>
+                <label className="question-label">{questions.question}</label>
+                <FormElement questions={questions} />
+              </div>
+            );
+          })}
         {error && <div className="error-msg">*{errorMsg}</div>}
         <input className="register-button" type="submit" value="Register" />
       </form>
@@ -85,4 +88,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default TestRegistration;

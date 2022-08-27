@@ -1,30 +1,29 @@
 export const RegisterConfig = [
   {
-    Employee_ID_Number:"",
     questionid: 1,
     questionname: "Employee_ID_Number",
+    questionvalue: "",
     question: "Employee Id",
     questiontype: "Number",
     required: true,
   },
   {
-    Password:"",
     questionid: 2,
     questionname: "Password",
+    questionvalue: "",
     question: "Password",
     questiontype: "Password",
     required: true,
   },
   {
-    Re_Type_Password:"",
     questionid: 3,
     questionname: "Re_Type_Password",
+    questionvalue: "",
     question: "Re-Type Password",
     questiontype: "Password",
     required: true,
   },
   {
-    First_Name:"",
     questionid: 4,
     questionname: "First_Name",
     question: "First Name",
@@ -32,7 +31,6 @@ export const RegisterConfig = [
     required: true,
   },
   {
-    Middle_Name:"",
     questionid: 5,
     questionname: "Middle_Name",
     question: "Middle Name",
@@ -40,15 +38,13 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Last_Name:"",
     questionid: 6,
     questionname: "Last_Name",
     question: "Last Name",
     questiontype: "Text",
-    required: false
+    required: false,
   },
   {
-    Date_of_Birth:"",
     questionid: 7,
     questionname: "Date_of_Birth",
     question: "Date of Birth",
@@ -56,7 +52,6 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Phone_Number:"",
     questionid: 8,
     questionname: "Phone_Number",
     question: "Phone Number",
@@ -64,15 +59,13 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Address:"",
     questionid: 9,
     questionname: "Address",
     question: "Address",
     questiontype: "Textarea",
-    required: false
+    required: false,
   },
   {
-    Postal_Code:"",
     questionid: 10,
     questionname: "Postal_Code",
     question: "Postal Code",
@@ -80,15 +73,13 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Qualification:"",
     questionid: 11,
     questionname: "Qualification",
     question: "Qualification",
     questiontype: "Text",
-    required: false
+    required: false,
   },
   {
-    Total_Experience:"",
     questionid: 12,
     questionname: "Total_Experience",
     question: "Total Experience",
@@ -96,7 +87,6 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Start_Date_Date:"",
     questionid: 13,
     questionname: "Start_Date_Date",
     question: "Start Date",
@@ -104,7 +94,6 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    End_Date_Date:"",
     questionid: 14,
     questionname: "End_Date_Date",
     question: "End Date",
@@ -112,7 +101,6 @@ export const RegisterConfig = [
     required: false,
   },
   {
-    Type_of_Employee:"",
     questionid: 15,
     questionname: "Type_of_Employee",
     question: "Type of employee",
@@ -124,7 +112,6 @@ export const RegisterConfig = [
     ],
   },
   {
-    Designation:"",
     questionid: 16,
     questionname: "Designation",
     question: "Designation",
@@ -138,7 +125,6 @@ export const RegisterConfig = [
     ],
   },
   {
-    Gender:"",
     questionid: 17,
     questionname: "Gender",
     question: "Gender",
@@ -151,7 +137,6 @@ export const RegisterConfig = [
     ],
   },
   {
-    Marital_Status:"",
     questionid: 18,
     questionname: "Marital_Status",
     question: "Marital Status",

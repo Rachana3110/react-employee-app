@@ -6,33 +6,36 @@ import { LoginConfig } from "../config/LoginConfig";
 import axios from "axios";
 import "./css/Login.css";
 
-const Registration = ({ setToken }) => {
-  const [configData, setConfigData] = useState();
-  const [registerData, setRegisterData] = useState();
+const Login = ({ setToken }) => {
   const navigate = useNavigate();
+  const [configData, setConfigData] = useState(LoginConfig);
+  const [apiData, setApiData] = useState();
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/register").then((response) => {
-      setRegisterData(response.data);
+    axios.get("http://localhost:3001/api/employeedata").then((response) => {
+      setApiData(response.data);
     });
-    setConfigData(LoginConfig);
   }, []);
 
   const handleLogin = (event) => {
     event.preventDefault();
-    if (
-      registerData &&
-      !registerData
-        .map((p, i) => p.Employee_ID_Number)
-        .includes(configData[0].Employee_ID_Number)
-    ) {
+
+    const formId = configData[0].questionvalue;
+    const configId = apiData
+      .map((p) => p.Employee_Data[0])
+      .map((p) => p.questionvalue);
+
+    const formPwd = configData[1].questionvalue;
+    const configPwd = apiData
+      .map((p) => p.Employee_Data[1])
+      .map((p) => p.questionvalue);
+
+    if (!configId.includes(formId)) {
       setError(true);
       setErrorMsg("Enter valid Employee ID");
-    } else if (
-      !registerData.map((p, i) => p.Password).includes(configData[1].Password)
-    ) {
+    } else if (!configPwd.includes(formPwd)) {
       setError(true);
       setErrorMsg("Enter valid Password");
     } else {
@@ -47,16 +50,17 @@ const Registration = ({ setToken }) => {
     newData.forEach((question) => {
       const { questionid } = question;
       if (id === questionid) {
-        question[question.questionname] = event.target.value;
+        question["questionvalue"] = event.target.value;
         setConfigData(newData);
       }
     });
   };
+
   return (
     <FormContext.Provider value={{ handleChange }}>
       <h2 className="login-header">Login Page</h2>
       <form className="login-form-container" onSubmit={handleLogin}>
-        {LoginConfig.map((questions, i) => {
+        {configData.map((questions, i) => {
           return (
             <div key={i}>
               <label className="login-question-label">
@@ -77,4 +81,4 @@ const Registration = ({ setToken }) => {
   );
 };
 
-export default Registration;
+export default Login;
