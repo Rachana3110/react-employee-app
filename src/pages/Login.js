@@ -10,6 +10,8 @@ const Registration = ({ setToken }) => {
   const [configData, setConfigData] = useState();
   const [registerData, setRegisterData] = useState();
   const navigate = useNavigate();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/register").then((response) => {
@@ -23,14 +25,16 @@ const Registration = ({ setToken }) => {
     if (
       registerData &&
       !registerData
-        .map((p) => p.Employee_ID_Number)
+        .map((p, i) => p.Employee_ID_Number)
         .includes(configData[0].Employee_ID_Number)
     ) {
-      alert("Enter valid Employee ID");
+      setError(true);
+      setErrorMsg("Enter valid Employee ID");
     } else if (
-      !registerData.map((p) => p.Password).includes(configData[1].Password)
+      !registerData.map((p, i) => p.Password).includes(configData[1].Password)
     ) {
-      alert("Enter valid Password");
+      setError(true);
+      setErrorMsg("Enter valid Password");
     } else {
       setToken("Login Successfull");
       navigate("/home");
@@ -52,14 +56,17 @@ const Registration = ({ setToken }) => {
     <FormContext.Provider value={{ handleChange }}>
       <h2 className="login-header">Login Page</h2>
       <form className="login-form-container" onSubmit={handleLogin}>
-        {LoginConfig.map((questions) => {
+        {LoginConfig.map((questions, i) => {
           return (
-            <div>
-              <label className="login-question-label">{questions.question}</label>
+            <div key={i}>
+              <label className="login-question-label">
+                {questions.question}
+              </label>
               <FormElement questions={questions} />
             </div>
           );
         })}
+        {error && <div className="error-msg">*{errorMsg}</div>}
         <input className="submit-button" type="submit" value="Log-In" />
         <p>*Dont have credentials register before login</p>
         <Link to="/registration">

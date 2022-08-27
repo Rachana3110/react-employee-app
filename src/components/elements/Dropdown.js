@@ -22,7 +22,7 @@ const Dropdown = ({ questionid, questionoption, required }) => {
       {questionoption &&
         questionoption.map((questionoption, i) => {
           return (
-            <option id={questionid} value={questionoption.optionvalue}>
+            <option id={i} value={questionoption.optionvalue}>
               {questionoption.optionvalue}
             </option>
           );

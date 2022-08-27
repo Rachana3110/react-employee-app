@@ -9,6 +9,8 @@ import "./css/Registration.css";
 const Registration = () => {
   const [apiData, setApiData] = useState();
   const [configData, setConfigData] = useState();
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,14 +51,16 @@ const Registration = () => {
         });
     };
 
-    if (configData[1].Password !== configData[2].Re_Type_Password) {
-      alert("Password doesn't match");
-    } else if (
+    if (
       apiData
-        .map((p) => p.Employee_ID_Number)
+        .map((p, i) => p.Employee_ID_Number)
         .includes(configData[0].Employee_ID_Number)
     ) {
-      alert("Id already exist");
+      setError(true);
+      setErrorMsg("Id already exist");
+    } else if (configData[1].Password !== configData[2].Re_Type_Password) {
+      setError(true);
+      setErrorMsg("Password doesn't match");
     } else {
       postData();
       navigate("/");
@@ -69,7 +73,7 @@ const Registration = () => {
     newData.forEach((question) => {
       const { questionid } = question;
       if (id === questionid) {
-        question[question.questionname] = event.target.value;
+        question["questionvalue"] = event.target.value;
         setConfigData(newData);
       }
     });
@@ -85,14 +89,15 @@ const Registration = () => {
         Registration Page
       </h2>
       <form className="registration-form-container" onSubmit={handleRegister}>
-        {RegisterConfig.map((questions) => {
+        {RegisterConfig.map((questions, i) => {
           return (
-            <div>
+            <div key={i}>
               <label className="question-label">{questions.question}</label>
               <FormElement questions={questions} />
             </div>
           );
         })}
+        {error && <div className="error-msg">*{errorMsg}</div>}
         <input className="register-button" type="submit" value="Register" />
       </form>
     </FormContext.Provider>

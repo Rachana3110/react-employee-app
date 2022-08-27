@@ -9,6 +9,7 @@
   overflow: hidden;
   background-color: #000000;
   margin-top: 0%;
+  margin-bottom: 5%;
   color: white;
   padding: 1%;
   text-align: center;
@@ -20,6 +21,11 @@
   padding: 12px 20px;
   text-align: center;
   background-color: #ffe4c4;
+}
+
+.error-msg {
+  color: #ff0000;
+  margin-bottom: 2%;
 }
 
 .submit-button {
