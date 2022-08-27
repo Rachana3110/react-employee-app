@@ -73,7 +73,7 @@ const Registration = () => {
     newData.forEach((question) => {
       const { questionid } = question;
       if (id === questionid) {
-        question["questionvalue"] = event.target.value;
+        question[question.questionname] = event.target.value;
         setConfigData(newData);
       }
     });
