@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .home-header {
   overflow: hidden;
-  background-color: #000000;
+  background-color: #000;
   margin-top: 0%;
   color: white;
   padding: 1%;
@@ -11,7 +16,16 @@
   float: right;
   margin-right: 20px;
   padding: 5px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.employee-cards {
+  flex-direction: column;
+  width: 30%;
+  display: flex;
+  padding: 4%;
+  margin: 2%;
+  background-color: powderblue;
 }

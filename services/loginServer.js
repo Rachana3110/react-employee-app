@@ -1,27 +1,9 @@
 const express = require("express");
-const loginData = require("../src/data/loginData");
 const cors = require("cors");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-app.get("/api/login", (req, res) => {
-  res.json(loginData);
-});
-
-app.post("/api/login", (req, res) => {
-  loginData.push(req.body);
-  res.json(loginData);
-});
-
-app.put("/api/login", (req, res) => {
-  loginData.forEach((element, index) => {
-    element.Employee_ID_Number = req.body.Employee_ID_Number;
-    element.Password = req.body.Password;
-  });
-  res.json(loginData);
-});
 
 const empData = [];
 
