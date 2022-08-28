@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormElement from "../components/FormElement";
 import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,18 +8,53 @@ import "./css/Registration.css";
 
 const TestRegistration = () => {
   const navigate = useNavigate();
-  const [values, setValues] = useState();
+  const [apiData, setApiData] = useState();
+  const [values, setValues] = useState({
+    Employee_ID_Number: "",
+    Password: "",
+    Re_Type_Password: "",
+    First_Name: "",
+    Middle_Name: "",
+    Last_Name: "",
+    Date_of_Birth: "",
+    Phone_Number: "",
+    Address: "",
+    Postal_Code: "",
+    Qualification: "",
+    Total_Experience: "",
+    Start_Date_Date: "",
+    End_Date_Date: "",
+    Type_of_Employee: "",
+    Designation: "",
+    Gender: "",
+    Marital_Status: "",
+  });
   const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/employeedata").then((response) => {
+      setApiData(response.data);
+    });
+  }, []);
 
   const handleRegister = (event) => {
     event.preventDefault();
-    if (values.Password !== values.Re_Type_Password) {
+    if (
+      apiData.find(
+        (emp) => emp.Employee_ID_Number === values.Employee_ID_Number
+      )
+    ) {
       setError(true);
+      setErrorMsg("Employee Id already exist");
+    } else if (values.Password !== values.Re_Type_Password) {
+      setError(true);
+      setErrorMsg("Re-type Password didn't match Password");
     } else {
       axios
         .post("http://localhost:3001/api/employeedata", values)
         .then((response) => {
-          console.log(response.data);
+          setApiData(response.data);
         });
       localStorage.setItem("empData", [values]);
       navigate("/");
@@ -52,7 +87,7 @@ const TestRegistration = () => {
         })}
         {error && (
           <div className="error-msg">
-            <p>*Password didn't match</p>
+            <p>*{errorMsg}</p>
           </div>
         )}
         <input className="register-button" type="submit" value="Register" />
