@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../helpers/formContext";
 
-const Date = ({ questionid, required }) => {
+const Date = ({ questionid, questionname, required }) => {
   const { handleChange } = useContext(FormContext);
   return (
     <input
       type="date"
       id={questionid}
+      name={questionname}
       required={required}
       onChange={(event) => handleChange(questionid, event)}
       min="1980-04-01"

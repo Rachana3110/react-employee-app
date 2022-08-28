@@ -1,64 +1,31 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import FormElement from "../components/FormElement";
 import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { FormContext } from "../helpers/formContext";
+import axios from "axios";
 
-const TestRegistration = () => {
-  const [configData, setConfigData] = useState();
-  const [apiData, setApiData] = useState();
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState();
+const Registration = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await axios
-        .get("http://localhost:3001/api/employeedata")
-        .then((response) => {
-          setApiData(response.data);
-        });
-    };
-    fetchData();
-    setConfigData(RegisterConfig);
-  }, []);
+  const [values, setValues] = useState();
 
   const handleRegister = (event) => {
     event.preventDefault();
-    const postData = async () => {
-      await axios
-        .post("http://localhost:3001/api/employeedata", {
-          Employee_No: 1,
-          Employee_Data: configData,
-        })
-        .then((response) => {
-          setApiData(response.data);
-        });
-    };
-    if (configData[1].questionvalue !== configData[2].questionvalue) {
-      setError(true);
-      setErrorMsg("Password doesn't match");
+    if (values.Password !== values.Re_Type_Password) {
+      alert("password missmatch");
     } else {
-      postData();
-      navigate("/");
+      axios
+        .post("http://localhost:3001/api/employeedata", values)
+        .then((response) => {
+          console.log(response.data);
+        });
     }
+    navigate("/testlogin");
   };
-
-  if (apiData) {
-    // console.log(apiData);
-  }
 
   const handleChange = (id, event) => {
     event.preventDefault();
-    const newData = [...configData];
-    newData.forEach((question) => {
-      const { questionid } = question;
-      if (id === questionid) {
-        question["questionvalue"] = event.target.value;
-        setConfigData(newData);
-      }
-    });
+    setValues({ ...values, [event.target.name]: event.target.value });
   };
 
   return (
@@ -72,20 +39,19 @@ const TestRegistration = () => {
         Registration Page
       </h2>
       <form className="registration-form-container" onSubmit={handleRegister}>
-        {configData &&
-          configData.map((questions, i) => {
-            return (
-              <div key={i}>
-                <label className="question-label">{questions.question}</label>
-                <FormElement questions={questions} />
-              </div>
-            );
-          })}
-        {error && <div className="error-msg">*{errorMsg}</div>}
+        {RegisterConfig.map((questions, i) => {
+          return (
+            <div key={i}>
+              <label className="question-label">{questions.question}</label>
+              <FormElement questions={questions} />
+            </div>
+          );
+        })}
+        {/* {error && <div className="error-msg">*{errorMsg}</div>} */}
         <input className="register-button" type="submit" value="Register" />
       </form>
     </FormContext.Provider>
   );
 };
 
-export default TestRegistration;
+export default Registration;

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../helpers/formContext";
 
-const Textarea = ({ questionid, question, required }) => {
+const Textarea = ({ questionid, questionname, question, required }) => {
   const { handleChange } = useContext(FormContext);
   return (
     <textarea
       id={questionid}
+      name={questionname}
       required={required}
       placeholder={"Enter " + question}
       onChange={(event) => handleChange(questionid, event)}

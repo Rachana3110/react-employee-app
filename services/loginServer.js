@@ -1,6 +1,5 @@
 const express = require("express");
 const loginData = require("../src/data/loginData");
-const configData = require("../src/data/configData.json");
 const cors = require("cors");
 const app = express();
 
@@ -24,12 +23,14 @@ app.put("/api/login", (req, res) => {
   res.json(loginData);
 });
 
+const empData = [];
+
 app.get("/api/employeedata", (req, res) => {
-  res.json(configData);
+  res.json(empData);
 });
 app.post("/api/employeedata", (req, res) => {
-  configData.push(req.body);
-  res.json(configData);
+  empData.push(req.body);
+  res.json(empData);
 });
 
 app.listen(3001, () =>

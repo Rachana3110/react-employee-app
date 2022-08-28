@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../helpers/formContext";
 
-const Number = ({ questionid, question, required }) => {
+const Number = ({ questionid, questionname, question, required }) => {
   const { handleChange } = useContext(FormContext);
   return (
     <input
       type="number"
       id={questionid}
+      name={questionname}
       required={required}
       placeholder={"Enter " + question}
       onChange={(event) => handleChange(questionid, event)}

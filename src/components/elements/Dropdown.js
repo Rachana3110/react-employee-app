@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../helpers/formContext";
 
-const Dropdown = ({ questionid, questionoption, required }) => {
+const Dropdown = ({ questionid, questionname, questionoption, required }) => {
   const { handleChange } = useContext(FormContext);
   return (
     <select
       id={questionid}
+      name={questionname}
       required={required}
       onChange={(event) => handleChange(questionid, event)}
       style={{
