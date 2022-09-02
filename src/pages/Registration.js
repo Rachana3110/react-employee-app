@@ -1,47 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import FormElement from "../components/FormElement";
 import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { FormContext } from "../helpers/formContext";
-import axios from "axios";
 import "./css/Registration.css";
+import empData from "../data/empdata";
 
 const TestRegistration = () => {
   const navigate = useNavigate();
-  const [apiData, setApiData] = useState();
-  const [values, setValues] = useState({
-    Employee_ID_Number: "",
-    Password: "",
-    Re_Type_Password: "",
-    First_Name: "",
-    Middle_Name: "",
-    Last_Name: "",
-    Date_of_Birth: "",
-    Phone_Number: "",
-    Address: "",
-    Postal_Code: "",
-    Qualification: "",
-    Total_Experience: "",
-    Start_Date_Date: "",
-    End_Date_Date: "",
-    Type_of_Employee: "",
-    Designation: "",
-    Gender: "",
-    Marital_Status: "",
-  });
   const [error, setError] = useState(false);
+  const [employeeData, setEmployeeData] = useState(empData);
   const [errorMsg, setErrorMsg] = useState();
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/employeedata").then((response) => {
-      setApiData(response.data);
-    });
-  }, []);
+  const [values, setValues] = useState({
+    Employee_ID_Number: null,
+    Password: null,
+    Re_Type_Password: null,
+    First_Name: null,
+    Middle_Name: null,
+    Last_Name: null,
+    Date_of_Birth: null,
+    Phone_Number: null,
+    Address: null,
+    Postal_Code: null,
+    Qualification: null,
+    Total_Experience: null,
+    Start_Date_Date: null,
+    End_Date_Date: null,
+    Type_of_Employee: null,
+    Designation: null,
+    Gender: null,
+    Marital_Status: null,
+  });
 
   const handleRegister = (event) => {
     event.preventDefault();
     if (
-      apiData.find(
+      employeeData.find(
         (emp) => emp.Employee_ID_Number === values.Employee_ID_Number
       )
     ) {
@@ -51,11 +45,9 @@ const TestRegistration = () => {
       setError(true);
       setErrorMsg("Re-type Password didn't match Password");
     } else {
-      axios
-        .post("http://localhost:3001/api/employeedata", values)
-        .then((response) => {
-          setApiData(response.data);
-        });
+      employeeData.push(values);
+      setEmployeeData(employeeData);
+      localStorage.setItem("empData", JSON.stringify(employeeData));
       navigate("/");
     }
   };

@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import FormElement from "../components/FormElement";
 import { FormContext } from "../helpers/formContext";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginConfig } from "../config/LoginConfig";
-import axios from "axios";
 import "./css/Login.css";
+import empData from "../data/empdata";
 
 const Login = ({ setToken }) => {
   const navigate = useNavigate();
   const [values, setValues] = useState();
-  const [apiData, setApiData] = useState();
   const [error, setError] = useState(false);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/employeedata").then((response) => {
-      setApiData(response.data);
-    });
-  }, []);
 
   const handleLogin = (event) => {
     event.preventDefault();
-
-    if (apiData) {
-      const empCheck = apiData.find(
-        (emp) =>
-          emp.Employee_ID_Number === values.Employee_ID_Number &&
-          emp.Password === values.Password
-      );
-      if (empCheck) {
-        setToken(empCheck);
-        navigate("/home");
-      } else {
-        setError(true);
-      }
+    const empCheck = empData.find(
+      (emp) =>
+        emp.Employee_ID_Number === values.Employee_ID_Number &&
+        emp.Password === values.Password
+    );
+    if (empCheck) {
+      setToken(empCheck);
+      navigate("/home");
+    } else {
+      setError(true);
     }
   };
 

@@ -1,7 +1,7 @@
 const empData = [
   {
-    Employee_ID_Number: 1,
-    Password: 1,
+    Employee_ID_Number: "1",
+    Password: "1",
     First_Name: "Rachana",
     Middle_Name: "",
     Last_Name: "",
@@ -19,8 +19,8 @@ const empData = [
     Marital_Status: "",
   },
   {
-    Employee_ID_Number: 2,
-    Password: 2,
+    Employee_ID_Number: "2",
+    Password: "2",
     First_Name: "Ruchitha",
     Middle_Name: "",
     Last_Name: "",

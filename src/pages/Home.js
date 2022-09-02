@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/HomePage.css";
-// import Tabs from "../components/TabComponent/Tabs";
+import Tabs from "../components/TabComponent/Tabs";
 
 function HomePage({ setToken }) {
-  const [apiData, setApiData] = useState();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/employeedata").then((response) => {
-      setApiData(response.data);
-    });
-  }, []);
 
   const handleLogout = () => {
     setToken("");
     navigate("/");
   };
-
-  if (apiData) {
-    //
-  }
 
   return (
     <div>
@@ -31,7 +19,7 @@ function HomePage({ setToken }) {
           Logout
         </button>
       </h2>
-      {/* <Tabs /> */}
+      <Tabs />
     </div>
   );
 }

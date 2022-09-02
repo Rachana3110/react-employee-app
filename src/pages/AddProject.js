@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { ProjectConfig } from "../config/ProjectConfig";
 import { FormContext } from "../helpers/formContext";
 import FormElement from "../components/FormElement";
+import projectdata from "../data/projectdata";
 
 const AddProject = () => {
+  const [projectList, setProjectList] = useState(projectdata);
   const [values, setValues] = useState();
 
   const handleRegister = (event) => {
     event.preventDefault();
+    projectList.push(values);
+    setProjectList(projectList);
+    localStorage.setItem("projectData", JSON.stringify(projectList));
   };
 
   const handleChange = (id, event) => {
