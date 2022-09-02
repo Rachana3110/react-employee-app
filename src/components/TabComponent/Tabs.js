@@ -2,23 +2,38 @@ import React, { useState } from "react";
 import TabNavItem from "../TabComponent/TabNavItem";
 import TabContent from "../TabComponent/TabContent";
 import "../TabComponent/css/Tabs.css";
-import EmployeeDetails from "../../pages/EmployeeDetails";
+import AddProject from "../../pages/AddProject";
+import DisplayProject from "../../pages/DisplayProject";
+import EmployeeList from "../../pages/EmployeeList";
+import ProfileInfo from "../../pages/ProfileInfo";
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState("employee_details");
+  const [activeTab, setActiveTab] = useState("profile_info");
 
   return (
     <div className="Tabs">
       <ul className="nav">
         <TabNavItem
-          title="Employee Details"
-          id="employee_details"
+          title="Employee list"
+          id="employee_list"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
         <TabNavItem
-          title="Project Information"
-          id="project_information"
+          title="Profile Info"
+          id="profile_info"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <TabNavItem
+          title="Add Project"
+          id="add_project"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <TabNavItem
+          title="Display Project"
+          id="display_project"
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
@@ -31,11 +46,17 @@ const Tabs = () => {
       </ul>
 
       <div className="outlet">
-        <TabContent id="employee_details" activeTab={activeTab}>
-         <EmployeeDetails/>
+        <TabContent id="profile_info" activeTab={activeTab}>
+          <ProfileInfo />
         </TabContent>
-        <TabContent id="project_information" activeTab={activeTab}>
-          <p>Project Information</p>
+        <TabContent id="employee_list" activeTab={activeTab}>
+          <EmployeeList />
+        </TabContent>
+        <TabContent id="add_project" activeTab={activeTab}>
+          <AddProject />
+        </TabContent>
+        <TabContent id="display_project" activeTab={activeTab}>
+        <DisplayProject />
         </TabContent>
         <TabContent id="edit_profile" activeTab={activeTab}>
           <p>Edit Profile</p>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./css/HomePage.css";
-// import { RegisterConfig } from "../config/RegisterConfig";
-import Tabs from "../components/TabComponent/Tabs";
+// import Tabs from "../components/TabComponent/Tabs";
 
 function HomePage({ setToken }) {
   const [apiData, setApiData] = useState();
@@ -32,7 +31,7 @@ function HomePage({ setToken }) {
           Logout
         </button>
       </h2>
-      <Tabs />
+      {/* <Tabs /> */}
     </div>
   );
 }

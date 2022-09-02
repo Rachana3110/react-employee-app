@@ -28,7 +28,7 @@ export const RegisterConfig = [
     questionname: "First_Name",
     question: "First Name",
     questiontype: "Text",
-    required: false,
+    required: true,
   },
   {
     questionid: 5,
@@ -116,7 +116,7 @@ export const RegisterConfig = [
     questionname: "Designation",
     question: "Designation",
     questiontype: "Dropdown",
-    required: false,
+    required: true,
     questionoption: [
       { optionid: 1, optionvalue: "Developer" },
       { optionid: 2, optionvalue: "Tester" },

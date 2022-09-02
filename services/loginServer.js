@@ -17,6 +17,6 @@ app.post("/api/employeedata", (req, res) => {
 
 app.listen(3001, () =>
   console.log(
-    "Run API using node <filename> in terminal and API starts running on http://localhost:3001/api/login"
+    "Run API using node <filename> in terminal and API starts running on http://localhost:3001/api/employeedata"
   )
 );

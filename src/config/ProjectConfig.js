@@ -1,0 +1,65 @@
+export const ProjectConfig = [
+    {
+      questionid: 1,
+      questionname: "Project_ID",
+      questionvalue: "",
+      question: "Project Id",
+      questiontype: "Number",
+      required: true,
+    },
+    {
+      questionid: 2,
+      questionname: "Project_Name",
+      questionvalue: "",
+      question: "Project Name",
+      questiontype: "Text",
+      required: true,
+    },
+    {
+      questionid: 3,
+      questionname: "Company_Name",
+      question: "Company Name",
+      questiontype: "Text",
+      required: true,
+    },
+    {
+      questionid: 4,
+      questionname: "Project_Status",
+      question: "Project Status",
+      questiontype: "Dropdown",
+      required: false,
+      questionoption: [
+        { optionid: 1, optionvalue: "Active" },
+        { optionid: 2, optionvalue: "In-Active" },
+      ],
+    },
+    {
+      questionid: 5,
+      questionname: "Company_Phone",
+      question: "Company Phone",
+      questiontype: "Number",
+      required: false,
+    },
+    {
+      questionid: 6,
+      questionname: "Employee_ID_Number",
+      question: "Employee Id",
+      questiontype: "Number",
+      required: true,
+    },
+    {
+      questionid: 7,
+      questionname: "Project_Start_Date",
+      question: "Project Start Date",
+      questiontype: "Date",
+      required: false,
+    },
+    {
+      questionid: 8,
+      questionname: "Project_End_Date",
+      question: "Project End Date",
+      questiontype: "Date",
+      required: false,
+    },
+  ];
+  

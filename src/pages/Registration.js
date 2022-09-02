@@ -56,7 +56,6 @@ const TestRegistration = () => {
         .then((response) => {
           setApiData(response.data);
         });
-      localStorage.setItem("empData", JSON.stringify(values));
       navigate("/");
     }
   };
