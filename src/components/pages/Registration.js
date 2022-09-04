@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormElement from "../components/FormElement";
+import FormElement from "../elements/FormElement";
 import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { FormContext } from "../helpers/formContext";
@@ -8,28 +8,12 @@ import axios from "axios";
 
 const TestRegistration = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState();
   const [values, setValues] = useState();
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    const { emp_id, password, first_name, designation, re_type_password } =
-      values;
-
-    if (password !== re_type_password) {
-      setError(true);
-      setErrorMsg("Re-type Password didn't match Password");
-    } else {
-      setError(false);
-      await axios.post("http://localhost:3001/employees", {
-        id: emp_id,
-        password: password,
-        first_name: first_name,
-        designation: designation,
-      });
-      navigate("/");
-    }
+    await axios.post("http://localhost:3001/employees", values);
+    navigate("/");
   };
 
   const handleChange = (id, event) => {
@@ -56,11 +40,6 @@ const TestRegistration = () => {
             </div>
           );
         })}
-        {error && (
-          <div className="error-msg">
-            <p>*{errorMsg}</p>
-          </div>
-        )}
         <input className="register-button" type="submit" value="Register" />
       </form>
     </FormContext.Provider>

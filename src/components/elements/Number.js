@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormContext } from "../../helpers/formContext";
+import { FormContext } from "../helpers/formContext";
 
 const Number = ({ questionid, questionname, question, required }) => {
   const { handleChange } = useContext(FormContext);

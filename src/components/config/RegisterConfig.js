@@ -1,7 +1,7 @@
 export const RegisterConfig = [
   {
     questionid: 1,
-    questionname: "emp_id",
+    questionname: "id",
     question: "Employee Id",
     questiontype: "Number",
     required: true,
@@ -13,13 +13,13 @@ export const RegisterConfig = [
     questiontype: "Password",
     required: true,
   },
-  {
-    questionid: 3,
-    questionname: "re_type_password",
-    question: "Re-Type Password",
-    questiontype: "Password",
-    required: true,
-  },
+  // {
+  //   questionid: 3,
+  //   questionname: "re_type_password",
+  //   question: "Re-Type Password",
+  //   questiontype: "Password",
+  //   required: true,
+  // },
   {
     questionid: 4,
     questionname: "first_name",

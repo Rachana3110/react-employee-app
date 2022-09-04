@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FormElement from "../components/FormElement";
+import FormElement from "../elements/FormElement";
 import { FormContext } from "../helpers/formContext";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginConfig } from "../config/LoginConfig";
@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
     } else {
       setError(false);
       setToken(empCheck);
-      navigate("/home");
+      navigate("/home", { state: { empCheck } });
     }
   };
 

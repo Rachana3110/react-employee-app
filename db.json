@@ -23,6 +23,12 @@
       "password": "4",
       "first_name": "Rachu",
       "designation": "Manager"
+    },
+    {
+      "id": "18096",
+      "password": "Ruchitha@3110",
+      "first_name": "Rachana Suresh",
+      "designation": "Developer"
     }
   ]
 }

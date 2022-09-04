@@ -1,10 +1,10 @@
 import React from "react";
-import Date from "./elements/Date";
-import Textarea from "./elements/Textarea";
-import Text from "./elements/Text";
-import Password from "./elements/Password";
-import Dropdown from "./elements/Dropdown";
-import Number from "./elements/Number";
+import Date from "./Date";
+import Textarea from "./Textarea";
+import Text from "./Text";
+import Password from "./Password";
+import Dropdown from "./Dropdown";
+import Number from "./Number";
 
 const Element = ({
   questions: {
