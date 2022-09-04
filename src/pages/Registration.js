@@ -4,50 +4,30 @@ import { RegisterConfig } from "../config/RegisterConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { FormContext } from "../helpers/formContext";
 import "./css/Registration.css";
-import empData from "../data/empdata";
+import axios from "axios";
 
 const TestRegistration = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
-  const [employeeData, setEmployeeData] = useState(empData);
   const [errorMsg, setErrorMsg] = useState();
-  const [values, setValues] = useState({
-    Employee_ID_Number: null,
-    Password: null,
-    Re_Type_Password: null,
-    First_Name: null,
-    Middle_Name: null,
-    Last_Name: null,
-    Date_of_Birth: null,
-    Phone_Number: null,
-    Address: null,
-    Postal_Code: null,
-    Qualification: null,
-    Total_Experience: null,
-    Start_Date_Date: null,
-    End_Date_Date: null,
-    Type_of_Employee: null,
-    Designation: null,
-    Gender: null,
-    Marital_Status: null,
-  });
+  const [values, setValues] = useState();
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-    if (
-      employeeData.find(
-        (emp) => emp.Employee_ID_Number === values.Employee_ID_Number
-      )
-    ) {
-      setError(true);
-      setErrorMsg("Employee Id already exist");
-    } else if (values.Password !== values.Re_Type_Password) {
+    const { emp_id, password, first_name, designation, re_type_password } =
+      values;
+
+    if (password !== re_type_password) {
       setError(true);
       setErrorMsg("Re-type Password didn't match Password");
     } else {
-      employeeData.push(values);
-      setEmployeeData(employeeData);
-      localStorage.setItem("empData", JSON.stringify(employeeData));
+      setError(false);
+      await axios.post("http://localhost:3001/employees", {
+        id: emp_id,
+        password: password,
+        first_name: first_name,
+        designation: designation,
+      });
       navigate("/");
     }
   };

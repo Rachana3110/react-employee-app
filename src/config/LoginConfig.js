@@ -1,16 +1,14 @@
 export const LoginConfig = [
   {
     questionid: 1,
-    questionname: "Employee_ID_Number",
-    questionvalue: "",
+    questionname: "emp_id",
     question: "Employee Id",
     questiontype: "Number",
     required: true,
   },
   {
     questionid: 2,
-    questionname: "Password",
-    questionvalue: "",
+    questionname: "password",
     question: "Password",
     questiontype: "Password",
     required: true,
