@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AllEmployees from "./AllEmployees";
 import "./css/HomePage.css";
+import Profile from "./Profile";
 
 function HomePage({ setToken }) {
   const navigate = useNavigate();
@@ -24,6 +26,11 @@ function HomePage({ setToken }) {
     });
   }
 
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:3001/employees/${id}`);
+    loadEmployee();
+  };
+
   const handleLogout = () => {
     setToken("");
     navigate("/");
@@ -37,22 +44,18 @@ function HomePage({ setToken }) {
           Logout
         </button>
       </h2>
-      <div>
         {currentEmployee &&
-          currentEmployee.map((employee) => {
+          currentEmployee.map((employee, i) => {
             return (
-              <div>
-                id : {employee.id}
-                <br />
-                first_name: {employee.first_name}
-                <br />
-                designation : {employee.designation}
-                <br />
-              </div>
+              <>
+                <Profile key={i} {...employee} />
+                <Link to={`/edit/${employee.id}`}>Edit</Link>
+              </>
             );
           })}
-        <Link to={`/edit/${getToken.id}`}>Edit</Link>
-      </div>
+        {empdata && (
+          <AllEmployees empdata={empdata} handleDelete={handleDelete} />
+        )}
     </div>
   );
 }

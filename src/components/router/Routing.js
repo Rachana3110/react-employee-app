@@ -4,6 +4,7 @@ import useToken from "../helpers/useToken";
 import EditPage from "../pages/EditPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
 import Registration from "../pages/Registration";
 
 const Routing = () => {
@@ -22,6 +23,7 @@ const Routing = () => {
           <Route path="/edit/:id" element={<EditPage />} />
         </>
       )}
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 };
