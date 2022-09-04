@@ -1,36 +1,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { RegisterConfig } from "../config/RegisterConfig";
+import { Link, useNavigate } from "react-router-dom";
 import "./css/HomePage.css";
 
 function HomePage({ setToken }) {
   const navigate = useNavigate();
-  const [empData, setEmpData] = useState();
-
-  const loadEmployees = async () => {
-    const result = await axios.get("http://localhost:3001/employees");
-    setEmpData(result.data);
-  };
+  const [empdata, setEmpData] = useState();
+  const getToken = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
-    loadEmployees();
+    loadEmployee();
   }, []);
 
-  const getCurrEmployee =
-    empData &&
-    empData.filter((emp) => {
-      const getToken = JSON.parse(localStorage.getItem("token"));
+  const loadEmployee = async () => {
+    const result = await axios.get("http://localhost:3001/employees");
+    return setEmpData(result.data);
+  };
+
+  let currentEmployee;
+  if (empdata) {
+    currentEmployee = empdata.filter((emp) => {
       return emp.id === getToken.id;
     });
+  }
 
   const handleLogout = () => {
     setToken("");
     navigate("/");
-  };
-
-  const handleEdit = () => {
-    navigate("/edit");
   };
 
   return (
@@ -42,21 +38,20 @@ function HomePage({ setToken }) {
         </button>
       </h2>
       <div>
-        {RegisterConfig.map((emp) => {
-          return (
-            <>
-              {getCurrEmployee &&
-                getCurrEmployee.map((employee, i) => {
-                  return (
-                    <div key={i}>
-                      {emp.question} : {employee[emp.questionname]}
-                    </div>
-                  );
-                })}
-            </>
-          );
-        })}
-        <button onClick={handleEdit}>Edit</button>
+        {currentEmployee &&
+          currentEmployee.map((employee) => {
+            return (
+              <div>
+                id : {employee.id}
+                <br />
+                first_name: {employee.first_name}
+                <br />
+                designation : {employee.designation}
+                <br />
+              </div>
+            );
+          })}
+        <Link to={`/edit/${getToken.id}`}>Edit</Link>
       </div>
     </div>
   );

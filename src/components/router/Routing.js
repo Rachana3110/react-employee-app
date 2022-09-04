@@ -19,7 +19,7 @@ const Routing = () => {
       ) : (
         <>
           <Route path="/home" element={<Home setToken={setToken} />} />
-          <Route path="/edit" element={<EditPage />} />
+          <Route path="/edit/:id" element={<EditPage />} />
         </>
       )}
     </Routes>
