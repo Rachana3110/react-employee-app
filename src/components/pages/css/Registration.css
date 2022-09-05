@@ -27,6 +27,13 @@
   background-color: #ffe4c4;
 }
 
+.question-input {
+  display: block;
+  padding: 8px 20px;
+  text-align: left;
+  margin-bottom: 2%;
+}
+
 .link {
   text-decoration: none;
   color: #000000;

@@ -18,8 +18,10 @@ function HomePage({ setToken }) {
           Logout
         </button>
       </h2>
-      <Link to={`/profile`}>Profile</Link> {"  "}
-      <Link to={`/employeelist`}>Employee List</Link>
+      <div className="home-tabs">
+      <Link className="home-link" to={`/profile`}>Profile</Link> {"  "}
+      <Link className="home-link" to={`/employeelist`}>Employee List</Link>
+      </div>
       <Outlet />
     </div>
   );

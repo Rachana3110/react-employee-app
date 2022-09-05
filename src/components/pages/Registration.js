@@ -11,6 +11,7 @@ const TestRegistration = () => {
     event.preventDefault();
     await axios.post("http://localhost:3001/employees", values);
     navigate("/");
+    window.location.reload(true);
   };
 
   const handleChange = (event) => {
@@ -29,28 +30,36 @@ const TestRegistration = () => {
         Registration Page
       </h2>
       <form className="registration-form-container" onSubmit={handleRegister}>
+        <label className="question-label">Employee Id</label>
         <input
+          className="question-input"
           type="number"
           placeholder="Enter Employee Id"
           name="id"
           onChange={(e) => handleChange(e)}
           required
         />
+        <label className="question-label">Password</label>
         <input
+          className="question-input"
           type="text"
           placeholder="Enter Password"
           name="password"
           onChange={(e) => handleChange(e)}
           required
         />
+        <label className="question-label">First Name</label>
         <input
+          className="question-input"
           type="text"
           placeholder="Enter First Name"
           name="first_name"
           onChange={(e) => handleChange(e)}
           required
         />
+        <label className="question-label">Designation</label>
         <select
+          className="question-input"
           type="dropdown"
           placeholder="Designation"
           name="designation"
@@ -58,8 +67,8 @@ const TestRegistration = () => {
           required
         >
           <option value="">Select</option>
-          <option value="developer">Developer</option>
-          <option value="manager">Manager</option>
+          <option value="Developer">Developer</option>
+          <option value="Manager">Manager</option>
         </select>
         <input className="register-button" type="submit" value="Register" />
       </form>

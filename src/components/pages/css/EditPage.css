@@ -1,0 +1,35 @@
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+}
+
+.edit-label {
+  text-align: center;
+  font-weight: bold;
+  padding: 1%;
+  width: 30%;
+  background-color: #ffe4c4;
+}
+
+.edit-value {
+  text-align: center;
+  padding: 0.5%;
+  width: 30%;
+  border: 1px solid;
+  margin-bottom: 3%;
+}
+
+.update-button {
+  background-color: #1d1a47;
+  padding: 3px 15px 5px 15px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 2%;
+}
+
+.edit-back-button {
+  padding: 3px 15px 5px 15px;
+}

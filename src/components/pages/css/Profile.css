@@ -1,0 +1,33 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  height: 100vh;
+  overflow-y: visible;
+}
+
+.profile-label {
+  text-align: center;
+  font-weight: bold;
+  padding: 1%;
+  background-color: #ffe4c4;
+  width: 30%;
+}
+
+.profile-value {
+  text-align: center;
+  padding: 0.5%;
+  width: 30%;
+  border: 1px solid;
+  margin-bottom: 3%;
+}
+
+.edit-link {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  padding: 0.5% 2% 0.5% 2%;
+  font-weight: bold;
+  background-color: #1d1a47;
+}

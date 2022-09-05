@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
     } else {
       setError(false);
       setToken(empCheck);
-      navigate("/");
+      navigate("/profile");
     }
   };
 
@@ -44,16 +44,20 @@ const Login = ({ setToken }) => {
     <div>
       <h2 className="login-header">Login Page</h2>
       <form className="login-form-container" onSubmit={handleLogin}>
+        <label className="login-question-label">Employee Id</label>
         <input
+          className="login-question-input"
           type="number"
-          placeholder="Enter Employee Id"
+          placeholder="Enter Employee Id..."
           name="id"
           onChange={(e) => handleChange(e)}
           required
         />
+        <label className="login-question-label">Password</label>
         <input
-          type="text"
-          placeholder="Enter Password"
+          className="login-question-input"
+          type="password"
+          placeholder="Enter Password..."
           name="password"
           onChange={(e) => handleChange(e)}
           required

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import useToken from "../helpers/useToken";
 import AllEmployees from "../pages/AllEmployees";
 import EditPage from "../pages/EditPage";
@@ -11,6 +11,7 @@ import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
 
 const Routing = () => {
+  const navigate = useNavigate();
   const { token, setToken } = useToken();
   const [empdata, setEmpData] = useState();
 
@@ -23,8 +24,10 @@ const Routing = () => {
     return setEmpData(result.data);
   };
 
-  const handleUpdate = async (id,employee) => {
+  const handleUpdate = async (id, employee) => {
     await axios.put(`http://localhost:3001/employees/${id}`, employee);
+    navigate("/")
+    window.location.reload(true);
   };
 
   const handleDelete = async (id) => {
@@ -48,7 +51,10 @@ const Routing = () => {
                   path="/profile"
                   element={<Profile empdata={empdata} />}
                 />
-                <Route path="/edit/:id" element={<EditPage handleUpdate={handleUpdate}/>} />
+                <Route
+                  path="/edit/:id"
+                  element={<EditPage handleUpdate={handleUpdate} />}
+                />
                 <Route
                   path="/employeelist"
                   element={
@@ -63,7 +69,7 @@ const Routing = () => {
           </Route>
         </>
       )}
-      <Route path="*" element={<NotFound />}/>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

@@ -21,11 +21,18 @@
   cursor: pointer;
 }
 
-.employee-cards {
-  flex-direction: column;
-  width: 30%;
+.home-tabs {
   display: flex;
-  padding: 4%;
-  margin: 2%;
-  background-color: powderblue;
+  justify-content: space-between;
+  background-color: rgb(197, 197, 197);
+}
+
+.home-link {
+  padding: 1%;
+  width: 50%;
+  text-align: center;
+  border: 1px solid #000;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
 }

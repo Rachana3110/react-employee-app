@@ -18,9 +18,16 @@
 .login-question-label {
   display: block;
   font-weight: bold;
-  padding: 12px 20px;
+  padding: 8px 20px;
   text-align: center;
   background-color: #ffe4c4;
+}
+
+.login-question-input {
+  display: block;
+  padding: 12px 20px;
+  text-align: left;
+  margin-bottom: 2%;
 }
 
 .submit-button {

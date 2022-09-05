@@ -1,16 +1,40 @@
 {
   "employees": [
     {
-      "id": "1",
-      "password": "1",
-      "first_name": "Rash",
-      "designation": "developer"
+      "id": "001",
+      "password": "000",
+      "first_name": "Ganesh",
+      "designation": "Manager"
     },
     {
-      "id": "2",
-      "password": "2",
-      "first_name": "Racha",
-      "designation": "manager"
+      "id": "002",
+      "password": "0000",
+      "first_name": "Navya",
+      "designation": "Developer"
+    },
+    {
+      "id": "003",
+      "password": "0000",
+      "first_name": "Anupama",
+      "designation": "Developer"
+    },
+    {
+      "id": "004",
+      "password": "0000",
+      "first_name": "Saniya",
+      "designation": "Developer"
+    },
+    {
+      "id": "005",
+      "password": "0000",
+      "first_name": "Nandini",
+      "designation": "Developer"
+    },
+    {
+      "id": "006",
+      "password": "0000",
+      "first_name": "Madhu",
+      "designation": "Developer"
     }
   ]
 }

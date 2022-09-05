@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import "./css/EditPage.css";
 
 const EditPage = ({ handleUpdate }) => {
   const { id } = useParams();
@@ -28,30 +29,39 @@ const EditPage = ({ handleUpdate }) => {
 
   return (
     <div>
-      <form className="" onSubmit={() => handleUpdate(id, employee)}>
-        <label>Employee Id : </label>
-        {id}
-        <br />
-        <label>Password</label>
+      <form
+        className="edit-form-container"
+        onSubmit={() => handleUpdate(id, employee)}
+      >
+        <label className="edit-label">Employee Id </label>
         <input
+          className="edit-value"
+          type="text"
+          placeholder="Enter Employee Id"
+          value={id}
+          name="id"
+        />
+        <label className="edit-label">Password</label>
+        <input
+          className="edit-value"
           type="text"
           placeholder="Enter Password"
           name="password"
           value={password}
           onChange={(e) => handleChange(e)}
         />
-        <br />
-        <label>First Name</label>
+        <label className="edit-label">First Name</label>
         <input
+          className="edit-value"
           type="text"
           placeholder="Enter First Name"
           name="first_name"
           value={first_name}
           onChange={(e) => handleChange(e)}
         />
-        <br />
-        <label>Designation</label>
+        <label className="edit-label">Designation</label>
         <select
+          className="edit-value"
           type="dropdown"
           placeholder="Designation"
           name="designation"
@@ -61,15 +71,14 @@ const EditPage = ({ handleUpdate }) => {
           <option value="developer">Developer</option>
           <option value="manager">Manager</option>
         </select>
-        <br />
-        <input className="register-button" type="submit" value="Update" />
+        <input className="update-button" type="submit" value="Update" />
+        <input
+          className="edit-back-button"
+          type="button"
+          value="Back"
+          onClick={() => navigate("/profile")}
+        />
       </form>
-      <input
-        className="back-button"
-        type="button"
-        value="Back"
-        onClick={() => navigate("/")}
-      />
     </div>
   );
 };
