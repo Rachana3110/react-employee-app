@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const EditPage = () => {
-  const navigate = useNavigate();
+const EditPage = ({ handleUpdate }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [employee, setEmployee] = useState({
     id: "",
     password: "",
@@ -15,7 +15,6 @@ const EditPage = () => {
   const { password, first_name, designation } = employee;
 
   const handleChange = (event) => {
-    event.preventDefault();
     setEmployee({ ...employee, [event.target.name]: event.target.value });
   };
 
@@ -27,24 +26,13 @@ const EditPage = () => {
     loadUser();
   }, [id]);
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    await axios.put(`http://localhost:3001/employees/${id}`, employee);
-    navigate("/home");
-  };
-
   return (
     <div>
-      <h2 className="registration-header">
-        <button className="back-button">
-          <Link className="link" to="/home">
-            Back to Home
-          </Link>
-        </button>
-        Edit Page
-      </h2>
-      <form className="registration-form-container" onSubmit={handleUpdate}>
-        <label>{id}</label>
+      <form className="" onSubmit={() => handleUpdate(id, employee)}>
+        <label>Employee Id : </label>
+        {id}
+        <br />
+        <label>Password</label>
         <input
           type="text"
           placeholder="Enter Password"
@@ -52,6 +40,8 @@ const EditPage = () => {
           value={password}
           onChange={(e) => handleChange(e)}
         />
+        <br />
+        <label>First Name</label>
         <input
           type="text"
           placeholder="Enter First Name"
@@ -59,6 +49,8 @@ const EditPage = () => {
           value={first_name}
           onChange={(e) => handleChange(e)}
         />
+        <br />
+        <label>Designation</label>
         <select
           type="dropdown"
           placeholder="Designation"
@@ -69,8 +61,15 @@ const EditPage = () => {
           <option value="developer">Developer</option>
           <option value="manager">Manager</option>
         </select>
+        <br />
         <input className="register-button" type="submit" value="Update" />
       </form>
+      <input
+        className="back-button"
+        type="button"
+        value="Back"
+        onClick={() => navigate("/")}
+      />
     </div>
   );
 };

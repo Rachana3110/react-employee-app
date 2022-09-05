@@ -9,14 +9,8 @@
     {
       "id": "2",
       "password": "2",
-      "first_name": "Rachu",
+      "first_name": "Racha",
       "designation": "manager"
-    },
-    {
-      "id": "3",
-      "password": "3",
-      "first_name": "Ruchitha",
-      "designation": "developer"
     }
   ]
 }

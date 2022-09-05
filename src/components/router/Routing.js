@@ -1,14 +1,36 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import useToken from "../helpers/useToken";
+import AllEmployees from "../pages/AllEmployees";
 import EditPage from "../pages/EditPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
 
 const Routing = () => {
   const { token, setToken } = useToken();
+  const [empdata, setEmpData] = useState();
+
+  useEffect(() => {
+    loadEmployee();
+  }, []);
+
+  const loadEmployee = async () => {
+    const result = await axios.get("http://localhost:3001/employees");
+    return setEmpData(result.data);
+  };
+
+  const handleUpdate = async (id,employee) => {
+    await axios.put(`http://localhost:3001/employees/${id}`, employee);
+  };
+
+  const handleDelete = async (id) => {
+    await axios.delete(`http://localhost:3001/employees/${id}`);
+    loadEmployee();
+  };
 
   return (
     <Routes>
@@ -19,11 +41,29 @@ const Routing = () => {
         </>
       ) : (
         <>
-          <Route path="/home" element={<Home setToken={setToken} />} />
-          <Route path="/edit/:id" element={<EditPage />} />
+          <Route path="/" element={<Home setToken={setToken} />}>
+            {empdata && (
+              <>
+                <Route
+                  path="/profile"
+                  element={<Profile empdata={empdata} />}
+                />
+                <Route path="/edit/:id" element={<EditPage handleUpdate={handleUpdate}/>} />
+                <Route
+                  path="/employeelist"
+                  element={
+                    <AllEmployees
+                      empdata={empdata}
+                      handleDelete={handleDelete}
+                    />
+                  }
+                />
+              </>
+            )}
+          </Route>
         </>
       )}
-      <Route path='*' element={<NotFound />} />
+      <Route path="*" element={<NotFound />}/>
     </Routes>
   );
 };

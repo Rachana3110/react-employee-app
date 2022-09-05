@@ -31,7 +31,7 @@ const Login = ({ setToken }) => {
     } else {
       setError(false);
       setToken(empCheck);
-      navigate("/home");
+      navigate("/");
     }
   };
 
