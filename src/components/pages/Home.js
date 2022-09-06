@@ -11,19 +11,23 @@ function HomePage({ setToken }) {
   };
 
   return (
-    <div>
-      <h2 className="home-header">
-        Employee Management Application
-        <button className="logout-button" onClick={handleLogout}>
-          Logout
-        </button>
-      </h2>
+    <>
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
+      </button>
       <div className="home-tabs">
-      <Link className="home-link" to={`/profile`}>Profile</Link> {"  "}
-      <Link className="home-link" to={`/employeelist`}>Employee List</Link>
+        <Link className="home-link" to={`/profile`}>
+          Profile
+        </Link>
+        <Link className="home-link" to={`/displayproject`}>
+          Display Project
+        </Link>
+        <Link className="home-link" to={`/employeelist`}>
+          Employee List
+        </Link>
       </div>
       <Outlet />
-    </div>
+    </>
   );
 }
 export default HomePage;

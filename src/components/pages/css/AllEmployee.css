@@ -8,6 +8,31 @@
 }
 
 .table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
   width: 100%;
-  border: 1px solid;
+}
+
+.column {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  border: 1px solid #000;
+  background-color: #ffe4c4;
+  color: black;
+}
+
+.row {
+  border: 1px solid #000;
+  text-align: center;
+  padding: 8px;
+}
+
+.edit-button {
+  margin-right: 20px;
+}
+
+.edit-link-button {
+  color: #000;
+  text-decoration: none;
 }

@@ -7,10 +7,8 @@
 
 .login-header {
   overflow: hidden;
-  background-color: #000000;
-  margin-top: 0%;
-  margin-bottom: 5%;
-  color: white;
+  margin-top: 2%;
+  margin-bottom: 2%;
   padding: 1%;
   text-align: center;
 }
@@ -58,5 +56,5 @@
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }

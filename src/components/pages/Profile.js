@@ -6,7 +6,7 @@ const Profile = (props) => {
   const { empdata } = props;
   const getToken = JSON.parse(localStorage.getItem("token"));
   const currentEmployee = empdata.filter((emp) => {
-    return emp.id === getToken.id;
+    return emp.emp_id === getToken.emp_id;
   });
   return (
     <>
@@ -15,7 +15,7 @@ const Profile = (props) => {
           return (
             <div className="profile-container">
               <label className="profile-label">Employee Id</label>
-              <p className="profile-value">{employee.id}</p>
+              <p className="profile-value">{employee.emp_id}</p>
               <label className="profile-label">First Name</label>
               <p className="profile-value">{employee.first_name}</p>
               <label className="profile-label">Designation</label>

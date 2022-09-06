@@ -1,0 +1,15 @@
+.add-project-button {
+  margin: 1%;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 1%;
+  color: white;
+  background-color: black;
+}
+
+.multiselect-value {
+  text-align: left;
+  width: 360px;
+}
+
+

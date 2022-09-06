@@ -1,41 +1,28 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./css/Registration.css";
-import axios from "axios";
 
-const TestRegistration = () => {
-  const navigate = useNavigate();
-  const [values, setValues] = useState();
-
-  const handleRegister = async (event) => {
-    event.preventDefault();
-    await axios.post("http://localhost:3001/employees", values);
-    navigate("/");
-    window.location.reload(true);
-  };
+const TestRegistration = ({ handleRegister }) => {
+  const [employees, setEmployees] = useState();
 
   const handleChange = (event) => {
     event.preventDefault();
-    setValues({ ...values, [event.target.name]: event.target.value });
+    setEmployees({ ...employees, [event.target.name]: event.target.value });
   };
 
   return (
     <div>
-      <h2 className="registration-header">
-        <button className="back-button">
-          <Link className="link" to="/">
-            Back to Login
-          </Link>
-        </button>
-        Registration Page
-      </h2>
-      <form className="registration-form-container" onSubmit={handleRegister}>
+      <form
+        className="registration-form-container"
+        onSubmit={(event) => handleRegister(event, employees)}
+      >
+        <h2 className="registration-header">Add Employee</h2>
         <label className="question-label">Employee Id</label>
         <input
           className="question-input"
           type="number"
           placeholder="Enter Employee Id"
-          name="id"
+          name="emp_id"
           onChange={(e) => handleChange(e)}
           required
         />
@@ -70,7 +57,12 @@ const TestRegistration = () => {
           <option value="Developer">Developer</option>
           <option value="Manager">Manager</option>
         </select>
-        <input className="register-button" type="submit" value="Register" />
+        <input className="register-button" type="submit" value="Add" />
+        <button className="back-button">
+          <Link className="link" to="/">
+            Back to Login
+          </Link>
+        </button>
       </form>
     </div>
   );

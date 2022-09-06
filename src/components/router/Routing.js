@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import useToken from "../helpers/useToken";
+import AddProject from "../pages/AddProject";
 import AllEmployees from "../pages/AllEmployees";
+import DisplayProject from "../pages/DisplayProject";
 import EditPage from "../pages/EditPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -14,9 +16,11 @@ const Routing = () => {
   const navigate = useNavigate();
   const { token, setToken } = useToken();
   const [empdata, setEmpData] = useState();
+  const [projectdata, setProjectdata] = useState();
 
   useEffect(() => {
     loadEmployee();
+    loadProject();
   }, []);
 
   const loadEmployee = async () => {
@@ -24,23 +28,56 @@ const Routing = () => {
     return setEmpData(result.data);
   };
 
-  const handleUpdate = async (id, employee) => {
-    await axios.put(`http://localhost:3001/employees/${id}`, employee);
-    navigate("/")
+  const handleRegister = async (event, employees) => {
+    event.preventDefault();
+    await axios.post("http://localhost:3001/employees", employees);
+    navigate("/");
     window.location.reload(true);
   };
 
-  const handleDelete = async (id) => {
+  const handleUpdate = async ( id, employee) => {
+    await axios.put(`http://localhost:3001/employees/${id}`, employee);
+    navigate("/profile");
+    window.location.reload(true);
+  };
+
+  const handleDelete = async (event, id) => {
+    event.preventDefault();
     await axios.delete(`http://localhost:3001/employees/${id}`);
     loadEmployee();
+  };
+
+  const loadProject = async () => {
+    const result = await axios.get("http://localhost:3001/projects");
+    return setProjectdata(result.data);
+  };
+
+  const handleAddProject = async (event, project) => {
+    event.preventDefault();
+    await axios.post(`http://localhost:3001/projects`, project);
+    navigate("/displayproject");
+    window.location.reload(true);
+  };
+
+  const deleteProject = async (event, id) => {
+    event.preventDefault();
+    await axios.delete(`http://localhost:3001/projects/${id}`);
+    loadProject();
   };
 
   return (
     <Routes>
       {!token ? (
         <>
-          <Route path="/" index element={<Login setToken={setToken} />} />
-          <Route path="/registration" element={<Registration />} />
+          <Route
+            path="/"
+            index
+            element={<Login setToken={setToken} empdata={empdata} />}
+          />
+          <Route
+            path="/registration"
+            element={<Registration handleRegister={handleRegister} />}
+          />
         </>
       ) : (
         <>
@@ -54,6 +91,24 @@ const Routing = () => {
                 <Route
                   path="/edit/:id"
                   element={<EditPage handleUpdate={handleUpdate} />}
+                />
+                <Route
+                  path="/add-project"
+                  element={
+                    <AddProject
+                      empdata={empdata}
+                      handleAddProject={handleAddProject}
+                    />
+                  }
+                />
+                <Route
+                  path="/displayproject"
+                  element={
+                    <DisplayProject
+                      projectdata={projectdata}
+                      deleteProject={deleteProject}
+                    />
+                  }
                 />
                 <Route
                   path="/employeelist"

@@ -7,13 +7,13 @@ const EditPage = ({ handleUpdate }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [employee, setEmployee] = useState({
-    id: "",
+    emp_id: "",
     password: "",
     first_name: "",
     designation: "",
   });
 
-  const { password, first_name, designation } = employee;
+  const { emp_id, password, first_name, designation } = employee;
 
   const handleChange = (event) => {
     setEmployee({ ...employee, [event.target.name]: event.target.value });
@@ -31,14 +31,17 @@ const EditPage = ({ handleUpdate }) => {
     <div>
       <form
         className="edit-form-container"
-        onSubmit={() => handleUpdate(id, employee)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleUpdate(id, employee);
+        }}
       >
         <label className="edit-label">Employee Id </label>
         <input
           className="edit-value"
           type="text"
           placeholder="Enter Employee Id"
-          value={id}
+          value={emp_id}
           name="id"
         />
         <label className="edit-label">Password</label>
@@ -68,8 +71,8 @@ const EditPage = ({ handleUpdate }) => {
           value={designation}
           onChange={(e) => handleChange(e)}
         >
-          <option value="developer">Developer</option>
-          <option value="manager">Manager</option>
+          <option value="Developer">Developer</option>
+          <option value="Manager">Manager</option>
         </select>
         <input className="update-button" type="submit" value="Update" />
         <input
