@@ -9,7 +9,6 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
       <table className="table">
         <thead>
           <tr>
-            <th className="column">Project Id</th>
             <th className="column">Project Name</th>
             <th className="column">Employee Id</th>
             <th className="column">Action</th>
@@ -20,7 +19,6 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
             projectdata.map((projectdata, i) => {
               return (
                 <tr key={i}>
-                  <td className="row">{projectdata.p_id}</td>
                   <td className="row">{projectdata.project_name}</td>
                   <td className="row">{projectdata.emp_id.map((emp,i)=>{
                     return (

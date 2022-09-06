@@ -13,25 +13,10 @@
       "first_name": "2",
       "designation": "Developer",
       "id": 2
-    },
-    {
-      "emp_id": "18096",
-      "password": "22",
-      "first_name": "Ruchitha",
-      "designation": "Manager",
-      "id": 3
-    },
-    {
-      "emp_id": "105684",
-      "password": "1234",
-      "first_name": "Pavan",
-      "designation": "Developer",
-      "id": 4
     }
   ],
   "projects": [
     {
-      "p_id": "4",
       "project_name": "4",
       "emp_id": [
         "2"

@@ -13,7 +13,6 @@ const AddProject = ({ empdata, handleAddProject }) => {
   const [selection, setSelection] = useState(false);
 
   const [project, setProject] = useState({
-    p_id: "",
     project_name: "",
   });
 
@@ -37,15 +36,6 @@ const AddProject = ({ empdata, handleAddProject }) => {
             : alert("Fill all values");
         }}
       >
-        <label className="edit-label">Project Id </label>
-        <input
-          className="edit-value"
-          type="number"
-          placeholder="Enter Project Id"
-          name="p_id"
-          onChange={(e) => handleChange(e)}
-          required
-        />
         <label className="edit-label">Project Name</label>
         <input
           className="edit-value"
