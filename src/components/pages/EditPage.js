@@ -69,7 +69,7 @@ const EditPage = ({ handleUpdate }) => {
           placeholder="Designation"
           name="designation"
           value={designation}
-          onChange={(e) => handleChange(e)}
+          // onChange={(e) => handleChange(e)}
         >
           <option value="Developer">Developer</option>
           <option value="Manager">Manager</option>

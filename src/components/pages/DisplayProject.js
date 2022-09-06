@@ -31,7 +31,7 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                     <button
                       className="delete-button"
                       onClick={(event) =>
-                        deleteProject(event, projectdata.p_id)
+                        deleteProject(projectdata.id)
                       }
                     >
                       Delete

@@ -2,12 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./css/Profile.css";
 
-const Profile = (props) => {
-  const { empdata } = props;
-  const getToken = JSON.parse(localStorage.getItem("token"));
-  const currentEmployee = empdata.filter((emp) => {
-    return emp.emp_id === getToken.emp_id;
-  });
+const Profile = ({ currentEmployee }) => {
   return (
     <>
       {currentEmployee &&

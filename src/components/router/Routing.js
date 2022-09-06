@@ -23,6 +23,14 @@ const Routing = () => {
     loadProject();
   }, []);
 
+  let currentEmployee
+  if (empdata) {
+    const getToken = JSON.parse(localStorage.getItem("token"));
+    currentEmployee = empdata.filter((emp) => {
+      return emp.emp_id === getToken.emp_id;
+    });
+  }
+
   const loadEmployee = async () => {
     const result = await axios.get("http://localhost:3001/employees");
     return setEmpData(result.data);
@@ -35,7 +43,7 @@ const Routing = () => {
     window.location.reload(true);
   };
 
-  const handleUpdate = async ( id, employee) => {
+  const handleUpdate = async (id, employee) => {
     await axios.put(`http://localhost:3001/employees/${id}`, employee);
     navigate("/profile");
     window.location.reload(true);
@@ -59,8 +67,7 @@ const Routing = () => {
     window.location.reload(true);
   };
 
-  const deleteProject = async (event, id) => {
-    event.preventDefault();
+  const deleteProject = async (id) => {
     await axios.delete(`http://localhost:3001/projects/${id}`);
     loadProject();
   };
@@ -81,12 +88,12 @@ const Routing = () => {
         </>
       ) : (
         <>
-          <Route path="/" element={<Home setToken={setToken} />}>
+          <Route path="/" element={<Home setToken={setToken} currentEmployee={currentEmployee} />}>
             {empdata && (
               <>
                 <Route
                   path="/profile"
-                  element={<Profile empdata={empdata} />}
+                  element={<Profile currentEmployee={currentEmployee} />}
                 />
                 <Route
                   path="/edit/:id"
