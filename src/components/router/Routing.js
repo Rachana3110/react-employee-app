@@ -6,6 +6,7 @@ import AddProject from "../pages/AddProject";
 import AllEmployees from "../pages/AllEmployees";
 import DisplayProject from "../pages/DisplayProject";
 import EditPage from "../pages/EditPage";
+import EditProject from "../pages/EditProject";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
@@ -23,11 +24,11 @@ const Routing = () => {
     loadProject();
   }, []);
 
-  let currentEmployee
+  let currentEmployee;
   if (empdata) {
     const getToken = JSON.parse(localStorage.getItem("token"));
     currentEmployee = empdata.filter((emp) => {
-      return emp.emp_id === getToken.emp_id;
+      return getToken.emp_id && emp.emp_id === getToken.emp_id;
     });
   }
 
@@ -67,6 +68,12 @@ const Routing = () => {
     window.location.reload(true);
   };
 
+  const handleProjectUpdate = async (id, projectDetails) => {
+    await axios.put(`http://localhost:3001/projects/${id}`, projectDetails);
+    navigate("/displayproject");
+    window.location.reload(true);
+  };
+
   const deleteProject = async (id) => {
     await axios.delete(`http://localhost:3001/projects/${id}`);
     loadProject();
@@ -88,7 +95,12 @@ const Routing = () => {
         </>
       ) : (
         <>
-          <Route path="/" element={<Home setToken={setToken} currentEmployee={currentEmployee} />}>
+          <Route
+            path="/"
+            element={
+              <Home setToken={setToken} currentEmployee={currentEmployee} />
+            }
+          >
             {empdata && (
               <>
                 <Route
@@ -105,6 +117,15 @@ const Routing = () => {
                     <AddProject
                       empdata={empdata}
                       handleAddProject={handleAddProject}
+                    />
+                  }
+                />
+                <Route
+                  path="/editproject/:id"
+                  element={
+                    <EditProject
+                      empdata={empdata}
+                      handleProjectUpdate={handleProjectUpdate}
                     />
                   }
                 />

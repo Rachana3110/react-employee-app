@@ -52,6 +52,7 @@ const EditPage = ({ handleUpdate }) => {
           name="password"
           value={password}
           onChange={(e) => handleChange(e)}
+          required
         />
         <label className="edit-label">First Name</label>
         <input
@@ -61,6 +62,7 @@ const EditPage = ({ handleUpdate }) => {
           name="first_name"
           value={first_name}
           onChange={(e) => handleChange(e)}
+          required
         />
         <label className="edit-label">Designation</label>
         <select
@@ -69,7 +71,7 @@ const EditPage = ({ handleUpdate }) => {
           placeholder="Designation"
           name="designation"
           value={designation}
-          // onChange={(e) => handleChange(e)}
+          onChange={(e) => handleChange(e)}
         >
           <option value="Developer">Developer</option>
           <option value="Manager">Manager</option>

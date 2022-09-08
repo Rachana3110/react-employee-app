@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import "./css/AllEmployee.css";
 
 const AllEmployees = ({ empdata }) => {
-  const [searchInput, setSearchInput] = useState();
   const [employeeData, setEmployeeData] = useState(empdata);
 
-  const handleSearch = () => {
-    if (searchInput) {
+  const handleSearch = (searchValue) => {
+    if (searchValue) {
       const filterData =
         empdata &&
         empdata.filter((emp) => {
-          return emp.emp_id === searchInput;
+          return emp.emp_id === searchValue;
         });
-      setEmployeeData(filterData);
+      if (filterData.length !== 0) {
+        setEmployeeData(filterData);
+      } else setEmployeeData();
     } else setEmployeeData(empdata);
   };
   return (
@@ -24,11 +25,10 @@ const AllEmployees = ({ empdata }) => {
           id="search-form"
           className="search-input"
           placeholder="Search..."
-          onChange={(e) => setSearchInput(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
       </div>
-      <p style={{textAlign:"center"}}>*Search using Employee Id</p>
+      <p style={{ textAlign: "center" }}>*Search using Employee Id</p>
       <div className="table-container">
         <table className="table">
           <thead>
@@ -39,7 +39,7 @@ const AllEmployees = ({ empdata }) => {
             </tr>
           </thead>
           <tbody>
-            {employeeData &&
+            {employeeData ? (
               employeeData.map((employee, i) => {
                 return (
                   <tr key={i}>
@@ -48,7 +48,12 @@ const AllEmployees = ({ empdata }) => {
                     <td className="row">{employee.designation}</td>
                   </tr>
                 );
-              })}
+              })
+            ) : (
+              <tr>
+                <td>Employee Details Not Found</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

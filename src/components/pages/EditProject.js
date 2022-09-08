@@ -1,21 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Multiselect from "multiselect-react-dropdown";
-import "./css/AddProject.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddProject = ({ empdata, handleAddProject }) => {
+const EditProject = ({ empdata, handleProjectUpdate }) => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [project, setProject] = useState({
-    emp_id: [],
     project_name: "",
   });
+  const { emp_id, project_name } = project;
 
   const empId =
     empdata &&
     empdata.map((emp, i) => {
       return emp.emp_id;
     });
-  const { emp_id, project_name } = project;
+
+  useEffect(() => {
+    const loadProject = async () => {
+      const result = await axios.get(`http://localhost:3001/projects/${id}`);
+      setProject(result.data);
+    };
+    loadProject();
+  }, [id]);
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -29,11 +37,11 @@ const AddProject = ({ empdata, handleAddProject }) => {
   return (
     <form
       className="edit-form-container"
-      onSubmit={(event) => {
-        event.preventDefault();
-        emp_id.length
-          ? handleAddProject(event, project)
-          : alert("Fill all values");
+      onSubmit={(e) => {
+        e.preventDefault();
+        emp_id.length !== 0
+          ? handleProjectUpdate(id, project)
+          : alert("fill all values");
       }}
     >
       <label className="edit-label">Project Name</label>
@@ -51,11 +59,13 @@ const AddProject = ({ empdata, handleAddProject }) => {
         className="multiselect-value"
         isObject={false}
         name="emp_id"
+        selectedValues={emp_id}
         options={empId}
-        onSelect={(e) => handleMultiSelect(e)}
+        onSelect={handleMultiSelect}
+        onRemove={handleMultiSelect}
         showCheckbox
       ></Multiselect>
-      <input className="add-project-button" type="submit" value="Add" />
+      <input className="add-project-button" type="submit" value="Update" />
       <input
         className="edit-back-button"
         type="button"
@@ -66,4 +76,4 @@ const AddProject = ({ empdata, handleAddProject }) => {
   );
 };
 
-export default AddProject;
+export default EditProject;

@@ -29,7 +29,7 @@ const TestRegistration = ({ handleRegister }) => {
         <label className="question-label">Password</label>
         <input
           className="question-input"
-          type="text"
+          type="password"
           placeholder="Enter Password"
           name="password"
           onChange={(e) => handleChange(e)}
