@@ -16,9 +16,12 @@
   float: right;
   color: red;
   padding: 0.9%;
+  background-color: white;
+  border-color: grey;
+  border-style: outset;
   font-size: 15px;
   font-weight: bold;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .home-tabs {

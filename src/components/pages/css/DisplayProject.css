@@ -1,0 +1,19 @@
+.delete-button {
+  margin-left: 10px;
+  background-color: red;
+  color: white;
+  border-color: black;
+  cursor: pointer;
+}
+
+.edit-project-link {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  border: 2px solid;
+  padding: 1px 6px;
+  border-style: outset;
+  background-color: green;
+  color: white;
+  border-color: grey;
+}

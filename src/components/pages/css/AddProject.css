@@ -1,10 +1,12 @@
 .add-project-button {
-  margin: 1%;
+  margin-bottom: 3%;
   text-decoration: none;
-  border: 1px solid black;
-  padding: 1%;
+  border: 1px solid rgb(168, 165, 165);
+  border-style: outset;
+  border-width: 3px;
+  padding: 0.5%;
   color: white;
-  background-color: black;
+  background-color: darkblue;
 }
 
 .multiselect-value {

@@ -20,6 +20,13 @@
       "first_name": "Rachu",
       "designation": "Manager",
       "id": 3
+    },
+    {
+      "emp_id": "120",
+      "password": "120",
+      "first_name": "John",
+      "designation": "Manager",
+      "id": 4
     }
   ],
   "projects": [
