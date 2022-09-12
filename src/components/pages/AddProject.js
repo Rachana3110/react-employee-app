@@ -36,6 +36,7 @@ const AddProject = ({ empdata, handleAddProject }) => {
           : alert("Fill all values");
       }}
     >
+      <h2 className="registration-header">Add Project</h2>
       <label className="edit-label">Project Name</label>
       <input
         className="edit-value"

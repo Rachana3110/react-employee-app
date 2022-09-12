@@ -4,7 +4,7 @@ import "./css/HomePage.css";
 
 function HomePage({ setToken, currentEmployee }) {
   const navigate = useNavigate();
-
+  console.log(currentEmployee);
   const handleLogout = () => {
     setToken("");
     navigate("/");
@@ -24,9 +24,14 @@ function HomePage({ setToken, currentEmployee }) {
                 Profile
               </Link>
               {emp.designation === "Manager" && (
-                <Link className="home-link" to={`/displayproject`}>
-                  Display Project
-                </Link>
+                <>
+                  <Link className="home-link" to={`/displayproject`}>
+                    Display Project
+                  </Link>
+                  <Link className="home-link" to="/add-employee">
+                    Add Employee
+                  </Link>
+                </>
               )}
               <Link className="home-link" to={`/employeelist`}>
                 Employee List

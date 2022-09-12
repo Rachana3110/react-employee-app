@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "./css/Registration.css";
 
 const TestRegistration = ({ handleRegister }) => {
@@ -58,11 +57,6 @@ const TestRegistration = ({ handleRegister }) => {
           <option value="Manager">Manager</option>
         </select>
         <input className="register-button" type="submit" value="Add" />
-        <button className="back-button">
-          <Link className="link" to="/">
-            Back to Login
-          </Link>
-        </button>
       </form>
     </div>
   );

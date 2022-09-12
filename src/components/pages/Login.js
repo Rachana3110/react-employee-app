@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./css/Login.css";
 
 const Login = ({ setToken, empdata }) => {
@@ -56,10 +56,10 @@ const Login = ({ setToken, empdata }) => {
           </div>
         )}
         <input className="submit-button" type="submit" value="Log-In" />
-        <p>Dont have credentials, register before login</p>
+        {/* <p>Dont have credentials, register before login</p>
         <Link to="/registration">
           <input className="register-button" type="button" value="Register" />
-        </Link>
+        </Link> */}
       </form>
   );
 };

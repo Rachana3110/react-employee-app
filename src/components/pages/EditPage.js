@@ -36,6 +36,7 @@ const EditPage = ({ handleUpdate }) => {
           handleUpdate(id, employee);
         }}
       >
+      <h2 className="registration-header">Edit Profile</h2>
         <label className="edit-label">Employee Id </label>
         <input
           className="edit-value"
@@ -71,7 +72,6 @@ const EditPage = ({ handleUpdate }) => {
           placeholder="Designation"
           name="designation"
           value={designation}
-          onChange={(e) => handleChange(e)}
         >
           <option value="Developer">Developer</option>
           <option value="Manager">Manager</option>

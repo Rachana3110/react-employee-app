@@ -40,7 +40,7 @@ const Routing = () => {
   const handleRegister = async (event, employees) => {
     event.preventDefault();
     await axios.post("http://localhost:3001/employees", employees);
-    navigate("/");
+    navigate("/employeelist");
     window.location.reload(true);
   };
 
@@ -88,10 +88,6 @@ const Routing = () => {
             index
             element={<Login setToken={setToken} empdata={empdata} />}
           />
-          <Route
-            path="/registration"
-            element={<Registration handleRegister={handleRegister} />}
-          />
         </>
       ) : (
         <>
@@ -119,6 +115,10 @@ const Routing = () => {
                       handleAddProject={handleAddProject}
                     />
                   }
+                />
+                <Route
+                  path="/add-employee"
+                  element={<Registration handleRegister={handleRegister} />}
                 />
                 <Route
                   path="/editproject/:id"
