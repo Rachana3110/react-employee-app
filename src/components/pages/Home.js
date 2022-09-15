@@ -4,6 +4,7 @@ import "./css/HomePage.css";
 
 function HomePage({ setToken, currentEmployee }) {
   const navigate = useNavigate();
+
   const handleLogout = () => {
     setToken("");
     navigate("/");
@@ -19,7 +20,7 @@ function HomePage({ setToken, currentEmployee }) {
         currentEmployee.map((emp, i) => {
           return (
             <div key={i} className="home-tabs">
-              <Link className="home-link" to={`/profile`}>
+              <Link className={"home-link"} to={`/profile`}>
                 Profile
               </Link>
               {emp.designation === "Manager" && (

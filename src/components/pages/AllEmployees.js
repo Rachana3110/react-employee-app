@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import inputs from "../data/inputs";
 import "./css/AllEmployee.css";
 
 const AllEmployees = ({ empdata }) => {
-  const [employeeData, setEmployeeData] = useState(empdata);
+  // const [employeeData, setEmployeeData] = useState(empdata);
 
-  const handleSearch = (searchValue) => {
-    if (searchValue) {
-      const filterData =
-        empdata &&
-        empdata.filter((emp) => {
-          return emp.emp_id === searchValue;
-        });
-      if (filterData.length !== 0) {
-        setEmployeeData(filterData);
-      } else setEmployeeData();
-    } else setEmployeeData(empdata);
-  };
+  // const handleSearch = (searchValue) => {
+  //   if (searchValue) {
+  //     const filterData =
+  //       empdata &&
+  //       empdata.filter((emp) => {
+  //         return emp.emp_id === searchValue;
+  //       });
+  //     if (filterData.length !== 0) {
+  //       setEmployeeData(filterData);
+  //     } else setEmployeeData();
+  //   } else setEmployeeData(empdata);
+  // };
   return (
     <div className="display-container">
-      <div className="search-container">
+      {/* <div className="search-container">
         <input
           type="search"
           name="search-form"
@@ -29,7 +29,7 @@ const AllEmployees = ({ empdata }) => {
           onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
-      <p style={{ textAlign: "center" }}>*Search using Employee Id</p>
+      <p style={{ textAlign: "center" }}>*Search using Employee Id</p> */}
       <div className="table-container">
         {inputs.map((input, i) => {
           return (
@@ -41,8 +41,8 @@ const AllEmployees = ({ empdata }) => {
                         {input.label}
                       </th>
                   </thead>
-                  {employeeData &&
-                    employeeData.map((employee, i) => {
+                  {empdata &&
+                    empdata.map((employee, i) => {
                       return (
                         <tbody>
                             <td className="row" key={i}>

@@ -35,6 +35,23 @@
       "gender": "Female",
       "marital_status": "Married",
       "id": 2
+    },
+    {
+      "email": "ammu@123.in",
+      "password": "Ammu!2134",
+      "first_name": "Ammrutha",
+      "last_name": "",
+      "date_of_birth": "1995-09-23",
+      "phone_number": "9173645454",
+      "address": "",
+      "qualification": "B.E",
+      "total_experience": "",
+      "start_date": "",
+      "type_of_employee": "",
+      "designation": "Developer",
+      "gender": "Female",
+      "marital_status": "Married",
+      "id": 3
     }
   ],
   "projects": [
