@@ -2,19 +2,26 @@ import axios from "axios";
 import Multiselect from "multiselect-react-dropdown";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import projectinputs from "../data/projectinputs";
+import FormInputs from "../helpers/FormInputs";
 
 const EditProject = ({ empdata, handleProjectUpdate }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [project, setProject] = useState({
     project_name: "",
+    company_name: "",
+    project_status: "",
+    company_phone: "",
+    project_start_date: "",
+    project_end_date: "",
   });
-  const { emp_id, project_name } = project;
+  const { emp_id } = project;
 
   const empId =
     empdata &&
     empdata.map((emp, i) => {
-      return emp.emp_id;
+      return emp.id;
     });
 
   useEffect(() => {
@@ -44,17 +51,19 @@ const EditProject = ({ empdata, handleProjectUpdate }) => {
           : alert("fill all values");
       }}
     >
-      <label className="edit-label">Project Name</label>
-      <input
-        className="edit-value"
-        type="text"
-        placeholder="Enter Project Name"
-        name="project_name"
-        value={project_name}
-        onChange={(e) => handleChange(e)}
-        required
-      />
-      <label className="edit-label">Employee Id</label>
+     {projectinputs.map((input, i) => {
+        return (
+          <FormInputs
+            key={input.id}
+            {...input}
+            value={project[input.name]}
+            option={input.options}
+            type={input.type}
+            onChange={handleChange}
+          />
+        );
+      })}
+      <label className="multiselect-label">Employee Id</label>
       <Multiselect
         className="multiselect-value"
         isObject={false}

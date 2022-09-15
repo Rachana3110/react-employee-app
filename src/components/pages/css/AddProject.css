@@ -9,9 +9,14 @@
   background-color: darkblue;
 }
 
-.multiselect-value {
-  text-align: left;
-  width: 360px;
+.multiselect-label {
+  display: block;
+  font-weight: bold;
+  padding: 12px 20px;
+  text-align: center;
+  background-color: #ffe4c4;
 }
-
-
+.multiselect-value {
+  display: block;
+  margin-bottom: 5%;
+}

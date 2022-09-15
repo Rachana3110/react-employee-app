@@ -33,27 +33,29 @@ const AllEmployees = ({ empdata }) => {
       <div className="table-container">
         {inputs.map((input, i) => {
           return (
-            <>
+            <React.Fragment key={i}>
               {input.label !== "Password" && (
                 <table className="table">
                   <thead>
+                    <tr>
                       <th className="column" key={i}>
                         {input.label}
                       </th>
+                    </tr>
                   </thead>
                   {empdata &&
                     empdata.map((employee, i) => {
                       return (
-                        <tbody>
-                            <td className="row" key={i}>
-                              {employee[input.name]}
-                            </td>
+                        <tbody key={i}>
+                          <tr>
+                            <td className="row">{employee[input.name]}</td>
+                          </tr>
                         </tbody>
                       );
                     })}
                 </table>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </div>

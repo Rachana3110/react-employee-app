@@ -6,8 +6,8 @@
       "first_name": "Rachu",
       "last_name": "Suresh",
       "date_of_birth": "1997-10-31",
-      "phone_number": "114",
-      "address": "",
+      "phone_number": "1141111111",
+      "address": "Jayanagar",
       "postal_Code": "",
       "qualification": "B.E",
       "total_experience": "3",
@@ -48,7 +48,7 @@
       "total_experience": "",
       "start_date": "",
       "type_of_employee": "",
-      "designation": "Developer",
+      "designation": "Manager",
       "gender": "Female",
       "marital_status": "Married",
       "id": 3
@@ -56,18 +56,40 @@
   ],
   "projects": [
     {
-      "project_name": "abc",
+      "project_name": "Sunrise",
+      "company_name": "Sonata",
+      "project_status": "Active",
+      "company_phone": "111",
+      "project_start_date": "2022-09-22",
+      "project_end_date": "2022-09-24",
       "emp_id": [
-        "1",
-        "2"
+        1
+      ],
+      "id": 1
+    },
+    {
+      "project_name": "PennyMac",
+      "company_name": "Sonata",
+      "project_status": "Inactive",
+      "company_phone": "111",
+      "project_start_date": "2022-09-01",
+      "project_end_date": "2022-09-08",
+      "emp_id": [
+        2
       ],
       "id": 2
     },
     {
+      "project_name": "xyz",
+      "company_name": "zzz",
+      "project_status": "Active",
+      "company_phone": "12345",
+      "project_start_date": "2022-09-03",
+      "project_end_date": "2022-10-01",
       "emp_id": [
-        "18096"
+        1,
+        2
       ],
-      "project_name": "Rrr",
       "id": 3
     }
   ]
