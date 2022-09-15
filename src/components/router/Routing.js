@@ -28,7 +28,7 @@ const Routing = () => {
   if (empdata) {
     const getToken = JSON.parse(localStorage.getItem("token"));
     currentEmployee = empdata.filter((emp) => {
-      return getToken.emp_id && emp.emp_id === getToken.emp_id;
+      return getToken && emp.emp_id === getToken.emp_id;
     });
   }
 
