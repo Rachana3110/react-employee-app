@@ -28,7 +28,7 @@ const Routing = () => {
   if (empdata) {
     const getToken = JSON.parse(localStorage.getItem("token"));
     currentEmployee = empdata.filter((emp) => {
-      return getToken && emp.emp_id === getToken.emp_id;
+      return getToken && emp.email === getToken.email;
     });
   }
 
@@ -40,7 +40,7 @@ const Routing = () => {
   const handleRegister = async (event, employees) => {
     event.preventDefault();
     await axios.post("http://localhost:3001/employees", employees);
-    navigate("/employeelist");
+    navigate("/");
     window.location.reload(true);
   };
 
@@ -88,6 +88,10 @@ const Routing = () => {
             index
             element={<Login setToken={setToken} empdata={empdata} />}
           />
+          <Route
+            path="/registration"
+            element={<Registration handleRegister={handleRegister} />}
+          />
         </>
       ) : (
         <>
@@ -115,10 +119,6 @@ const Routing = () => {
                       handleAddProject={handleAddProject}
                     />
                   }
-                />
-                <Route
-                  path="/add-employee"
-                  element={<Registration handleRegister={handleRegister} />}
                 />
                 <Route
                   path="/editproject/:id"

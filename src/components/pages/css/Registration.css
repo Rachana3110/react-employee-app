@@ -17,7 +17,20 @@
   padding: 3px;
 }
 
-.question-label {
+.form-container{
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+.input{
+  display: block;
+  padding: 8px 20px;
+  text-align: left;
+  margin-bottom: 3%;
+}
+
+.label{
   display: block;
   font-weight: bold;
   padding: 12px 20px;
@@ -25,16 +38,17 @@
   background-color: #ffe4c4;
 }
 
-.question-input {
-  display: block;
-  padding: 8px 20px;
-  text-align: left;
-  margin-bottom: 2%;
+.span{
+  font-size: 12px;
+  padding: 3px;
+  color: red;
+  display: none;
 }
 
-.link {
-  text-decoration: none;
-  color: #000000;
-  font-size: 13px;
-  font-weight: bold;
+.input:invalid[focused="true"]{
+  border: 1px solid red;
+}
+
+.input:invalid[focused="true"] ~ span{
+  display: block;
 }

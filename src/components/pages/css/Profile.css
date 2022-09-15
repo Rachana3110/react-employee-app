@@ -1,10 +1,7 @@
-.profile-container {
+.profile-cards {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3%;
-  height: 100vh;
-  overflow-y: visible;
 }
 
 .profile-label {
@@ -30,4 +27,7 @@
   padding: 0.5% 2% 0.5% 2%;
   font-weight: bold;
   background-color: green;
+  width: 6%;
+  margin-left: 47%;
+  margin-bottom: 3%;
 }

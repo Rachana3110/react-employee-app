@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import inputs from "../data/inputs";
 import "./css/AllEmployee.css";
 
 const AllEmployees = ({ empdata }) => {
@@ -30,32 +31,31 @@ const AllEmployees = ({ empdata }) => {
       </div>
       <p style={{ textAlign: "center" }}>*Search using Employee Id</p>
       <div className="table-container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th className="column">Employee ID</th>
-              <th className="column">First Name</th>
-              <th className="column">Designation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employeeData ? (
-              employeeData.map((employee, i) => {
-                return (
-                  <tr key={i}>
-                    <td className="row">{employee.emp_id}</td>
-                    <td className="row">{employee.first_name}</td>
-                    <td className="row">{employee.designation}</td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td>Employee Details Not Found</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        {inputs.map((input, i) => {
+          return (
+            <>
+              {input.label !== "Password" && (
+                <table className="table">
+                  <thead>
+                      <th className="column" key={i}>
+                        {input.label}
+                      </th>
+                  </thead>
+                  {employeeData &&
+                    employeeData.map((employee, i) => {
+                      return (
+                        <tbody>
+                            <td className="row" key={i}>
+                              {employee[input.name]}
+                            </td>
+                        </tbody>
+                      );
+                    })}
+                </table>
+              )}
+            </>
+          );
+        })}
       </div>
     </div>
   );

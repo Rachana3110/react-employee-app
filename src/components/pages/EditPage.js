@@ -2,18 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./css/EditPage.css";
+import FormInputs from "../helpers/FormInputs";
+import inputs from "../data/inputs";
 
 const EditPage = ({ handleUpdate }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [employee, setEmployee] = useState({
-    emp_id: "",
+    email: "",
     password: "",
     first_name: "",
+    last_name: "",
+    date_of_birth: "",
+    phone_number: "",
+    address: "",
+    qualification: "",
+    total_experience: "",
+    start_date: "",
+    type_of_employee: "",
     designation: "",
+    gender: "",
+    marital_status: "",
   });
-
-  const { emp_id, password, first_name, designation } = employee;
 
   const handleChange = (event) => {
     setEmployee({ ...employee, [event.target.name]: event.target.value });
@@ -36,46 +46,19 @@ const EditPage = ({ handleUpdate }) => {
           handleUpdate(id, employee);
         }}
       >
-      <h2 className="registration-header">Edit Profile</h2>
-        <label className="edit-label">Employee Id </label>
-        <input
-          className="edit-value"
-          type="text"
-          placeholder="Enter Employee Id"
-          value={emp_id}
-          name="id"
-        />
-        <label className="edit-label">Password</label>
-        <input
-          className="edit-value"
-          type="text"
-          placeholder="Enter Password"
-          name="password"
-          value={password}
-          onChange={(e) => handleChange(e)}
-          required
-        />
-        <label className="edit-label">First Name</label>
-        <input
-          className="edit-value"
-          type="text"
-          placeholder="Enter First Name"
-          name="first_name"
-          value={first_name}
-          onChange={(e) => handleChange(e)}
-          required
-        />
-        <label className="edit-label">Designation</label>
-        <select
-          className="edit-value"
-          type="dropdown"
-          placeholder="Designation"
-          name="designation"
-          value={designation}
-        >
-          <option value="Developer">Developer</option>
-          <option value="Manager">Manager</option>
-        </select>
+        <h2 className="registration-header">Edit Profile</h2>
+        {inputs.map((input, i) => {
+          return (
+            <FormInputs
+              key={input.id}
+              {...input}
+              value={employee[input.name]}
+              option={input.options}
+              type={input.type}
+              onChange={handleChange}
+            />
+          );
+        })}
         <input className="update-button" type="submit" value="Update" />
         <input
           className="edit-back-button"

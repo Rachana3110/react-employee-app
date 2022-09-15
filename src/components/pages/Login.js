@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./css/Login.css";
 
 const Login = ({ setToken, empdata }) => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    emp_id: "",
+    email: "",
     password: "",
   });
   const [error, setError] = useState(false);
@@ -13,7 +13,7 @@ const Login = ({ setToken, empdata }) => {
   const handleLogin = (event) => {
     event.preventDefault();
     const empCheck = empdata.find(
-      (emp) => emp.emp_id === values.emp_id && emp.password === values.password
+      (emp) => emp.email === values.email && emp.password === values.password
     );
     if (!empCheck) {
       setError(true);
@@ -30,37 +30,37 @@ const Login = ({ setToken, empdata }) => {
   };
 
   return (
-      <form className="login-form-container" onSubmit={handleLogin}>
-        <h2 className="login-header">Login Page</h2>
-        <label className="login-question-label">Employee Id</label>
-        <input
-          className="login-question-input"
-          type="number"
-          placeholder="Enter Employee Id..."
-          name="emp_id"
-          onChange={(e) => handleChange(e)}
-          required
-        />
-        <label className="login-question-label">Password</label>
-        <input
-          className="login-question-input"
-          type="password"
-          placeholder="Enter Password..."
-          name="password"
-          onChange={(e) => handleChange(e)}
-          required
-        />
-        {error && (
-          <div className="error-msg">
-            <p>*Incorrect Employee Id or Password.</p>
-          </div>
-        )}
-        <input className="submit-button" type="submit" value="Log-In" />
-        {/* <p>Dont have credentials, register before login</p>
-        <Link to="/registration">
-          <input className="register-button" type="button" value="Register" />
-        </Link> */}
-      </form>
+    <form className="login-form-container" onSubmit={handleLogin}>
+      <h2 className="login-header">Login Page</h2>
+      <label className="login-question-label">Email</label>
+      <input
+        className="login-question-input"
+        type="email"
+        placeholder="Enter Email..."
+        name="email"
+        onChange={(e) => handleChange(e)}
+        required
+      />
+      <label className="login-question-label">Password</label>
+      <input
+        className="login-question-input"
+        type="password"
+        placeholder="Enter Password..."
+        name="password"
+        onChange={(e) => handleChange(e)}
+        required
+      />
+      {error && (
+        <div className="error-msg">
+          <p>*Incorrect Employee Id or Password.</p>
+        </div>
+      )}
+      <input className="submit-button" type="submit" value="Log-In" />
+      <p>Dont have credentials, register before login</p>
+      <Link to="/registration">
+        <input className="register-button" type="button" value="Register" />
+      </Link>
+    </form>
   );
 };
 

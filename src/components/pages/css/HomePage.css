@@ -15,7 +15,7 @@
 .logout-button {
   float: right;
   color: red;
-  padding: 0.9%;
+  padding: 0.87%;
   background-color: white;
   border-color: grey;
   border-style: outset;
@@ -26,6 +26,7 @@
 
 .home-tabs {
   display: flex;
+  margin-bottom: 2%;
   justify-content: space-between;
   background-color: rgb(197, 197, 197);
 }

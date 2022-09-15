@@ -1,39 +1,40 @@
 {
   "employees": [
     {
-      "emp_id": "1",
-      "password": "1",
-      "first_name": "Rachana",
+      "email": "rachana@sonata.com",
+      "password": "Ruchi@3110",
+      "first_name": "Rachu",
+      "last_name": "Suresh",
+      "date_of_birth": "1997-10-31",
+      "phone_number": "114",
+      "address": "",
+      "postal_Code": "",
+      "qualification": "B.E",
+      "total_experience": "3",
+      "start_date": "2022-09-01",
+      "type_of_employee": "Permanent",
       "designation": "Manager",
+      "gender": "Female",
+      "marital_status": "Married",
       "id": 1
     },
     {
-      "emp_id": "2",
-      "password": "2",
+      "email": "ruchitha@sonata.com",
+      "password": "Ruchitha@3110",
       "first_name": "Ruchitha",
+      "last_name": "NS",
+      "date_of_birth": "2000-06-14",
+      "phone_number": "9164339873",
+      "address": "Bengaluru",
+      "postal_Code": "",
+      "qualification": "M.S",
+      "total_experience": "2",
+      "start_date": "2022-09-17",
+      "type_of_employee": "Part-time",
       "designation": "Developer",
+      "gender": "Female",
+      "marital_status": "Married",
       "id": 2
-    },
-    {
-      "emp_id": "18096",
-      "password": "Rachu",
-      "first_name": "Rachana",
-      "designation": "Manager",
-      "id": 3
-    },
-    {
-      "emp_id": "120",
-      "password": "120",
-      "first_name": "John",
-      "designation": "Manager",
-      "id": 4
-    },
-    {
-      "emp_id": "3",
-      "password": "3",
-      "first_name": "Rr",
-      "designation": "Developer",
-      "id": 5
     }
   ],
   "projects": [
