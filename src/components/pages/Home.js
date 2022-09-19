@@ -29,6 +29,9 @@ function HomePage({ setToken, currentEmployee }) {
               <Link className="home-link" to={`/employeelist`}>
                 Employee List
               </Link>
+              <Link className="home-link" to={`/skillupdate`}>
+                Skill Update
+              </Link>
             </div>
           );
         })}

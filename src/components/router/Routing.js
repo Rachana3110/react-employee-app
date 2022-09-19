@@ -13,6 +13,7 @@ import Profile from "../pages/Profile";
 import ProjectInformation from "../pages/ProjectInformation";
 import Registration from "../pages/Registration";
 import AddEmployee from "../pages/AddEmployee";
+import SkillUpdate from "../pages/css/SkillUpdate";
 
 const Routing = () => {
   const navigate = useNavigate();
@@ -78,6 +79,10 @@ const Routing = () => {
   const deleteProject = async (id) => {
     await axios.delete(`http://localhost:3001/projects/${id}`);
     loadProject();
+  };
+
+  const handleEmployeeUpdate = async (id, employee) => {
+    await axios.put(`http://localhost:3001/employees/${id}`, employee);
   };
 
   return (
@@ -151,9 +156,17 @@ const Routing = () => {
                   element={
                     <AddEmployee
                       empdata={empdata}
-                      projectdata={projectdata}
-                      handleUpdate={handleUpdate}
+                      handleEmployeeUpdate={handleEmployeeUpdate}
                       handleProjectUpdate={handleProjectUpdate}
+                    />
+                  }
+                />
+                <Route
+                  path="/skillupdate"
+                  element={
+                    <SkillUpdate
+                      currentEmployee={currentEmployee}
+                      handleEmployeeUpdate={handleEmployeeUpdate}
                     />
                   }
                 />

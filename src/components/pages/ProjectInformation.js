@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./css/DisplayProject.css";
 import DisplayProject from "./DisplayProject";
 
@@ -7,24 +7,34 @@ const ProjectInformation = ({
   projectdata,
   deleteProject,
 }) => {
-  const [currProjectData, setProjData] = useState(currentEmployee[0].project);
+  const currProjectData = currentEmployee[0].project;
 
   return (
     <div>
-      {currProjectData.length !== 0 ? (
-        <>
-          <p>Current Project : {currProjectData[currProjectData.length - 1]}</p>
-          <p>
-            previous Project :
-            {currProjectData.length - 2 !== 0
-              ? currProjectData[currProjectData.length - 2]
-              : "No previous data found"}
-          </p>
-        </>
+      {currentEmployee[0].designation === "Manager" ? (
+        <DisplayProject
+          projectdata={projectdata}
+          deleteProject={deleteProject}
+        />
       ) : (
-        <p>No Project Data found</p>
+        <>
+          {currProjectData.length !== 0 ? (
+            <>
+              <p>
+                Current Project : {currProjectData[currProjectData.length - 1]}
+              </p>
+              <p>
+                previous Project :
+                {currProjectData.length !== 1
+                  ? currProjectData[currProjectData.length - 2]
+                  : "No previous data found"}
+              </p>
+            </>
+          ) : (
+            <p>No Project Data found</p>
+          )}
+        </>
       )}
-      <DisplayProject projectdata={projectdata} deleteProject={deleteProject} />
     </div>
   );
 };

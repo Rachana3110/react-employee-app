@@ -20,6 +20,7 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
               {projectinputs.map((input, i) => {
                 return <th className="project-column">{input.label}</th>;
               })}
+              <th className="project-column">Employees</th>
               <th className="project-column">Action</th>
             </tr>
           </thead>
@@ -36,11 +37,18 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                       );
                     })}
                     <td className="project-row">
+                      {projectdata.emp_id.map((id, key) => {
+                        return (
+                          <ul key={key}>
+                            <li>{id}</li>
+                          </ul>
+                        );
+                      })}
+                    </td>
+                    <td className="project-row">
                       <button
                         onClick={() => {
-                          navigate(
-                            `/addemployee-to-project/${projectdata.id}`
-                          );
+                          navigate(`/addemployee-to-project/${projectdata.id}`);
                         }}
                       >
                         Add Employee

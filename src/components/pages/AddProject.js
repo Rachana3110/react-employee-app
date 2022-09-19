@@ -13,6 +13,7 @@ const AddProject = ({ empdata, handleAddProject }) => {
     company_phone: "",
     project_start_date: "",
     project_end_date: "",
+    emp_id: [],
   });
 
   const handleChange = (event) => {

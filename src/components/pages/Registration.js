@@ -23,6 +23,7 @@ const TestRegistration = ({ handleRegister }) => {
     designation: "",
     gender: "",
     marital_status: "",
+    skills:[],
   });
 
   const handleChange = (event) => {

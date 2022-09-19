@@ -39,3 +39,7 @@
   color: black;
   background-color: rgb(173, 170, 170);
 }
+
+.home-link:active {
+  background-color: cadetblue;
+}

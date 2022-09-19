@@ -7,16 +7,19 @@
       "last_name": "Suresh",
       "date_of_birth": "1997-10-21",
       "phone_number": "9917262552",
-      "address": "Jayanagar",
+      "address": "",
       "qualification": "B.E",
       "total_experience": "",
       "postal_code": "",
-      "project": [],
+      "project": [
+        "Sunrise"
+      ],
       "start_date": "",
       "type_of_employee": "Permanent",
       "designation": "Developer",
       "gender": "",
       "marital_status": "",
+      "skills": [],
       "id": 1
     },
     {
@@ -30,33 +33,43 @@
       "qualification": "",
       "total_experience": "",
       "postal_code": "",
-      "project": [],
+      "project": [
+        "Sunrise",
+        "ss"
+      ],
       "start_date": "",
       "type_of_employee": "",
       "designation": "Manager",
       "gender": "",
       "marital_status": "",
+      "skills": [],
       "id": 2
     }
   ],
   "projects": [
     {
-      "emp_id": "2",
-      "project_name": "ss",
-      "company_name": "ss",
-      "project_status": "Active",
-      "company_phone": "Sonata",
-      "project_start_date": "2022-09-29",
-      "project_end_date": "2022-09-30",
-      "id": 1
-    },
-    {
       "project_name": "Sunrise",
       "company_name": "Sonata",
       "project_status": "Active",
-      "company_phone": "927635353",
-      "project_start_date": "2022-09-22",
+      "company_phone": "523356153",
+      "project_start_date": "2022-09-23",
       "project_end_date": "2022-09-30",
+      "emp_id": [
+        "2",
+        "1"
+      ],
+      "id": 1
+    },
+    {
+      "project_name": "ss",
+      "company_name": "ss",
+      "project_status": "Active",
+      "company_phone": "111",
+      "project_start_date": "2022-09-23",
+      "project_end_date": "2022-09-30",
+      "emp_id": [
+        "2"
+      ],
       "id": 2
     }
   ]
