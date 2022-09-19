@@ -16,6 +16,8 @@ const TestRegistration = ({ handleRegister }) => {
     address: "",
     qualification: "",
     total_experience: "",
+    postal_code: "",
+    project: "",
     start_date: "",
     type_of_employee: "",
     designation: "",

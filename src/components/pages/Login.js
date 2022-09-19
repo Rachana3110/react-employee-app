@@ -20,7 +20,7 @@ const Login = ({ setToken, empdata }) => {
     } else {
       setError(false);
       setToken(empCheck);
-      navigate("/profile");
+      navigate("/");
     }
   };
 

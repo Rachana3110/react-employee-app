@@ -5,7 +5,6 @@ import "./css/DisplayProject.css";
 
 const DisplayProject = ({ projectdata, deleteProject }) => {
   const navigate = useNavigate();
-  console.log(projectdata);
   return (
     <>
       <button
@@ -21,7 +20,6 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
               {projectinputs.map((input, i) => {
                 return <th className="project-column">{input.label}</th>;
               })}
-              <th className="project-column">Employee Id</th>
               <th className="project-column">Action</th>
             </tr>
           </thead>
@@ -38,15 +36,15 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                       );
                     })}
                     <td className="project-row">
-                      {projectdata.emp_id.map((emp, i) => {
-                        return (
-                          <ul key={i}>
-                            <li>{emp}</li>
-                          </ul>
-                        );
-                      })}
-                    </td>
-                    <td className="project-row">
+                      <button
+                        onClick={() => {
+                          navigate(
+                            `/addemployee-to-project/${projectdata.id}`
+                          );
+                        }}
+                      >
+                        Add Employee
+                      </button>
                       <Link
                         className="edit-project-link"
                         to={`/editproject/${projectdata.id}`}
@@ -66,49 +64,7 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
           </tbody>
         </table>
 
-        {/* <table className="table">
-          <thead>
-            <tr>
-              <th className="column">Project Name</th>
-              <th className="column">Employee Id</th>
-              <th className="column">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projectdata &&
-              projectdata.map((projectdata, i) => {
-                return (
-                  <tr key={i}>
-                    <td className="row">{projectdata.project_name}</td>
-                    <td className="row">
-                      {projectdata.emp_id &&
-                        projectdata.emp_id.map((emp, i) => {
-                          return (
-                            <ul key={i}>
-                              <li>{emp}</li>
-                            </ul>
-                          );
-                        })}
-                    </td>
-                    <td className="row">
-                      <Link
-                        className="edit-project-link"
-                        to={`/editproject/${projectdata.id}`}
-                      >
-                        Edit
-                      </Link>
-                      <button
-                        className="delete-button"
-                        onClick={(event) => deleteProject(projectdata.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table> */}
+        <div></div>
       </div>
     </>
   );

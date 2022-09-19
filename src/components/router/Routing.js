@@ -4,14 +4,15 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import useToken from "../helpers/useToken";
 import AddProject from "../pages/AddProject";
 import AllEmployees from "../pages/AllEmployees";
-import DisplayProject from "../pages/DisplayProject";
 import EditPage from "../pages/EditPage";
 import EditProject from "../pages/EditProject";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Profile from "../pages/Profile";
+import ProjectInformation from "../pages/ProjectInformation";
 import Registration from "../pages/Registration";
+import AddEmployee from "../pages/AddEmployee";
 
 const Routing = () => {
   const navigate = useNavigate();
@@ -64,13 +65,13 @@ const Routing = () => {
   const handleAddProject = async (event, project) => {
     event.preventDefault();
     await axios.post(`http://localhost:3001/projects`, project);
-    navigate("/displayproject");
+    navigate("/projectinformation");
     window.location.reload(true);
   };
 
   const handleProjectUpdate = async (id, projectDetails) => {
     await axios.put(`http://localhost:3001/projects/${id}`, projectDetails);
-    navigate("/displayproject");
+    navigate("/projectinformation");
     window.location.reload(true);
   };
 
@@ -123,16 +124,14 @@ const Routing = () => {
                 <Route
                   path="/editproject/:id"
                   element={
-                    <EditProject
-                      empdata={empdata}
-                      handleProjectUpdate={handleProjectUpdate}
-                    />
+                    <EditProject handleProjectUpdate={handleProjectUpdate} />
                   }
                 />
                 <Route
-                  path="/displayproject"
+                  path="/projectinformation"
                   element={
-                    <DisplayProject
+                    <ProjectInformation
+                      currentEmployee={currentEmployee}
                       projectdata={projectdata}
                       deleteProject={deleteProject}
                     />
@@ -144,6 +143,17 @@ const Routing = () => {
                     <AllEmployees
                       empdata={empdata}
                       handleDelete={handleDelete}
+                    />
+                  }
+                />
+                <Route
+                  path="/addemployee-to-project/:id"
+                  element={
+                    <AddEmployee
+                      empdata={empdata}
+                      projectdata={projectdata}
+                      handleUpdate={handleUpdate}
+                      handleProjectUpdate={handleProjectUpdate}
                     />
                   }
                 />

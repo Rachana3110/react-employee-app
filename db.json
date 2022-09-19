@@ -1,96 +1,63 @@
 {
   "employees": [
     {
-      "email": "rachana@sonata.com",
-      "password": "Ruchi@3110",
-      "first_name": "Rachu",
+      "email": "rachana@123",
+      "password": "Ruchitha@3110",
+      "first_name": "Rachana",
       "last_name": "Suresh",
-      "date_of_birth": "1997-10-31",
-      "phone_number": "1141111111",
+      "date_of_birth": "1997-10-21",
+      "phone_number": "9917262552",
       "address": "Jayanagar",
-      "postal_Code": "",
       "qualification": "B.E",
-      "total_experience": "3",
-      "start_date": "2022-09-01",
+      "total_experience": "",
+      "postal_code": "",
+      "project": [],
+      "start_date": "",
       "type_of_employee": "Permanent",
-      "designation": "Manager",
-      "gender": "Female",
-      "marital_status": "Married",
+      "designation": "Developer",
+      "gender": "",
+      "marital_status": "",
       "id": 1
     },
     {
-      "email": "ruchitha@sonata.com",
+      "email": "r@123",
       "password": "Ruchitha@3110",
-      "first_name": "Ruchitha",
-      "last_name": "NS",
-      "date_of_birth": "2000-06-14",
-      "phone_number": "9164339873",
-      "address": "Bengaluru",
-      "postal_Code": "",
-      "qualification": "M.S",
-      "total_experience": "2",
-      "start_date": "2022-09-17",
-      "type_of_employee": "Part-time",
-      "designation": "Developer",
-      "gender": "Female",
-      "marital_status": "Married",
-      "id": 2
-    },
-    {
-      "email": "ammu@123.in",
-      "password": "Ammu!2134",
-      "first_name": "Ammrutha",
-      "last_name": "",
-      "date_of_birth": "1995-09-23",
-      "phone_number": "9173645454",
+      "first_name": "rr",
+      "last_name": "rr",
+      "date_of_birth": "2022-09-10",
+      "phone_number": "",
       "address": "",
-      "qualification": "B.E",
+      "qualification": "",
       "total_experience": "",
+      "postal_code": "",
+      "project": [],
       "start_date": "",
       "type_of_employee": "",
       "designation": "Manager",
-      "gender": "Female",
-      "marital_status": "Married",
-      "id": 3
+      "gender": "",
+      "marital_status": "",
+      "id": 2
     }
   ],
   "projects": [
     {
-      "project_name": "Sunrise",
-      "company_name": "Sonata",
+      "emp_id": "2",
+      "project_name": "ss",
+      "company_name": "ss",
       "project_status": "Active",
-      "company_phone": "111",
-      "project_start_date": "2022-09-22",
-      "project_end_date": "2022-09-24",
-      "emp_id": [
-        1
-      ],
+      "company_phone": "Sonata",
+      "project_start_date": "2022-09-29",
+      "project_end_date": "2022-09-30",
       "id": 1
     },
     {
-      "project_name": "PennyMac",
+      "project_name": "Sunrise",
       "company_name": "Sonata",
-      "project_status": "Inactive",
-      "company_phone": "111",
-      "project_start_date": "2022-09-01",
-      "project_end_date": "2022-09-08",
-      "emp_id": [
-        2
-      ],
-      "id": 2
-    },
-    {
-      "project_name": "xyz",
-      "company_name": "zzz",
       "project_status": "Active",
-      "company_phone": "12345",
-      "project_start_date": "2022-09-03",
-      "project_end_date": "2022-10-01",
-      "emp_id": [
-        1,
-        2
-      ],
-      "id": 3
+      "company_phone": "927635353",
+      "project_start_date": "2022-09-22",
+      "project_end_date": "2022-09-30",
+      "id": 2
     }
   ]
 }

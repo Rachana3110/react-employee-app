@@ -20,20 +20,19 @@ function HomePage({ setToken, currentEmployee }) {
         currentEmployee.map((emp, i) => {
           return (
             <div key={i} className="home-tabs">
-              <Link className={"home-link"} to={`/profile`}>
+              <Link className="home-link" to={`/profile`}>
                 Profile
               </Link>
-              {emp.designation === "Manager" && (
-                <Link className="home-link" to={`/displayproject`}>
-                  Display Project
-                </Link>
-              )}
+              <Link className="home-link" to={`/projectinformation`}>
+                Project Information
+              </Link>
               <Link className="home-link" to={`/employeelist`}>
                 Employee List
               </Link>
             </div>
           );
         })}
+
       <Outlet />
     </>
   );
