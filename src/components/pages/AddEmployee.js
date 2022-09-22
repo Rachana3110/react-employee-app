@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const AddEmployee = ({
   empdata,
+  projectdata,
   handleEmployeeUpdate,
   handleProjectUpdate,
 }) => {
@@ -29,9 +30,13 @@ const AddEmployee = ({
   }, [id]);
 
   const handleAddEmployee = (event) => {
-    project.emp_id.push(event.target.value);
-    setProject({ ...project });
-    setEmployeeId(event.target.value);
+    if (project.emp_id.includes(event.target.value)) {
+      alert("Employee already in the project");
+    } else {
+      project.emp_id.push(event.target.value);
+      setProject({ ...project });
+      setEmployeeId(event.target.value);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -47,7 +52,7 @@ const AddEmployee = ({
       setInterval(handleProjectUpdate(id, project), 2000);
     }
   };
-
+  console.log(project);
   return (
     <div>
       {project && (
@@ -65,11 +70,27 @@ const AddEmployee = ({
           <select name="emp_id" onChange={handleAddEmployee} required>
             <option value="">Select Employee</option>
             {empdata.map((employee, i) => {
-              return <option key={i}>{employee.id}</option>;
+              return (
+                <>
+                  {employee.designation !== "Manager" && (
+                    <option key={i}>{employee.id}</option>
+                  )}
+                </>
+              );
             })}
           </select>
           <input type="submit" value="Add Employee" />
           <button onClick={() => navigate("/projectinformation")}>Back</button>
+          <div>
+            <h3>List of Employees in {project.project_name} project</h3>
+            {project.emp_id.map((employeeId, i) => {
+              return (
+                <ul>
+                  <li>{employeeId}</li>
+                </ul>
+              );
+            })}
+          </div>
         </form>
       )}
     </div>

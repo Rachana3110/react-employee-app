@@ -40,7 +40,9 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                       {projectdata.emp_id.map((id, key) => {
                         return (
                           <ul key={key}>
-                            <li>{id}</li>
+                            <li>
+                              <Link to={`/employeelist/${id}`}>{id}</Link>
+                            </li>
                           </ul>
                         );
                       })}

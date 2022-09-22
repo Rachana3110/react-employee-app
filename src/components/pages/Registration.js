@@ -17,7 +17,7 @@ const TestRegistration = ({ empdata, handleRegister }) => {
     qualification: "",
     total_experience: "",
     postal_code: "",
-    project: "",
+    project: [],
     start_date: "",
     type_of_employee: "",
     designation: "",

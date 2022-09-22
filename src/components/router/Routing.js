@@ -139,7 +139,7 @@ const Routing = () => {
                   }
                 />
                 <Route
-                  path="/employeelist"
+                  path="/employeelist/:id"
                   element={
                     <AllEmployees
                       empdata={empdata}
@@ -152,6 +152,7 @@ const Routing = () => {
                   element={
                     <AddEmployee
                       empdata={empdata}
+                      projectdata={projectdata}
                       handleEmployeeUpdate={handleEmployeeUpdate}
                       handleProjectUpdate={handleProjectUpdate}
                     />

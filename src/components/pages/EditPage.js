@@ -8,22 +8,7 @@ import inputs from "../data/inputs";
 const EditPage = ({ handleUpdate }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [employee, setEmployee] = useState({
-    email: "",
-    password: "",
-    first_name: "",
-    last_name: "",
-    date_of_birth: "",
-    phone_number: "",
-    address: "",
-    qualification: "",
-    total_experience: "",
-    start_date: "",
-    type_of_employee: "",
-    designation: "",
-    gender: "",
-    marital_status: "",
-  });
+  const [employee, setEmployee] = useState({});
 
   const handleChange = (event) => {
     setEmployee({ ...employee, [event.target.name]: event.target.value });

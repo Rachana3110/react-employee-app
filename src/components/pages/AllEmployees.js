@@ -1,35 +1,25 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import inputs from "../data/inputs";
 import "./css/AllEmployee.css";
 
-const AllEmployees = ({ empdata }) => {
-  // const [employeeData, setEmployeeData] = useState(empdata);
+const AllEmployees = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [employee, setEmployee] = useState([]);
 
-  // const handleSearch = (searchValue) => {
-  //   if (searchValue) {
-  //     const filterData =
-  //       empdata &&
-  //       empdata.filter((emp) => {
-  //         return emp.emp_id === searchValue;
-  //       });
-  //     if (filterData.length !== 0) {
-  //       setEmployeeData(filterData);
-  //     } else setEmployeeData();
-  //   } else setEmployeeData(empdata);
-  // };
+  useEffect(() => {
+    const loadUser = async () => {
+      const result = await axios.get(`http://localhost:3001/employees/${id}`);
+      setEmployee(result.data);
+    };
+    loadUser();
+  }, [id]);
+
   return (
-    <div className="display-container">
-      {/* <div className="search-container">
-        <input
-          type="search"
-          name="search-form"
-          id="search-form"
-          className="search-input"
-          placeholder="Search..."
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </div>
-      <p style={{ textAlign: "center" }}>*Search using Employee Id</p> */}
+    <div className="root-container">
+      <h2>Employee Information</h2>
       <div className="table-container">
         {inputs.map((input, i) => {
           return (
@@ -43,22 +33,20 @@ const AllEmployees = ({ empdata }) => {
                       </th>
                     </tr>
                   </thead>
-                  {empdata &&
-                    empdata.map((employee, i) => {
-                      return (
-                        <tbody key={i}>
-                          <tr>
-                            <td className="row">{employee[input.name]}</td>
-                          </tr>
-                        </tbody>
-                      );
-                    })}
+                  <tbody>
+                    <tr>
+                      <td className="row">
+                        {employee && employee[input.name]}
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               )}
             </React.Fragment>
           );
         })}
       </div>
+      <button onClick={() => navigate("/projectinformation")}>Back</button>
     </div>
   );
 };

@@ -12,8 +12,8 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise",
-        "ss"
+        "ss",
+        "Sunrise"
       ],
       "start_date": "",
       "type_of_employee": "Permanent",
@@ -39,8 +39,7 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise",
-        "ss"
+        "Pennymac"
       ],
       "start_date": "",
       "type_of_employee": "",
@@ -49,6 +48,28 @@
       "marital_status": "",
       "skills": [],
       "id": 2
+    },
+    {
+      "email": "sonu@gmail.com",
+      "password": "Ruchitha@3110",
+      "first_name": "Sonu",
+      "last_name": "",
+      "date_of_birth": "",
+      "phone_number": "",
+      "address": "",
+      "qualification": "",
+      "total_experience": "",
+      "postal_code": "",
+      "project": [
+        "Sunrise"
+      ],
+      "start_date": "",
+      "type_of_employee": "",
+      "designation": "Developer",
+      "gender": "",
+      "marital_status": "",
+      "skills": [],
+      "id": 3
     }
   ],
   "projects": [
@@ -60,7 +81,7 @@
       "project_start_date": "2022-09-23",
       "project_end_date": "2022-09-30",
       "emp_id": [
-        "2",
+        "3",
         "1"
       ],
       "id": 1
@@ -73,7 +94,6 @@
       "project_start_date": "2022-09-23",
       "project_end_date": "2022-09-30",
       "emp_id": [
-        "2",
         "1"
       ],
       "id": 2
@@ -85,7 +105,9 @@
       "company_phone": "1111",
       "project_start_date": "2022-09-01",
       "project_end_date": "2022-09-23",
-      "emp_id": [],
+      "emp_id": [
+        "2"
+      ],
       "id": 3
     }
   ]

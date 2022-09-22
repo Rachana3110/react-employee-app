@@ -24,7 +24,7 @@ const ProjectInformation = ({
                 Current Project : {currProjectData[currProjectData.length - 1]}
               </p>
               <p>
-                previous Project :
+                Previous Project :
                 {currProjectData.length !== 1
                   ? currProjectData[currProjectData.length - 2]
                   : "No previous data found"}
