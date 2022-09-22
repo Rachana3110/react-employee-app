@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import "./css/SkillUpdate.css";
 
 const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
   const [choice, setChoice] = useState();
@@ -19,35 +20,61 @@ const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
     window.location.reload(true);
   };
   const handleDelete = (skillId) => {
-    skills.splice(skillId, 2);
+    skills.splice(skillId, 1);
     handleEmployeeUpdate(id, currentEmployee[0]);
     window.location.reload(true);
   };
 
   return (
-    <form onSubmit={handleSkillUpdate}>
-      <select name="skill-list" onChange={handleAddSkill} required>
-        <option value="">Select skill</option>
-        <option>HTML</option>
-        <option>CSS</option>
-        <option>JavaScript</option>
-        <option>ReactJs</option>
+    <form className="skill-container" onSubmit={handleSkillUpdate}>
+      <h2>Skill Update</h2>
+      <select
+        className="skill-select"
+        name="skill-list"
+        onChange={handleAddSkill}
+        required
+      >
+        <option className="skill-option" value="">
+          Select skill
+        </option>
+        <option className="skill-option">HTML</option>
+        <option className="skill-option">CSS</option>
+        <option className="skill-option">JavaScript</option>
+        <option className="skill-option">ReactJs</option>
       </select>
-      <input type="submit" value="Add Skill" />
-      {skills.map((skill, i) => {
-        return (
-          <ul key={i}>
-            <li>
-              {skill}
-              <input
-                type="button"
-                value="Delete Skill"
-                onClick={() => handleDelete(i)}
-              />
-            </li>
-          </ul>
-        );
-      })}
+      <input className="add-skill-button" type="submit" value="Add Skill" />
+
+      <table className="skill-table">
+        <thead>
+          <tr>
+            <th className="column">Skills List</th>
+            <th className="column">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {skills.length !== 0 ? (
+            skills.map((skill, i) => {
+              return (
+                <tr>
+                  <td className="row">
+                    <>{skill}</>
+                  </td>
+                  <td className="row">
+                    <input
+                      type="button"
+                      value="Delete Skill"
+                      onClick={() => handleDelete(i)}
+                      className="delete-button"
+                    />
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <p>No Skills found</p>
+          )}
+        </tbody>
+      </table>
     </form>
   );
 };

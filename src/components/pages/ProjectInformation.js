@@ -6,34 +6,38 @@ const ProjectInformation = ({
   currentEmployee,
   projectdata,
   deleteProject,
+  empdata,
 }) => {
   const currProjectData = currentEmployee[0].project;
 
   return (
     <div>
+      <h2 style={{ textAlign: "center" }}>Project Info</h2>
       {currentEmployee[0].designation === "Manager" ? (
         <DisplayProject
           projectdata={projectdata}
+          empdata={empdata}
           deleteProject={deleteProject}
         />
       ) : (
-        <>
+        <div className="project-info-container">
           {currProjectData.length !== 0 ? (
-            <>
-              <p>
-                Current Project : {currProjectData[currProjectData.length - 1]}
-              </p>
-              <p>
-                Previous Project :
+            <div className="info-block">
+              <label className="project-label">Current Project</label>
+              <div className="project-value">
+                {currProjectData[currProjectData.length - 1]}
+              </div>
+              <label className="project-label">Previous Project</label>
+              <div className="project-value">
                 {currProjectData.length !== 1
                   ? currProjectData[currProjectData.length - 2]
-                  : "No previous data found"}
-              </p>
-            </>
+                  : "No previous project found"}
+              </div>
+            </div>
           ) : (
             <p>No Project Data found</p>
           )}
-        </>
+        </div>
       )}
     </div>
   );

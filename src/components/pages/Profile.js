@@ -6,6 +6,7 @@ import "./css/Profile.css";
 const Profile = ({ currentEmployee }) => {
   return (
     <>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Profile</h2>
       {currentEmployee &&
         currentEmployee.map((employee) => {
           return (

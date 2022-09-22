@@ -3,14 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import projectinputs from "../data/projectinputs";
 import "./css/DisplayProject.css";
 
-const DisplayProject = ({ projectdata, deleteProject }) => {
+const DisplayProject = ({ projectdata, empdata, deleteProject }) => {
   const navigate = useNavigate();
   return (
     <>
-      <button
-        className="add-project-button"
-        onClick={() => navigate("/add-project")}
-      >
+      <button className="add-project" onClick={() => navigate("/add-project")}>
         Add Project
       </button>
       <div className="display-container">
@@ -39,16 +36,18 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                     <td className="project-row">
                       {projectdata.emp_id.map((id, key) => {
                         return (
-                          <ul key={key}>
-                            <li>
+                          <p key={key}>
+                            <label className="label">Employee Id </label>
+                            <div className="project-value">
                               <Link to={`/employeelist/${id}`}>{id}</Link>
-                            </li>
-                          </ul>
+                            </div>
+                          </p>
                         );
                       })}
                     </td>
                     <td className="project-row">
                       <button
+                        className="add-employee-button"
                         onClick={() => {
                           navigate(`/addemployee-to-project/${projectdata.id}`);
                         }}
@@ -65,7 +64,7 @@ const DisplayProject = ({ projectdata, deleteProject }) => {
                         className="delete-button"
                         onClick={(event) => deleteProject(projectdata.id)}
                       >
-                        Delete
+                        Delete Project
                       </button>
                     </td>
                   </tr>

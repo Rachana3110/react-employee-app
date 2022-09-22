@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import useToken from "../helpers/useToken";
 import AddProject from "../pages/AddProject";
-import AllEmployees from "../pages/AllEmployees";
+import EmployeeInfo from "../pages/EmployeeInfo";
 import EditPage from "../pages/EditPage";
 import EditProject from "../pages/EditProject";
 import Home from "../pages/Home";
@@ -135,13 +135,14 @@ const Routing = () => {
                       currentEmployee={currentEmployee}
                       projectdata={projectdata}
                       deleteProject={deleteProject}
+                      empdata={empdata}
                     />
                   }
                 />
                 <Route
                   path="/employeelist/:id"
                   element={
-                    <AllEmployees
+                    <EmployeeInfo
                       empdata={empdata}
                       handleDelete={handleDelete}
                     />

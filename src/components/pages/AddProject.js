@@ -29,7 +29,9 @@ const AddProject = ({ handleAddProject }) => {
         handleAddProject(event, project);
       }}
     >
-      <h2 className="registration-header">Add Project</h2>
+      <h2 style={{ marginBottom: "2%", padding: "1%", textAlign: "center" }}>
+        Add Project
+      </h2>
       {projectinputs.map((input, i) => {
         return (
           <FormInputs

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import inputs from "../data/inputs";
 import "./css/AllEmployee.css";
 
-const AllEmployees = () => {
+const EmployeeInfo = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [employee, setEmployee] = useState([]);
@@ -51,4 +51,4 @@ const AllEmployees = () => {
   );
 };
 
-export default AllEmployees;
+export default EmployeeInfo;

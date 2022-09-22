@@ -52,7 +52,6 @@ const AddEmployee = ({
       setInterval(handleProjectUpdate(id, project), 2000);
     }
   };
-  console.log(project);
   return (
     <div>
       {project && (
@@ -79,18 +78,8 @@ const AddEmployee = ({
               );
             })}
           </select>
-          <input type="submit" value="Add Employee" />
+          <input className="add-employee-button" type="submit" value="Add Employee" />
           <button onClick={() => navigate("/projectinformation")}>Back</button>
-          <div>
-            <h3>List of Employees in {project.project_name} project</h3>
-            {project.emp_id.map((employeeId, i) => {
-              return (
-                <ul>
-                  <li>{employeeId}</li>
-                </ul>
-              );
-            })}
-          </div>
         </form>
       )}
     </div>

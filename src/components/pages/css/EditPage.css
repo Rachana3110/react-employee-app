@@ -32,3 +32,9 @@
 .edit-back-button {
   padding: 3px 15px 5px 15px;
 }
+
+.edit-header {
+  margin-bottom: 2%;
+  padding: 1%;
+  text-align: center;
+}

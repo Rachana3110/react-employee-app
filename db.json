@@ -46,7 +46,9 @@
       "designation": "Manager",
       "gender": "",
       "marital_status": "",
-      "skills": [],
+      "skills": [
+        "CSS"
+      ],
       "id": 2
     },
     {
@@ -61,7 +63,8 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise"
+        "Sunrise",
+        "Pennymac"
       ],
       "start_date": "",
       "type_of_employee": "",
@@ -106,7 +109,8 @@
       "project_start_date": "2022-09-01",
       "project_end_date": "2022-09-23",
       "emp_id": [
-        "2"
+        "2",
+        "3"
       ],
       "id": 3
     }

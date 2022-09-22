@@ -1,0 +1,39 @@
+.skill-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-select {
+  width: 100%;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.55em 1em;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ffe0b2;
+  margin: 20px 0px 20px 0px;
+}
+
+.skill-option {
+  background-color: white;
+}
+
+.add-skill-button {
+  border: none;
+  background-color: rgb(33, 32, 33);
+  color: white;
+  border-radius: 0.6em;
+  font-family: inherit;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.skill-table {
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: 30px;
+}

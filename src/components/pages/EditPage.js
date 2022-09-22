@@ -31,7 +31,7 @@ const EditPage = ({ handleUpdate }) => {
           handleUpdate(id, employee);
         }}
       >
-        <h2 className="registration-header">Edit Profile</h2>
+        <h2 className="edit-header">Edit Profile</h2>
         {inputs.map((input, i) => {
           return (
             <FormInputs

@@ -24,7 +24,7 @@
 .display-container {
   display: flex;
   flex-direction: row;
-  margin:1%;
+  margin: 1%;
 }
 
 .project-table {
@@ -44,4 +44,55 @@
   border: 1px solid #000;
   text-align: center;
   padding: 8px;
+}
+
+.project-info-container {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.info-block {
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-label {
+  text-align: center;
+  font-weight: bold;
+  padding: 2%;
+  background-color: #ffe4c4;
+  width: 500px;
+}
+
+.project-value {
+  text-align: center;
+  padding: 2%;
+  border: 1px solid;
+  margin-bottom: 3%;
+}
+
+.add-project {
+  border: 1px solid rgb(168, 165, 165);
+  border-style: outset;
+  border-width: 3px;
+  padding: 0.5%;
+  color: white;
+  background-color: darkblue;
+  margin: 1% 40% 1% 46%;
+  width: 100px;
+  cursor: pointer;
+}
+
+.add-employee-button {
+  border: 1px solid rgb(168, 165, 165);
+  border-style: outset;
+  border-width: 3px;
+  padding: 0.5%;
+  color: black;
+  background-color: yellow;
+  margin-right: 10px;
+  cursor: pointer;
 }
