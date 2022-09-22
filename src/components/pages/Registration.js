@@ -4,7 +4,7 @@ import inputs from "../data/inputs";
 import FormInputs from "../helpers/FormInputs";
 import "./css/Registration.css";
 
-const TestRegistration = ({ handleRegister }) => {
+const TestRegistration = ({ empdata, handleRegister }) => {
   const navigate = useNavigate();
   const [employees, setEmployees] = useState({
     email: "",
@@ -23,7 +23,7 @@ const TestRegistration = ({ handleRegister }) => {
     designation: "",
     gender: "",
     marital_status: "",
-    skills:[],
+    skills: [],
   });
 
   const handleChange = (event) => {
@@ -31,11 +31,20 @@ const TestRegistration = ({ handleRegister }) => {
     setEmployees({ ...employees, [event.target.name]: event.target.value });
   };
 
+  const checkMail = empdata.map((mail, i) => {
+    return mail.email;
+  });
+
   return (
     <div>
       <form
         className="registration-form-container"
-        onSubmit={(event) => handleRegister(event, employees)}
+        onSubmit={(event) => {
+          event.preventDefault();
+          !checkMail.includes(employees.email)
+            ? handleRegister(event, employees)
+            : alert("Email already exist");
+        }}
       >
         <h2 className="registration-header">Registration Page</h2>
         {inputs.map((input) => (

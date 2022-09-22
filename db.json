@@ -12,14 +12,19 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise"
+        "Sunrise",
+        "ss"
       ],
       "start_date": "",
       "type_of_employee": "Permanent",
       "designation": "Developer",
       "gender": "",
       "marital_status": "",
-      "skills": [],
+      "skills": [
+        "HTML",
+        "JavaScript",
+        "ReactJs"
+      ],
       "id": 1
     },
     {
@@ -68,9 +73,20 @@
       "project_start_date": "2022-09-23",
       "project_end_date": "2022-09-30",
       "emp_id": [
-        "2"
+        "2",
+        "1"
       ],
       "id": 2
+    },
+    {
+      "project_name": "Pennymac",
+      "company_name": "Sonata",
+      "project_status": "Active",
+      "company_phone": "1111",
+      "project_start_date": "2022-09-01",
+      "project_end_date": "2022-09-23",
+      "emp_id": [],
+      "id": 3
     }
   ]
 }

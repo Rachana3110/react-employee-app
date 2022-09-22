@@ -13,14 +13,13 @@ import Profile from "../pages/Profile";
 import ProjectInformation from "../pages/ProjectInformation";
 import Registration from "../pages/Registration";
 import AddEmployee from "../pages/AddEmployee";
-import SkillUpdate from "../pages/css/SkillUpdate";
+import SkillUpdate from "../pages/SkillUpdate";
 
 const Routing = () => {
   const navigate = useNavigate();
   const { token, setToken } = useToken();
   const [empdata, setEmpData] = useState();
   const [projectdata, setProjectdata] = useState();
-
   useEffect(() => {
     loadEmployee();
     loadProject();
@@ -30,7 +29,7 @@ const Routing = () => {
   if (empdata) {
     const getToken = JSON.parse(localStorage.getItem("token"));
     currentEmployee = empdata.filter((emp) => {
-      return getToken && emp.email === getToken.email;
+      return getToken && emp.id === getToken;
     });
   }
 
@@ -96,7 +95,9 @@ const Routing = () => {
           />
           <Route
             path="/registration"
-            element={<Registration handleRegister={handleRegister} />}
+            element={
+              <Registration empdata={empdata} handleRegister={handleRegister} />
+            }
           />
         </>
       ) : (
@@ -119,12 +120,7 @@ const Routing = () => {
                 />
                 <Route
                   path="/add-project"
-                  element={
-                    <AddProject
-                      empdata={empdata}
-                      handleAddProject={handleAddProject}
-                    />
-                  }
+                  element={<AddProject handleAddProject={handleAddProject} />}
                 />
                 <Route
                   path="/editproject/:id"
@@ -162,7 +158,7 @@ const Routing = () => {
                   }
                 />
                 <Route
-                  path="/skillupdate"
+                  path="/skillupdate/:id"
                   element={
                     <SkillUpdate
                       currentEmployee={currentEmployee}

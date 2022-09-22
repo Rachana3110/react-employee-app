@@ -29,9 +29,11 @@ function HomePage({ setToken, currentEmployee }) {
               <Link className="home-link" to={`/employeelist`}>
                 Employee List
               </Link>
-              <Link className="home-link" to={`/skillupdate`}>
-                Skill Update
-              </Link>
+              {emp.designation !== "Manager" && (
+                <Link className="home-link" to={`/skillupdate/${emp.id}`}>
+                  Skill Update
+                </Link>
+              )}
             </div>
           );
         })}

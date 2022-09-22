@@ -19,7 +19,7 @@ const Login = ({ setToken, empdata }) => {
       setError(true);
     } else {
       setError(false);
-      setToken(empCheck);
+      setToken(empCheck.id);
       navigate("/projectinformation");
     }
   };

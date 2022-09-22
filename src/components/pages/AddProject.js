@@ -4,7 +4,7 @@ import "./css/AddProject.css";
 import projectinputs from "../data/projectinputs";
 import FormInputs from "../helpers/FormInputs";
 
-const AddProject = ({ empdata, handleAddProject }) => {
+const AddProject = ({ handleAddProject }) => {
   const navigate = useNavigate();
   const [project, setProject] = useState({
     project_name: "",
