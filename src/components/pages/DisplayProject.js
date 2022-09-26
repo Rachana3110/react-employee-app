@@ -3,8 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import projectinputs from "../data/projectinputs";
 import "./css/DisplayProject.css";
 
-const DisplayProject = ({ projectdata, empdata, deleteProject }) => {
+const DisplayProject = ({
+  projectdata,
+  empdata,
+  deleteProject,
+  handleEmployeeUpdate,
+  handleProjectUpdate,
+}) => {
   const navigate = useNavigate();
+  const handleRemoveEmp = (empid, projectInfo) => {
+    const filteredEmpData = empdata.filter((employee) => {
+      return employee.id === parseInt(empid);
+    })[0];
+    const employeeIndex = filteredEmpData.project.indexOf(
+      projectInfo.project_name
+    );
+    if (employeeIndex > -1) {
+      filteredEmpData.project.splice(employeeIndex, 1);
+    }
+    handleEmployeeUpdate(parseInt(empid), filteredEmpData);
+
+    const projectIndex = projectInfo.emp_id.indexOf(empid);
+    if (projectIndex > -1) {
+      projectInfo.emp_id.splice(projectIndex, 1);
+    }
+    handleProjectUpdate(projectInfo.id, projectInfo);
+    window.location.reload();
+  };
   return (
     <>
       <button className="add-project" onClick={() => navigate("/add-project")}>
@@ -22,26 +47,31 @@ const DisplayProject = ({ projectdata, empdata, deleteProject }) => {
             </tr>
           </thead>
           <tbody>
-            {projectdata &&
-              projectdata.map((projectdata, i) => {
+            {projectdata && projectdata.length !== 0 ? (
+              projectdata.map((project, i) => {
                 return (
                   <tr>
                     {projectinputs.map((input, i) => {
                       return (
-                        <td className="project-row">
-                          {projectdata[input.name]}
-                        </td>
+                        <td className="project-row">{project[input.name]}</td>
                       );
                     })}
                     <td className="project-row">
-                      {projectdata.emp_id.map((id, key) => {
+                      {project.emp_id.map((id, key) => {
                         return (
-                          <p key={key}>
+                          <div key={key}>
                             <label className="label">Employee Id </label>
                             <div className="project-value">
                               <Link to={`/employeelist/${id}`}>{id}</Link>
+                              <div>
+                                <button
+                                  onClick={() => handleRemoveEmp(id, project)}
+                                >
+                                  Remove
+                                </button>
+                              </div>
                             </div>
-                          </p>
+                          </div>
                         );
                       })}
                     </td>
@@ -49,27 +79,32 @@ const DisplayProject = ({ projectdata, empdata, deleteProject }) => {
                       <button
                         className="add-employee-button"
                         onClick={() => {
-                          navigate(`/addemployee-to-project/${projectdata.id}`);
+                          navigate(`/addemployee-to-project/${project.id}`);
                         }}
                       >
                         Add Employee
                       </button>
                       <Link
                         className="edit-project-link"
-                        to={`/editproject/${projectdata.id}`}
+                        to={`/editproject/${project.id}`}
                       >
                         Edit
                       </Link>
                       <button
                         className="delete-button"
-                        onClick={(event) => deleteProject(projectdata.id)}
+                        onClick={(event) => deleteProject(project.id)}
                       >
                         Delete Project
                       </button>
                     </td>
                   </tr>
                 );
-              })}
+              })
+            ) : (
+              <tr>
+                <td>No projects found</td>
+              </tr>
+            )}
           </tbody>
         </table>
 

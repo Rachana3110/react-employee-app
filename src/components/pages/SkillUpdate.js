@@ -3,26 +3,25 @@ import { useParams } from "react-router-dom";
 import "./css/SkillUpdate.css";
 
 const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
-  const [choice, setChoice] = useState();
-  const skills = currentEmployee[0].skills;
+  const [skill, setskill] = useState();
   const { id } = useParams();
-
   const handleAddSkill = (event) => {
-    setChoice(event.target.value);
+    setskill(event.target.value);
   };
 
   const handleSkillUpdate = (event) => {
     event.preventDefault();
-    if (!skills.includes(choice)) {
-      skills.push(choice);
+    if (!currentEmployee[0].skills.includes(skill)) {
+      currentEmployee[0].skills.push(skill);
       handleEmployeeUpdate(id, currentEmployee[0]);
-    } else alert("Skill already added");
-    window.location.reload(true);
+      window.location.reload();
+    } else alert("Skill already present");
   };
+
   const handleDelete = (skillId) => {
-    skills.splice(skillId, 1);
+    currentEmployee[0].skills.splice(skillId, 1);
     handleEmployeeUpdate(id, currentEmployee[0]);
-    window.location.reload(true);
+    window.location.reload();
   };
 
   return (
@@ -52,10 +51,10 @@ const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
           </tr>
         </thead>
         <tbody>
-          {skills.length !== 0 ? (
-            skills.map((skill, i) => {
+          {currentEmployee[0].skills.length !== 0 ? (
+            currentEmployee[0].skills.map((skill, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <td className="row">
                     <>{skill}</>
                   </td>
@@ -71,7 +70,9 @@ const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
               );
             })
           ) : (
-            <p>No Skills found</p>
+            <tr>
+              <td>No Skills found</td>
+            </tr>
           )}
         </tbody>
       </table>

@@ -136,6 +136,8 @@ const Routing = () => {
                       projectdata={projectdata}
                       deleteProject={deleteProject}
                       empdata={empdata}
+                      handleEmployeeUpdate={handleEmployeeUpdate}
+                      handleProjectUpdate={handleProjectUpdate}
                     />
                   }
                 />

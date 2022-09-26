@@ -7,6 +7,8 @@ const ProjectInformation = ({
   projectdata,
   deleteProject,
   empdata,
+  handleEmployeeUpdate,
+  handleProjectUpdate,
 }) => {
   const currProjectData = currentEmployee[0].project;
 
@@ -18,6 +20,8 @@ const ProjectInformation = ({
           projectdata={projectdata}
           empdata={empdata}
           deleteProject={deleteProject}
+          handleEmployeeUpdate={handleEmployeeUpdate}
+          handleProjectUpdate={handleProjectUpdate}
         />
       ) : (
         <div className="project-info-container">
@@ -35,7 +39,7 @@ const ProjectInformation = ({
               </div>
             </div>
           ) : (
-            <p>No Project Data found</p>
+            <div>No Project Data found</div>
           )}
         </div>
       )}

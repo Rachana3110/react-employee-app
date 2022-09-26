@@ -1,60 +1,32 @@
 {
   "employees": [
     {
-      "email": "rachana@123",
-      "password": "Ruchitha@3110",
+      "email": "rachana@sonata.com",
+      "password": "Rash@3110",
       "first_name": "Rachana",
       "last_name": "Suresh",
-      "date_of_birth": "1997-10-21",
-      "phone_number": "9917262552",
+      "date_of_birth": "",
+      "phone_number": "",
       "address": "",
       "qualification": "B.E",
       "total_experience": "",
       "postal_code": "",
-      "project": [
-        "ss",
-        "Sunrise"
-      ],
+      "project": [],
       "start_date": "",
       "type_of_employee": "Permanent",
-      "designation": "Developer",
-      "gender": "",
-      "marital_status": "",
-      "skills": [
-        "HTML",
-        "JavaScript",
-        "ReactJs"
-      ],
-      "id": 1
-    },
-    {
-      "email": "r@123",
-      "password": "Ruchitha@3110",
-      "first_name": "rr",
-      "last_name": "rr",
-      "date_of_birth": "2022-09-10",
-      "phone_number": "",
-      "address": "",
-      "qualification": "",
-      "total_experience": "",
-      "postal_code": "",
-      "project": [
-        "Pennymac"
-      ],
-      "start_date": "",
-      "type_of_employee": "",
       "designation": "Manager",
       "gender": "",
       "marital_status": "",
       "skills": [
-        "CSS"
+        "HTML",
+        "JavaScript"
       ],
-      "id": 2
+      "id": 1
     },
     {
-      "email": "sonu@gmail.com",
-      "password": "Ruchitha@3110",
-      "first_name": "Sonu",
+      "email": "ruchitha@sonata.com",
+      "password": "Rash@3110",
+      "first_name": "Ruchitha",
       "last_name": "",
       "date_of_birth": "",
       "phone_number": "",
@@ -63,8 +35,29 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise",
-        "Pennymac"
+        "Sunrise"
+      ],
+      "start_date": "",
+      "type_of_employee": "",
+      "designation": "Developer",
+      "gender": "",
+      "marital_status": "",
+      "skills": [],
+      "id": 2
+    },
+    {
+      "email": "aa@123",
+      "password": "Rash@3110",
+      "first_name": "Aa",
+      "last_name": "",
+      "date_of_birth": "",
+      "phone_number": "",
+      "address": "",
+      "qualification": "",
+      "total_experience": "",
+      "postal_code": "",
+      "project": [
+        "Sunrise"
       ],
       "start_date": "",
       "type_of_employee": "",
@@ -73,6 +66,26 @@
       "marital_status": "",
       "skills": [],
       "id": 3
+    },
+    {
+      "email": "bb@123",
+      "password": "Rash@3110",
+      "first_name": "Ba",
+      "last_name": "",
+      "date_of_birth": "",
+      "phone_number": "",
+      "address": "",
+      "qualification": "",
+      "total_experience": "",
+      "postal_code": "",
+      "project": [],
+      "start_date": "",
+      "type_of_employee": "Permanent",
+      "designation": "Developer",
+      "gender": "",
+      "marital_status": "",
+      "skills": [],
+      "id": 4
     }
   ],
   "projects": [
@@ -80,39 +93,24 @@
       "project_name": "Sunrise",
       "company_name": "Sonata",
       "project_status": "Active",
-      "company_phone": "523356153",
-      "project_start_date": "2022-09-23",
+      "company_phone": "1234",
+      "project_start_date": "2022-09-01",
       "project_end_date": "2022-09-30",
       "emp_id": [
         "3",
-        "1"
+        "2"
       ],
       "id": 1
     },
     {
-      "project_name": "ss",
-      "company_name": "ss",
+      "project_name": "asd",
+      "company_name": "asc",
       "project_status": "Active",
-      "company_phone": "111",
-      "project_start_date": "2022-09-23",
-      "project_end_date": "2022-09-30",
-      "emp_id": [
-        "1"
-      ],
-      "id": 2
-    },
-    {
-      "project_name": "Pennymac",
-      "company_name": "Sonata",
-      "project_status": "Active",
-      "company_phone": "1111",
-      "project_start_date": "2022-09-01",
+      "company_phone": "123",
+      "project_start_date": "2022-09-08",
       "project_end_date": "2022-09-23",
-      "emp_id": [
-        "2",
-        "3"
-      ],
-      "id": 3
+      "emp_id": [],
+      "id": 2
     }
   ]
 }

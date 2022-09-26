@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const AddEmployee = ({
   empdata,
-  projectdata,
   handleEmployeeUpdate,
   handleProjectUpdate,
 }) => {
@@ -45,11 +44,10 @@ const AddEmployee = ({
         return employee.id === parseInt(employeeId);
       });
       filterEmployee[0].project.push(project.project_name);
-      setInterval(handleEmployeeUpdate(employeeId, filterEmployee[0]), 1000);
-    }
-
-    if (project) {
-      setInterval(handleProjectUpdate(id, project), 2000);
+      handleEmployeeUpdate(employeeId, filterEmployee[0]);
+      if (project) {
+        handleProjectUpdate(id, project);
+      }
     }
   };
   return (
@@ -78,7 +76,11 @@ const AddEmployee = ({
               );
             })}
           </select>
-          <input className="add-employee-button" type="submit" value="Add Employee" />
+          <input
+            className="add-employee-button"
+            type="submit"
+            value="Add Employee"
+          />
           <button onClick={() => navigate("/projectinformation")}>Back</button>
         </form>
       )}
