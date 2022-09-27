@@ -55,33 +55,36 @@ const Routing = () => {
     event.preventDefault();
     await axios.delete(`http://localhost:3001/employees/${id}`);
     loadEmployee();
+    window.location.reload();
   };
 
   const loadProject = async () => {
-    const result = await axios.get("http://localhost:3001/projects");
+    const result = await axios.get("http://localhost:3002/projects");
     return setProjectdata(result.data);
   };
 
   const handleAddProject = async (event, project) => {
     event.preventDefault();
-    await axios.post(`http://localhost:3001/projects`, project);
+    await axios.post(`http://localhost:3002/projects`, project);
     navigate("/projectinformation");
     window.location.reload(true);
   };
 
   const handleProjectUpdate = async (id, projectDetails) => {
-    await axios.put(`http://localhost:3001/projects/${id}`, projectDetails);
+    await axios.put(`http://localhost:3002/projects/${id}`, projectDetails);
     navigate("/projectinformation");
     window.location.reload(true);
   };
 
   const deleteProject = async (id) => {
-    await axios.delete(`http://localhost:3001/projects/${id}`);
+    await axios.delete(`http://localhost:3002/projects/${id}`);
     loadProject();
+    window.location.reload();
   };
 
   const handleEmployeeUpdate = async (id, employee) => {
     await axios.put(`http://localhost:3001/employees/${id}`, employee);
+    window.location.reload();
   };
 
   return (

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const AddEmployee = ({
   empdata,
+  projectdata,
   handleEmployeeUpdate,
   handleProjectUpdate,
 }) => {
@@ -20,9 +21,28 @@ const AddEmployee = ({
     emp_id: [],
   });
 
+  let existingEmpId = [];
+  let employeeList = [];
+  if (projectdata) {
+    projectdata.map((p) => {
+      return existingEmpId.push(...p.emp_id);
+    });
+
+    const filterEmpData = empdata.filter((data) => {
+      return data.designation !== "Manager";
+    });
+
+    const getIds = filterEmpData.map((data) => {
+      return data.id;
+    });
+    employeeList = getIds.filter(
+      (x) => !existingEmpId.map((id) => parseInt(id)).includes(x)
+    );
+  }
+
   useEffect(() => {
     const loadProject = async () => {
-      const result = await axios.get(`http://localhost:3001/projects/${id}`);
+      const result = await axios.get(`http://localhost:3002/projects/${id}`);
       setProject(result.data);
     };
     loadProject();
@@ -62,19 +82,18 @@ const AddEmployee = ({
           <input
             type="text"
             name="project_name"
-            value={project && project.project_name}
+            defaultValue={project && project.project_name}
           />
           <select name="emp_id" onChange={handleAddEmployee} required>
             <option value="">Select Employee</option>
-            {empdata.map((employee, i) => {
-              return (
-                <>
-                  {employee.designation !== "Manager" && (
-                    <option key={i}>{employee.id}</option>
-                  )}
-                </>
-              );
-            })}
+            {employeeList &&
+              employeeList.map((id, i) => {
+                return (
+                  <option value={id} key={i}>
+                    {id}
+                  </option>
+                );
+              })}
           </select>
           <input
             className="add-employee-button"

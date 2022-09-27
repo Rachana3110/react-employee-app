@@ -17,7 +17,7 @@ const EditProject = ({ handleProjectUpdate }) => {
   });
   useEffect(() => {
     const loadProject = async () => {
-      const result = await axios.get(`http://localhost:3001/projects/${id}`);
+      const result = await axios.get(`http://localhost:3002/projects/${id}`);
       setProject(result.data);
     };
     loadProject();

@@ -57,14 +57,16 @@
       "total_experience": "",
       "postal_code": "",
       "project": [
-        "Sunrise"
+        "asd"
       ],
       "start_date": "",
       "type_of_employee": "",
       "designation": "Developer",
       "gender": "",
       "marital_status": "",
-      "skills": [],
+      "skills": [
+        "HTML"
+      ],
       "id": 3
     },
     {
@@ -86,31 +88,6 @@
       "marital_status": "",
       "skills": [],
       "id": 4
-    }
-  ],
-  "projects": [
-    {
-      "project_name": "Sunrise",
-      "company_name": "Sonata",
-      "project_status": "Active",
-      "company_phone": "1234",
-      "project_start_date": "2022-09-01",
-      "project_end_date": "2022-09-30",
-      "emp_id": [
-        "3",
-        "2"
-      ],
-      "id": 1
-    },
-    {
-      "project_name": "asd",
-      "company_name": "asc",
-      "project_status": "Active",
-      "company_phone": "123",
-      "project_start_date": "2022-09-08",
-      "project_end_date": "2022-09-23",
-      "emp_id": [],
-      "id": 2
     }
   ]
 }

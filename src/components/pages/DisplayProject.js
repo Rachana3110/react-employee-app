@@ -28,7 +28,6 @@ const DisplayProject = ({
       projectInfo.emp_id.splice(projectIndex, 1);
     }
     handleProjectUpdate(projectInfo.id, projectInfo);
-    window.location.reload();
   };
   return (
     <>
