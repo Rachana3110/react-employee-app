@@ -59,16 +59,14 @@ const AddEmployee = ({
   };
 
   const handleSubmit = (event) => {
-    if (employeeId) {
-      let filterEmployee = empdata.filter((employee, i) => {
-        return employee.id === parseInt(employeeId);
-      });
-      filterEmployee[0].project.push(project.project_name);
-      handleEmployeeUpdate(employeeId, filterEmployee[0]);
-      if (project) {
-        handleProjectUpdate(id, project);
-      }
-    }
+    let filterEmployee = empdata.filter((employee, i) => {
+      return employee.id === parseInt(employeeId);
+    })[0];
+    handleEmployeeUpdate(employeeId, {
+      ...filterEmployee,
+      current_project: project.project_name,
+    });
+    handleProjectUpdate(id, project);
   };
   return (
     <div>

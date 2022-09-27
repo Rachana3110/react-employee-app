@@ -10,7 +10,7 @@ const ProjectInformation = ({
   handleEmployeeUpdate,
   handleProjectUpdate,
 }) => {
-  const currProjectData = currentEmployee[0].project;
+  const currProjectData = currentEmployee[0];
 
   return (
     <div>
@@ -25,21 +25,23 @@ const ProjectInformation = ({
         />
       ) : (
         <div className="project-info-container">
-          {currProjectData.length !== 0 ? (
+          {currProjectData.current_project === "" && currProjectData.previous_project === "" ? (
+            <div>No Project Data found</div>
+          ) : (
             <div className="info-block">
               <label className="project-label">Current Project</label>
               <div className="project-value">
-                {currProjectData[currProjectData.length - 1]}
+                {currProjectData.current_project
+                  ? currProjectData.current_project
+                  : "No current project found"}
               </div>
               <label className="project-label">Previous Project</label>
               <div className="project-value">
-                {currProjectData.length !== 1
-                  ? currProjectData[currProjectData.length - 2]
+                {currProjectData.previous_project
+                  ? currProjectData.previous_project
                   : "No previous project found"}
               </div>
             </div>
-          ) : (
-            <div>No Project Data found</div>
           )}
         </div>
       )}

@@ -15,13 +15,11 @@ const DisplayProject = ({
     const filteredEmpData = empdata.filter((employee) => {
       return employee.id === parseInt(empid);
     })[0];
-    const employeeIndex = filteredEmpData.project.indexOf(
-      projectInfo.project_name
-    );
-    if (employeeIndex > -1) {
-      filteredEmpData.project.splice(employeeIndex, 1);
-    }
-    handleEmployeeUpdate(parseInt(empid), filteredEmpData);
+    handleEmployeeUpdate(parseInt(empid), {
+      ...filteredEmpData,
+      previous_project: filteredEmpData.current_project,
+      current_project: "",
+    });
 
     const projectIndex = projectInfo.emp_id.indexOf(empid);
     if (projectIndex > -1) {
@@ -89,12 +87,14 @@ const DisplayProject = ({
                       >
                         Edit
                       </Link>
-                      <button
-                        className="delete-button"
-                        onClick={(event) => deleteProject(project.id)}
-                      >
-                        Delete Project
-                      </button>
+                      {project.emp_id.length === 0 && (
+                        <button
+                          className="delete-button"
+                          onClick={(event) => deleteProject(project.id)}
+                        >
+                          Delete Project
+                        </button>
+                      )}
                     </td>
                   </tr>
                 );
