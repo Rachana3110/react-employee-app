@@ -15,11 +15,13 @@ const DisplayProject = ({
     const filteredEmpData = empdata.filter((employee) => {
       return employee.id === parseInt(empid);
     })[0];
-    handleEmployeeUpdate(parseInt(empid), {
+    const currentProject = filteredEmpData && filteredEmpData.current_project;
+    const newEmployeeData = {
       ...filteredEmpData,
-      previous_project: filteredEmpData.current_project,
+      previous_project: currentProject,
       current_project: "",
-    });
+    };
+    handleEmployeeUpdate(parseInt(empid), newEmployeeData);
 
     const projectIndex = projectInfo.emp_id.indexOf(empid);
     if (projectIndex > -1) {

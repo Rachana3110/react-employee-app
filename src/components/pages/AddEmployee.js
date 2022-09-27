@@ -50,7 +50,7 @@ const AddEmployee = ({
 
   const handleAddEmployee = (event) => {
     if (project.emp_id.includes(event.target.value)) {
-      alert("Employee already in the project");
+      return alert("Employee already in the project");
     } else {
       project.emp_id.push(event.target.value);
       setProject({ ...project });
@@ -62,10 +62,11 @@ const AddEmployee = ({
     let filterEmployee = empdata.filter((employee, i) => {
       return employee.id === parseInt(employeeId);
     })[0];
-    handleEmployeeUpdate(employeeId, {
+    const newEmployeeData = {
       ...filterEmployee,
       current_project: project.project_name,
-    });
+    };
+    handleEmployeeUpdate(employeeId, newEmployeeData);
     handleProjectUpdate(id, project);
   };
   return (

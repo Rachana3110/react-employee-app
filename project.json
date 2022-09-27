@@ -1,3 +1,24 @@
 {
-    "projects": []
+  "projects": [
+    {
+      "project_name": "Project 1",
+      "company_name": "Sonata",
+      "project_status": "Active",
+      "company_phone": "",
+      "project_start_date": "2022-09-01",
+      "project_end_date": "2022-12-22",
+      "emp_id": [],
+      "id": 1
+    },
+    {
+      "project_name": "Project 2",
+      "company_name": "Sonata",
+      "project_status": "Active",
+      "company_phone": "",
+      "project_start_date": "2022-09-02",
+      "project_end_date": "2022-11-18",
+      "emp_id": [],
+      "id": 2
+    }
+  ]
 }

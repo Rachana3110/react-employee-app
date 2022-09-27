@@ -14,14 +14,12 @@ const SkillUpdate = ({ currentEmployee, handleEmployeeUpdate }) => {
     if (!currentEmployee[0].skills.includes(skill)) {
       currentEmployee[0].skills.push(skill);
       handleEmployeeUpdate(id, currentEmployee[0]);
-      window.location.reload();
     } else alert("Skill already present");
   };
 
   const handleDelete = (skillId) => {
     currentEmployee[0].skills.splice(skillId, 1);
     handleEmployeeUpdate(id, currentEmployee[0]);
-    window.location.reload();
   };
 
   return (

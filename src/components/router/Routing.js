@@ -25,6 +25,16 @@ const Routing = () => {
     loadProject();
   }, []);
 
+  const loadEmployee = async () => {
+    const result = await axios.get("http://localhost:3001/employees");
+    return setEmpData(result.data);
+  };
+
+  const loadProject = async () => {
+    const result = await axios.get("http://localhost:3002/projects");
+    return setProjectdata(result.data);
+  };
+
   let currentEmployee;
   if (empdata) {
     const getToken = JSON.parse(localStorage.getItem("token"));
@@ -33,58 +43,46 @@ const Routing = () => {
     });
   }
 
-  const loadEmployee = async () => {
-    const result = await axios.get("http://localhost:3001/employees");
-    return setEmpData(result.data);
-  };
-
   const handleRegister = async (event, employees) => {
     event.preventDefault();
     await axios.post("http://localhost:3001/employees", employees);
     navigate("/");
-    window.location.reload(true);
+    loadEmployee();
   };
 
   const handleUpdate = async (id, employee) => {
     await axios.put(`http://localhost:3001/employees/${id}`, employee);
     navigate("/profile");
-    window.location.reload(true);
+    loadEmployee();
   };
 
   const handleDelete = async (event, id) => {
     event.preventDefault();
     await axios.delete(`http://localhost:3001/employees/${id}`);
     loadEmployee();
-    window.location.reload();
-  };
-
-  const loadProject = async () => {
-    const result = await axios.get("http://localhost:3002/projects");
-    return setProjectdata(result.data);
   };
 
   const handleAddProject = async (event, project) => {
     event.preventDefault();
     await axios.post(`http://localhost:3002/projects`, project);
     navigate("/projectinformation");
-    window.location.reload(true);
+    loadProject();
   };
 
   const handleProjectUpdate = async (id, projectDetails) => {
     await axios.put(`http://localhost:3002/projects/${id}`, projectDetails);
     navigate("/projectinformation");
-    window.location.reload(true);
+    loadProject();
   };
 
   const deleteProject = async (id) => {
     await axios.delete(`http://localhost:3002/projects/${id}`);
     loadProject();
-    window.location.reload();
   };
 
   const handleEmployeeUpdate = async (id, employee) => {
     await axios.put(`http://localhost:3001/employees/${id}`, employee);
-    window.location.reload();
+    loadEmployee();
   };
 
   return (
